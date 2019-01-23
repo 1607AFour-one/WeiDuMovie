@@ -1,14 +1,25 @@
 package com.bw.movie;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+
+import com.bw.movie.base.BaseActivity;
+
+public class MainActivity extends BaseActivity {
+
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void initView() {
         setContentView(R.layout.activity_main);
-        //1112
+    }
+
+    @Override
+    protected void initListener() {
+
     }
 }
