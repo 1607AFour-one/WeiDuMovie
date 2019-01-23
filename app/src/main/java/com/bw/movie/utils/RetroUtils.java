@@ -22,7 +22,7 @@ public class RetroUtils {
                 .connectTimeout(20,TimeUnit.SECONDS)
                 .addInterceptor(httpLoggingInterceptor)
                 .build();
-
+     //
 
     }
 }
