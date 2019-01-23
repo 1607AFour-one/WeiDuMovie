@@ -5,8 +5,7 @@ package com.bw.movie;
 import com.bw.movie.base.BaseActivity;
 
 public class MainActivity extends BaseActivity {
-
-    //修改
+    
     @Override
     protected void initData() {
 
