@@ -84,7 +84,6 @@ public class GlideUtils {
                 .load (mImageUrl)
                 .apply (RequestOptions.errorOf (R.mipmap.error))        //加载失败 默认的加载图片
                 .apply (RequestOptions.placeholderOf (R.mipmap.zhong)) //加载中 默认的加载图片
-
                 .into ((ImageView) mImageView);
     }
 
