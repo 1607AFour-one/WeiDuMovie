@@ -22,12 +22,7 @@ public class RetroUtils {
                 .connectTimeout(20,TimeUnit.SECONDS)
                 .addInterceptor(httpLoggingInterceptor)
                 .build();
-        Retrofit retrofit=new Retrofit.Builder()
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("")
-                .client(okHttpClient)
-                .build();
+
 
     }
 }
