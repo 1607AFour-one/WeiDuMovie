@@ -9,9 +9,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //movie first
-        //提交
-        //获取
-        //获取不到
+        //11
     }
 }
