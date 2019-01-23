@@ -12,5 +12,6 @@ public class MainActivity extends AppCompatActivity {
         //movie first
         //提交
         //获取
+        //获取不到
     }
 }
