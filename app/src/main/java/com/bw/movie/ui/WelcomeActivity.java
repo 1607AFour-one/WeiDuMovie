@@ -1,4 +1,4 @@
-package com.bw.movie;
+package com.bw.movie.ui;
 
 import android.app.ActivityOptions;
 import android.content.Context;
@@ -19,6 +19,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.bw.movie.utils.PrefManager;
+import com.bw.movie.R;
 
 public class WelcomeActivity extends AppCompatActivity {
 
