@@ -1,6 +1,7 @@
 package com.bw.movie.ui;
 
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -169,6 +170,9 @@ public class MainActivity extends BaseActivity implements IView {
             SpUtils.putBoolean("isAuto",true);
         }else{
             SpUtils.putBoolean("isAuto",false);
+        }
+        if(loginData.getStatus().equals("0000")){
+            openActivity(HomeActivity.class);
         }
 
     }
