@@ -1,10 +1,12 @@
-package com.bw.movie;
+package com.bw.movie.ui;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.bw.movie.R;
 
 public class StartActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.bw.movie;
+package com.bw.movie.ui;
 
 
 
@@ -7,6 +7,7 @@ import android.support.annotation.RequiresApi;
 import android.transition.Explode;
 import android.view.View;
 
+import com.bw.movie.R;
 import com.bw.movie.base.BaseActivity;
 
 public class MainActivity extends BaseActivity {

@@ -1,11 +1,11 @@
-package com.bw.movie;
+package com.bw.movie.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
 public class PrefManager {
 
-
+    //引导页保存
     SharedPreferences pref;
     SharedPreferences.Editor editor;
     Context _context;
