@@ -2,6 +2,8 @@ package com.bw.movie;
 
 
 
+import android.view.View;
+
 import com.bw.movie.base.BaseActivity;
 
 public class MainActivity extends BaseActivity {
@@ -10,7 +12,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected int initLayout() {
 
-        return 0;
+        return R.layout.activity_main;
     }
 
     @Override
@@ -26,6 +28,11 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
+
+    }
+
+    @Override
+    public void onClick(View v) {
 
     }
 }

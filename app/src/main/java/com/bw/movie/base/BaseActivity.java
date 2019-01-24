@@ -8,6 +8,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
@@ -15,7 +16,7 @@ import android.widget.Toast;
 
 import com.bw.movie.utils.SpUtils;
 
-public abstract class BaseActivity extends Activity {
+public abstract class BaseActivity extends Activity implements View.OnClickListener {
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
