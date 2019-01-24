@@ -10,7 +10,7 @@
 
     <EditText
         android:id="@+id/Zhu_Name"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="100dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -92,9 +92,9 @@
     <Button
         android:layout_below="@id/Zhu_Pass"
         android:id="@+id/Zhu_Btn"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="78dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/long_btn_shape"
