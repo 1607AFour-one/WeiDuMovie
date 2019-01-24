@@ -12,9 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.MainActivity">
-
-        </activity>
+        <activity android:name=".ui.MainActivity"></activity>
 
         <meta-data
             android:name="design_width_in_dp"
@@ -23,15 +21,15 @@
             android:name="design_height_in_dp"
             android:value="640" />
 
-        <activity android:name=".ui.StartActivity" >
+        <activity android:name=".ui.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".ui.WelcomeActivity"></activity>
+        <activity android:name=".ui.WelcomeActivity" />
+        <activity android:name=".ui.RegisteredActivity"></activity>
     </application>
 
 </manifest>
