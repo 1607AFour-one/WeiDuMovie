@@ -11,6 +11,7 @@ import com.bw.movie.base.BaseActivity;
 
 public class MainActivity extends BaseActivity {
 
+    //你好
 
     @Override
     protected int initLayout() {
