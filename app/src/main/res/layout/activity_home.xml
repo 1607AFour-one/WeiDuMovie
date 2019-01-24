@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.HomeActivity">
+
+
+    <RadioGroup
+        android:id="@+id/Home_Rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        >
+        <RadioButton
+            android:id="@+id/Home_Rb1"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="100dp"
+            android:drawableTop="@drawable/home_film"
+            android:button="@null"
+            android:gravity="center"
+            android:checked="true"
+            />
+        <RadioButton
+            android:id="@+id/Home_Rb2"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="100dp"
+            android:drawableTop="@drawable/home_cinema"
+            android:button="@null"
+            android:gravity="center"
+            />
+        <RadioButton
+            android:id="@+id/Home_Rb3"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="100dp"
+            android:drawableTop="@drawable/ser_weibo"
+            android:button="@null"
+            android:gravity="center"
+            />
+    </RadioGroup>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/Home_Vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/Home_Rg"
+        ></android.support.v4.view.ViewPager>
+
+</RelativeLayout>

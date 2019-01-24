@@ -9,4 +9,7 @@ public class Contacts {
     public static final String BASE_URL="http://172.17.8.100/movieApi/";
     //登录
     public static final String LOGIN_URL="user/v1/login";
+    //注册
+    public static final String ZHUCE_URL="user/v1/registerUser";
+
 }
