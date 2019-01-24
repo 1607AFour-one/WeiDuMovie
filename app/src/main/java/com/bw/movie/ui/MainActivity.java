@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.base.BaseActivity;
@@ -19,6 +20,7 @@ import com.bw.movie.bean.LoginData;
 import com.bw.movie.presenter.PresenterImpl;
 import com.bw.movie.utils.Contacts;
 import com.bw.movie.utils.EncryptUtil;
+import com.bw.movie.utils.SpUtils;
 import com.bw.movie.view.IView;
 
 import java.util.HashMap;
@@ -28,26 +30,24 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements IView {
-    @BindView(R.id.login_ed_phone)
+    /*@BindView(R.id.login_ed_phone)*/
     EditText loginEdPhone;
-    @BindView(R.id.login_ed_pwd)
+    /*@BindView(R.id.login_ed_pwd)*/
     EditText loginEdPwd;
-    @BindView(R.id.login_cb_rember)
+    /*@BindView(R.id.login_cb_rember)*/
     CheckBox loginCbRember;
-    @BindView(R.id.login_cb_auto)
+   /* @BindView(R.id.login_cb_auto)*/
     CheckBox loginCbAuto;
-    @BindView(R.id.regist_tv)
+    /*@BindView(R.id.regist_tv)*/
     TextView registTv;
-    @BindView(R.id.login_lin1)
+   /* @BindView(R.id.login_lin1)*/
     RelativeLayout loginLin1;
-    @BindView(R.id.login_btn_login)
+   /* @BindView(R.id.login_btn_login)*/
     Button loginBtnLogin;
-    @BindView(R.id.login_sanfang)
+    /*@BindView(R.id.login_sanfang)*/
     TextView loginSanfang;
-    @BindView(R.id.login_image_weixin)
+    /*@BindView(R.id.login_image_weixin)*/
     ImageView loginImageWeixin;
-
-    //你好我不好
 
     @Override
     protected int initLayout() {
@@ -61,12 +61,27 @@ public class MainActivity extends BaseActivity implements IView {
 
         getWindow().setEnterTransition(new Explode().setDuration(3000));
         getWindow().setExitTransition(new Explode().setDuration(3000));
+        loginEdPhone=findViewById(R.id.login_ed_phone);
+        loginEdPwd=findViewById(R.id.login_ed_pwd);
+        loginBtnLogin=findViewById(R.id.login_btn_login);
+        loginCbRember=findViewById(R.id.login_cb_rember);
+        loginCbAuto=findViewById(R.id.login_cb_auto);
+        registTv=findViewById(R.id.regist_tv);
+        loginImageWeixin=findViewById(R.id.login_image_weixin);
+
+        loginBtnLogin.setOnClickListener(this);
+        loginImageWeixin.setOnClickListener(this);
+        registTv.setOnClickListener(this);
+        loginCbRember.setOnClickListener(this);
+        loginCbAuto.setOnClickListener(this);
+
+
+
     }
 
     @Override
     protected void setClicks() {
-
-
+//        SpUtils.getPreferneces()
     }
 
     @Override
@@ -76,26 +91,44 @@ public class MainActivity extends BaseActivity implements IView {
 
     @Override
     protected void setProgress() {
+        //Toast.makeText(this,SpUtils.getPreferneces().getInt("one",11)+"", Toast.LENGTH_SHORT).show();
+        boolean isRember = SpUtils.getPreferneces().getBoolean("isRember", false);
+        boolean isAuto = SpUtils.getPreferneces().getBoolean("isAuto", false);
+        loginCbRember.setChecked(isRember);
+        loginCbAuto.setChecked(isAuto);
 
+        if(isRember){
+            String phone = SpUtils.getPreferneces().getString("phone", "");
+            String pwd = SpUtils.getPreferneces().getString("pwd", "");
+            loginEdPhone.setText(phone);
+            loginEdPwd.setText(pwd);
+        }
+        if(isAuto){
+            String phone=loginEdPhone.getText().toString().trim();
+            String pwd=loginEdPwd.getText().toString().trim();
+            HashMap<String,Object> map=new HashMap<>();
+            HashMap<String,Object>headmap=new HashMap<>();
+            String encrypt = EncryptUtil.encrypt(pwd);
+            map.put("phone",phone);
+            map.put("pwd",encrypt);
+            PresenterImpl presenter=new PresenterImpl(this);
+            presenter.requestFormPost(Contacts.LOGIN_URL,map,headmap,LoginData.class);
+        }
     }
 
     @Override
     public void onClick(View v) {
-
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
-    @OnClick({R.id.login_cb_rember, R.id.login_cb_auto, R.id.regist_tv, R.id.login_lin1, R.id.login_btn_login, R.id.login_image_weixin})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
+        switch (v.getId()){
             case R.id.login_cb_rember:
+                if(!loginCbRember.isChecked()){
+                    loginCbAuto.setChecked(false);
+                }
+
                 break;
             case R.id.login_cb_auto:
+                if(loginCbAuto.isChecked()){
+                    loginCbRember.setChecked(true);
+                }
                 break;
             case R.id.regist_tv:
                 openActivity(RegisteredActivity.class);
@@ -111,18 +144,32 @@ public class MainActivity extends BaseActivity implements IView {
                 map.put("phone",phone);
                 map.put("pwd",encrypt);
                 PresenterImpl presenter=new PresenterImpl(this);
-
                 presenter.requestFormPost(Contacts.LOGIN_URL,map,headmap,LoginData.class);
                 break;
             case R.id.login_image_weixin:
                 break;
         }
+
     }
+
+
 
     @Override
     public void successData(Object data) {
         LoginData loginData= (LoginData) data;
         showShort(loginData.getMessage());
+        if(loginCbRember.isChecked()){
+            SpUtils.putBoolean("isRember",true);
+            SpUtils.putString("phone",loginEdPhone.getText().toString().trim());
+            SpUtils.putString("pwd",loginEdPwd.getText().toString().trim());
+        }else {
+            SpUtils.putBoolean("isRember",false);
+        }
+        if(loginCbAuto.isChecked()){
+            SpUtils.putBoolean("isAuto",true);
+        }else{
+            SpUtils.putBoolean("isAuto",false);
+        }
 
     }
 

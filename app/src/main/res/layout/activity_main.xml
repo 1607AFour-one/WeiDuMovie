@@ -18,10 +18,23 @@
         android:textColorHint="#fff"
         android:textColor="#fff"
         android:phoneNumber="true"
+        android:background="@null"
         android:layout_marginRight="30dp"/>
-    <EditText
-        android:id="@+id/login_ed_pwd"
+    <View
+        android:id="@+id/login_view_phone"
         android:layout_below="@id/login_ed_phone"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="#666666"/>
+
+
+
+    <com.xw.repo.XEditText
+        android:id="@+id/login_ed_pwd"
+        android:layout_below="@id/login_view_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -31,15 +44,26 @@
         android:drawablePadding="20dp"
         android:hint="登录密码"
         android:textColor="#fff"
+        android:inputType="textPassword"
+        android:background="@null"
         android:textColorHint="#fff"/>
+    <View
+        android:id="@+id/login_view_pwd"
+        android:layout_below="@id/login_ed_pwd"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="#666666"/>
 
     <RelativeLayout
         android:id="@+id/login_lin1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/login_ed_pwd"
+        android:layout_below="@id/login_view_pwd"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="-4dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="30dp"
         android:orientation="horizontal">
 

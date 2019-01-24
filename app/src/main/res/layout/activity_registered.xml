@@ -19,10 +19,20 @@
         android:hint="昵称"
         android:textColorHint="#fff"
         android:textColor="#fff"
+        android:background="@null"
         android:layout_marginRight="30dp"/>
+    <View
+        android:id="@+id/regist_view_name"
+        android:layout_below="@id/Zhu_Name"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="#666666"/>
     <EditText
         android:id="@+id/Zhu_Sex"
-        android:layout_below="@id/Zhu_Name"
+        android:layout_below="@id/regist_view_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -32,11 +42,21 @@
         android:drawablePadding="10dp"
         android:hint="性别"
         android:textColor="#fff"
+        android:background="@null"
         android:textColorHint="#fff"/>
+    <View
+        android:id="@+id/regist_view_sex"
+        android:layout_below="@id/Zhu_Sex"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="#666666"/>
 
     <EditText
         android:id="@+id/Zhu_Date"
-        android:layout_below="@id/Zhu_Sex"
+        android:layout_below="@id/regist_view_sex"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,10 +66,20 @@
         android:hint="出生日期"
         android:textColorHint="#fff"
         android:textColor="#fff"
+        android:background="@null"
         android:layout_marginRight="30dp"/>
+    <View
+        android:id="@+id/regist_view_date"
+        android:layout_below="@id/Zhu_Date"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="#666666"/>
     <EditText
         android:id="@+id/Zhu_Phone"
-        android:layout_below="@id/Zhu_Date"
+        android:layout_below="@id/regist_view_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -59,11 +89,21 @@
         android:drawablePadding="10dp"
         android:hint="手机号码"
         android:textColor="#fff"
+        android:background="@null"
         android:textColorHint="#fff"/>
+    <View
+        android:id="@+id/regist_view_phone"
+        android:layout_below="@id/Zhu_Phone"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="#666666"/>
 
     <EditText
         android:id="@+id/Zhu_Mail"
-        android:layout_below="@id/Zhu_Phone"
+        android:layout_below="@id/regist_view_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -73,11 +113,21 @@
         android:drawablePadding="10dp"
         android:hint="邮箱"
         android:textColor="#fff"
+        android:background="@null"
         android:textColorHint="#fff"/>
-
-    <EditText
-        android:id="@+id/Zhu_Pass"
+    <View
+        android:id="@+id/regist_view_email"
         android:layout_below="@id/Zhu_Mail"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="#666666"/>
+
+    <com.xw.repo.XEditText
+        android:id="@+id/Zhu_Pass"
+        android:layout_below="@id/regist_view_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -87,10 +137,21 @@
         android:drawablePadding="10dp"
         android:hint="登录密码"
         android:textColor="#fff"
+        android:background="@null"
+        android:inputType="textPassword"
         android:textColorHint="#fff"/>
+    <View
+        android:id="@+id/regist_view_pwd"
+        android:layout_below="@id/Zhu_Pass"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="#666666"/>
 
     <Button
-        android:layout_below="@id/Zhu_Pass"
+        android:layout_below="@id/regist_view_pwd"
         android:id="@+id/Zhu_Btn"
         android:layout_marginTop="40dp"
         android:layout_width="match_parent"
