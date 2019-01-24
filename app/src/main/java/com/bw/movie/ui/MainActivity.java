@@ -90,7 +90,6 @@ public class MainActivity extends BaseActivity implements IView {
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
     }
-
     @OnClick({R.id.login_cb_rember, R.id.login_cb_auto, R.id.regist_tv, R.id.login_lin1, R.id.login_btn_login, R.id.login_image_weixin})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -99,6 +98,7 @@ public class MainActivity extends BaseActivity implements IView {
             case R.id.login_cb_auto:
                 break;
             case R.id.regist_tv:
+                openActivity(RegisteredActivity.class);
                 break;
             case R.id.login_lin1:
                 break;
