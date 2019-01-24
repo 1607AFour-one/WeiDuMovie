@@ -104,6 +104,24 @@ public class PresenterImpl implements IPresenter {
             }
         });
     }
+
+    @Override
+    public void requestFormPost(String url, HashMap<String, Object> formMap, HashMap<String, Object> headmap, Class clazz) {
+        modle.getformPostData(url, formMap,headmap, clazz, new MyCallBack() {
+            @Override
+            public void setData(Object data) {
+
+                iView.successData(data);
+            }
+
+            @Override
+            public void setError(Object error) {
+                iView.errorMsg(error);
+
+            }
+        });
+    }
+
     public void onDetach(){
         if(modle!=null){
             modle=null;

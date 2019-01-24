@@ -6,6 +6,8 @@ import java.util.Map;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.http.DELETE;
+import retrofit2.http.FieldMap;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.HeaderMap;
 import retrofit2.http.Multipart;
@@ -32,6 +34,9 @@ public interface MyApiService {
     @Multipart
     @POST
     Observable<ResponseBody> upload(@Url String url, @QueryMap HashMap<String,Object> map, @HeaderMap HashMap<String,Object> headMap, @PartMap HashMap<String, RequestBody>  partMap);
+    @FormUrlEncoded
+    @POST
+    Observable<ResponseBody> formPost(@Url String url, @FieldMap HashMap<String,Object> map,@HeaderMap HashMap<String,Object> headMap);
 
 
 

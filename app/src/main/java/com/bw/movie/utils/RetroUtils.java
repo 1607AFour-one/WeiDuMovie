@@ -202,6 +202,34 @@ public class RetroUtils {
                 .subscribe(observer);
 
     }
+    public void formPost(String url, HashMap<String,Object> map,HashMap<String,Object> headmap, final HttpListener httpListener){
+        Observer<ResponseBody> observer=new Observer<ResponseBody>() {
+            @Override
+            public void onCompleted() {
+
+            }
+            @Override
+            public void onError(Throwable e) {
+
+            }
+            @Override
+            public void onNext(ResponseBody responseBody) {
+                if(httpListener!=null){
+                    try {
+                        httpListener.onSuccess(responseBody.string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        };
+        myApiService.formPost(url,map,headmap)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+
+    }
 
     public interface HttpListener{
         void onSuccess(String jsonStr);

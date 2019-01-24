@@ -16,4 +16,5 @@ public interface IModle {
     void getDeleteData(String url, HashMap<String,Object>map,HashMap<String, Object> headmap, Class clazz, MyCallBack callBack);
     void getPutData(String url, HashMap<String,Object>map,HashMap<String, Object> headmap, Class clazz, MyCallBack callBack);
     void getUpLoadData(String url, HashMap<String,Object> map,HashMap<String,Object>headmap, HashMap<String, RequestBody> part, Class clas, MyCallBack callBack);
+    void getformPostData(String url, HashMap<String,Object> formap, HashMap<String, Object> headmap, Class clazz, MyCallBack callBack);
 }

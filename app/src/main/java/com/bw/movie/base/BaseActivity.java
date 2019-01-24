@@ -90,6 +90,7 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
      *connectivityManager.getActiveNetworkInfo();
      * @return
      */
+    protected abstract void setProgress();
     public boolean isConnNet(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
@@ -102,7 +103,8 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
             setRootViewFitsSystemWindows(this,true);
             initView();
             initListener();
-             setClicks();
+            setClicks();
+            setProgress();
         }
 
     };
