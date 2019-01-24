@@ -10,8 +10,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected int initLayout() {
 
-
-
         return 0;
     }
 
@@ -22,6 +20,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void setClicks() {
+
 
     }
 
