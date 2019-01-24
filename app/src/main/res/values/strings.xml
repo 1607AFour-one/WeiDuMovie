@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">维度影院</string>
+
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">下一页</string>
+    <string name="skip">跳过</string>
+    <string name="start">进入主页</string>
+
+    <string name="slide_1_title">一场电影</string>
+    <string name="slide_2_title">一场电影</string>
+    <string name="slide_3_title">一场电影</string>
+    <string name="slide_4_title">八维移动学院作品</string>
+    <string name="slide_5_title">哈哈哈</string>
+
+    <string name="play_again">play again</string>
 </resources>
