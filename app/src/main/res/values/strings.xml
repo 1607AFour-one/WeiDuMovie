@@ -13,4 +13,7 @@
     <string name="slide_5_title">哈哈哈</string>
 
     <string name="play_again">play again</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -24,6 +24,7 @@
             android:button="@null"
             android:gravity="center"
             android:checked="true"
+
             />
         <RadioButton
             android:id="@+id/Home_Rb2"
@@ -33,6 +34,7 @@
             android:drawableTop="@drawable/home_cinema"
             android:button="@null"
             android:gravity="center"
+
             />
         <RadioButton
             android:id="@+id/Home_Rb3"
@@ -44,11 +46,13 @@
             android:gravity="center"
             />
     </RadioGroup>
-    <android.support.v4.view.ViewPager
-        android:id="@+id/Home_Vp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/Home_Rg"
-        ></android.support.v4.view.ViewPager>
+
+
+
+<com.bw.movie.custom.MyViewPager
+    android:id="@+id/Home_Vp"
+    android:layout_above="@+id/Home_Rg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"></com.bw.movie.custom.MyViewPager>
 
 </RelativeLayout>
