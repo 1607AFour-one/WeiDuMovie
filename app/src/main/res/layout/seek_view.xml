@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:id="@+id/Ll"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="-350dp"
+        android:background="@drawable/layout_border"
+        android:layout_alignParentRight="true"
+
+        >
+
+        <ImageView
+            android:id="@+id/Edit_Image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/com_icon_search_default"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            />
+
+        <!-- 搜索框信息 -->
+        <EditText
+            android:id="@+id/search_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:hint="@string/search"
+            android:gravity="center_vertical"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textSize="12sp"
+            android:background="#f66b1c"
+            android:layout_toRightOf="@+id/Edit_Image"
+            android:textColor="#f2f2f2"
+            />
+
+        <TextView
+            android:id="@+id/Edit_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="搜索"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:textSize="12sp"
+            android:textColor="#ffffff"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>

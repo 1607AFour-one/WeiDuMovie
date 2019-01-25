@@ -31,7 +31,7 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
-
+    //你好
     private List<Fragment> fList;
     private RadioGroup Home_Rg;
     private MyViewPager Home_Vp;
