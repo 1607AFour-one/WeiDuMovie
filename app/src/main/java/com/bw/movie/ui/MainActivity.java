@@ -60,8 +60,8 @@ public class MainActivity extends BaseActivity implements IView {
     @Override
     protected void initView() {
 
-        getWindow().setEnterTransition(new Explode().setDuration(3000));
-        getWindow().setExitTransition(new Explode().setDuration(3000));
+        //getWindow().setEnterTransition(new Explode().setDuration(3000));
+        //getWindow().setExitTransition(new Explode().setDuration(3000));
         loginEdPhone=findViewById(R.id.login_ed_phone);
         loginEdPwd=findViewById(R.id.login_ed_pwd);
         loginBtnLogin=findViewById(R.id.login_btn_login);

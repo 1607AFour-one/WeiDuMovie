@@ -119,8 +119,8 @@ public class WelcomeActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void launchHomeScreen(){
         prefManager.setFirstTimeLaunch(false);
-        //startActivity(new Intent(this,MainActivity.class));
-        startActivity(new Intent(this, MainActivity.class), ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+        startActivity(new Intent(this,MainActivity.class));
+     // startActivity(new Intent(this, MainActivity.class), ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
         finish();
     }
 

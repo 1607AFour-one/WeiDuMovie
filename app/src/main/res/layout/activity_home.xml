@@ -6,53 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".ui.HomeActivity">
 
+    <com.bw.movie.custom.MyViewPager
+        android:id="@+id/Home_Vp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></com.bw.movie.custom.MyViewPager>
 
     <RadioGroup
         android:id="@+id/Home_Rg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="100dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        >
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <RadioButton
             android:id="@+id/Home_Rb1"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="100dp"
-            android:drawableTop="@drawable/home_film"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/home_film"
             android:button="@null"
-            android:gravity="center"
             android:checked="true"
+            android:gravity="center_horizontal"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:tag="0" />
 
-            />
         <RadioButton
             android:id="@+id/Home_Rb2"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="100dp"
-            android:drawableTop="@drawable/home_cinema"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
+            android:background="@drawable/home_cinema"
             android:button="@null"
-            android:gravity="center"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:tag="1" />
 
-            />
         <RadioButton
             android:id="@+id/Home_Rb3"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="100dp"
-            android:drawableTop="@drawable/ser_weibo"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/ser_weibo"
             android:button="@null"
-            android:gravity="center"
-            />
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:tag="2" />
     </RadioGroup>
 
-
-
-<com.bw.movie.custom.MyViewPager
-    android:id="@+id/Home_Vp"
-    android:layout_above="@+id/Home_Rg"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"></com.bw.movie.custom.MyViewPager>
 
 </RelativeLayout>
