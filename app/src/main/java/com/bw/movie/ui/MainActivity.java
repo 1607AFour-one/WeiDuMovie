@@ -159,6 +159,8 @@ public class MainActivity extends BaseActivity implements IView {
     public void successData(Object data) {
         LoginData loginData= (LoginData) data;
         showShort(loginData.getMessage());
+        SpUtils.putInt("userId",loginData.getResult().getUserId());
+        SpUtils.putString("sessionId",loginData.getResult().getSessionId());
         if(loginCbRember.isChecked()){
             SpUtils.putBoolean("isRember",true);
             SpUtils.putString("phone",loginEdPhone.getText().toString().trim());

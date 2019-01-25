@@ -11,5 +11,10 @@ public class Contacts {
     public static final String LOGIN_URL="user/v1/login";
     //注册
     public static final String ZHUCE_URL="user/v1/registerUser";
+    public static final String HOT_URL="movie/v1/findHotMovieList";
+    public static final String RELEASE_URL="movie/v1/findReleaseMovieList";
+    public static final String COMINGSOON_URL_="movie/v1/findComingSoonMovieList";
+
+
 
 }
