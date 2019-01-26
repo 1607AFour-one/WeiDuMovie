@@ -31,14 +31,12 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class MovieFragment extends BaseFragment implements IView {
-    
+
     private RecyclerView groupRecy;
     List<HotMovieData.ResultBean> mHotList=new ArrayList<>();
     List<ReleaseMovieData.ResultBean> mReleaseList=new ArrayList<>();
     List<ComingSoonData.ResultBean> mComingList=new ArrayList<>();
     private HomeGroupAdapter mHomeGroupAdapter;
-
-
 
     @Override
     protected int setLayoutId() {
