@@ -42,17 +42,23 @@ public class NearFragment extends BaseFragment implements IView {
     private RadioButton Near_Rb2;
     private RadioGroup Near_Rg;
     private XRecyclerView Near_Xrecy;
+    private XRecyclerView Recommend_Xrecy;
     private List<RecommendData.ResultBean>rList=new ArrayList<>();
     private List<NearMovieData.ResultBean>nList=new ArrayList<>();
     private RecommendAdapter recommendAdapter;
-    private HashMap<String, Object> map;
-    private HashMap<String, Object> headmap;
+
     private int index=1;
     private int count=10;
+    private int mNer=1;
+    private int mCount=10;
     private int userId;
     private String sessionId;
     private PresenterImpl presenter;
     private NearAdapter nearAdapter;
+    private HashMap<String, Object> headmap;
+    private HashMap<String, Object> recoMap;
+    private HashMap<String, Object> nearMap;
+
     @Override
     protected int setLayoutId() {
         return R.layout.fragment_near;
@@ -64,57 +70,101 @@ public class NearFragment extends BaseFragment implements IView {
         Near_Rb1=view.findViewById(R.id.Near_Rb1);
         Near_Rb2=view.findViewById(R.id.Near_Rb2);
         Near_Xrecy=view.findViewById(R.id.Near_Xrecy);
+        Recommend_Xrecy=view.findViewById(R.id.Recommend_Xrecy);
         Near_Rg= view.findViewById(R.id.Near_Rg);
         Near_Xrecy.setLayoutManager(new LinearLayoutManager(getActivity()));
+        Recommend_Xrecy.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
     @Override
     public void fetchData() {
-        presenter = new PresenterImpl(this);
 
+        presenter = new PresenterImpl(this);
         recommendAdapter = new RecommendAdapter(rList,getActivity());
-        Near_Xrecy.setAdapter(recommendAdapter);
+        Recommend_Xrecy.setAdapter(recommendAdapter);
         userId = SpUtils.getInt("userId");
         sessionId = SpUtils.getString("sessionId");
-        //Toast.makeText(getActivity(),sessionId+"",Toast.LENGTH_SHORT).show();
-        // Toast.makeText(getActivity(),userId+"",Toast.LENGTH_SHORT).show();
+
+        recoMap = new HashMap<>();
+
         headmap = new HashMap<>();
         headmap.put("userId", userId);
         headmap.put("sessionId", sessionId);
-        map = new HashMap<>();
-        map.put("page",index+"");
-        map.put("count",count+"");
-        presenter.requestGEt(Contacts.RECOMMEND_URL, map, headmap,RecommendData.class);
 
-        Near_Xrecy.setLoadingListener(new XRecyclerView.LoadingListener() {
+        recoMap.put("page",index+"");
+        recoMap.put("count",count+"");
+        presenter.requestGEt(Contacts.RECOMMEND_URL, recoMap, headmap,RecommendData.class);
+        Recommend_Xrecy.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
                 rList.clear();
-                map.clear();
+                recoMap.clear();
                 index=1;
-                HashMap<String,Object>downMap=new HashMap<>();
-
-                map.put("page",index+"");
-                //map.put("count",count+"");
+                recoMap.put("page",index+"");
+                recoMap.put("count",count+"");
                 headmap.put("userId", userId);
                 headmap.put("sessionId", sessionId);
-                presenter.requestGEt(Contacts.RECOMMEND_URL, map, headmap,RecommendData.class);
+                presenter.requestGEt(Contacts.RECOMMEND_URL, recoMap, headmap,RecommendData.class);
             }
-
             @Override
             public void onLoadMore() {
-                rList.clear();
-                map.clear();
+                //rList.clear();
+                recoMap.clear();
                 index++;
-                map.put("page",index+"");
-                //map.put("count",count);
+                recoMap.put("page",index+"");
+                recoMap.put("count",count);
                 headmap.put("userId", userId);
                 headmap.put("sessionId", sessionId);
-                presenter.requestGEt(Contacts.RECOMMEND_URL, map, headmap,RecommendData.class);
+                presenter.requestGEt(Contacts.RECOMMEND_URL, recoMap, headmap,RecommendData.class);
 
             }
         });
 
+        nearAdapter = new NearAdapter(nList,getActivity());
+        Near_Xrecy.setAdapter(nearAdapter);
+        userId = SpUtils.getInt("userId");
+        sessionId = SpUtils.getString("sessionId");
+        //Toast.makeText(getActivity(),sessionId+"",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(),userId+"",Toast.LENGTH_SHORT).show();
+        nearMap = new HashMap<>();
+        nearMap.put("page",mNer+"");
+        nearMap.put("count",mCount+"");
+        nearMap.put("longitude",116.30551391385724+"");
+        nearMap.put("latitude",40.04571807462411+"");
+        presenter.requestGEt(Contacts.NEARMOVIE_URL, nearMap, headmap,NearMovieData.class);
+
+        Near_Xrecy.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+
+                nList.clear();
+                nearMap.clear();
+                mNer=1;
+                nearMap.put("page",mNer+"");
+                nearMap.put("count",mCount+"");
+                nearMap.put("userId", userId);
+                nearMap.put("sessionId", sessionId);
+                nearMap.put("longitude",116.30551391385724+"");
+                nearMap.put("latitude",40.04571807462411+"");
+                presenter.requestGEt(Contacts.NEARMOVIE_URL, nearMap, headmap,NearMovieData.class);
+            }
+
+            @Override
+            public void onLoadMore() {
+
+                //rList.clear();
+               // Rmap.clear();
+                mNer++;
+
+                nearMap.put("page",mNer+"");
+                nearMap.put("count",mCount+"");
+                headmap.put("userId", userId);
+                headmap.put("sessionId", sessionId);
+                nearMap.put("longitude",116.30551391385724+"");
+                nearMap.put("latitude",40.04571807462411+"");
+                presenter.requestGEt(Contacts.NEARMOVIE_URL, nearMap, headmap,NearMovieData.class);
+            }
+        });
 
         Near_Rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
@@ -125,102 +175,16 @@ public class NearFragment extends BaseFragment implements IView {
 
                 switch (checkedId){
                     case R.id.Near_Rb1:
-                        Toast.makeText(getActivity(),"推荐影院",Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getActivity(),"推荐影院",Toast.LENGTH_SHORT).show();
                         //Near_Xrecy.setVisibility(View.GONE);
-                        recommendAdapter = new RecommendAdapter(rList,getActivity());
-                        Near_Xrecy.setAdapter(recommendAdapter);
-
-                        userId = SpUtils.getInt("userId");
-                        sessionId = SpUtils.getString("sessionId");
-                        //Toast.makeText(getActivity(),sessionId+"",Toast.LENGTH_SHORT).show();
-                       // Toast.makeText(getActivity(),userId+"",Toast.LENGTH_SHORT).show();
-                        headmap = new HashMap<>();
-                        headmap.put("userId", userId);
-                        headmap.put("sessionId", sessionId);
-                        map = new HashMap<>();
-                        map.put("page",index+"");
-                        map.put("count",count+"");
-
-                        presenter.requestGEt(Contacts.RECOMMEND_URL, map, headmap,RecommendData.class);
-
-                        Near_Xrecy.setLoadingListener(new XRecyclerView.LoadingListener() {
-                            @Override
-                            public void onRefresh() {
-                                rList.clear();
-                                map.clear();
-                                index=1;
-                                map.put("page",index+"");
-                                //map.put("count",count+"");
-                                headmap.put("userId", userId);
-                                headmap.put("sessionId", sessionId);
-                                presenter.requestGEt(Contacts.RECOMMEND_URL, map, headmap,RecommendData.class);
-                            }
-
-                            @Override
-                            public void onLoadMore() {
-                                rList.clear();
-                                map.clear();
-                                index++;
-                                map.put("page",index+"");
-                                //map.put("count",count);
-                                headmap.put("userId", userId);
-                                headmap.put("sessionId", sessionId);
-                                presenter.requestGEt(Contacts.RECOMMEND_URL, map, headmap,RecommendData.class);
-
-                            }
-                        });
-
-
+                        Near_Xrecy.setVisibility(View.GONE);
+                        Recommend_Xrecy.setVisibility(View.VISIBLE);
                         break;
                     case R.id.Near_Rb2:
                         Toast.makeText(getActivity(),"附近影院",Toast.LENGTH_SHORT).show();
-                        nearAdapter = new NearAdapter(nList,getActivity());
-                        Near_Xrecy.setAdapter(nearAdapter);
-                        userId = SpUtils.getInt("userId");
-                        sessionId = SpUtils.getString("sessionId");
-                        //Toast.makeText(getActivity(),sessionId+"",Toast.LENGTH_SHORT).show();
-                        //Toast.makeText(getActivity(),userId+"",Toast.LENGTH_SHORT).show();
-                        headmap = new HashMap<>();
-                        headmap.put("userId", userId);
-                        headmap.put("sessionId", sessionId);
-                        map = new HashMap<>();
 
-                        map.put("page",index+"");
-                        map.put("count",count+"");
-                        map.put("longitude",116.30551391385724+"");
-                        map.put("latitude",40.04571807462411+"");
-                        presenter.requestGEt(Contacts.NEARMOVIE_URL, map, headmap,NearMovieData.class);
-
-                        Near_Xrecy.setLoadingListener(new XRecyclerView.LoadingListener() {
-                            @Override
-                            public void onRefresh() {
-                                rList.clear();
-                                map.clear();
-                                index=1;
-                                map.put("page",index+"");
-                                //map.put("count",count+"");
-                                headmap.put("userId", userId);
-                                headmap.put("sessionId", sessionId);
-                                map.put("longitude",116.30551391385724+"");
-                                map.put("latitude",40.04571807462411+"");
-                                presenter.requestGEt(Contacts.RECOMMEND_URL, map, headmap,NearMovieData.class);
-                            }
-
-                            @Override
-                            public void onLoadMore() {
-                                rList.clear();
-                                map.clear();
-                                index++;
-                                map.put("page",index+"");
-                                //map.put("count",count);
-                                headmap.put("userId", userId);
-                                headmap.put("sessionId", sessionId);
-                                map.put("longitude",116.30551391385724+"");
-                                map.put("latitude",40.04571807462411+"");
-                                presenter.requestGEt(Contacts.RECOMMEND_URL, map, headmap,NearMovieData.class);
-
-                            }
-                        });
+                        Near_Xrecy.setVisibility(View.VISIBLE);
+                        Recommend_Xrecy.setVisibility(View.GONE);
                         break;
 
                 }
@@ -238,9 +202,8 @@ public class NearFragment extends BaseFragment implements IView {
             rList.addAll(recommendData.getResult());
             recommendAdapter.notifyDataSetChanged();
            // Toast.makeText(getActivity(),recommendData.getMessage(),Toast.LENGTH_SHORT).show();
-            Near_Xrecy.loadMoreComplete();
-            Near_Xrecy.refreshComplete();
-
+            Recommend_Xrecy.loadMoreComplete();
+            Recommend_Xrecy.refreshComplete();
 
         }
 
@@ -250,6 +213,7 @@ public class NearFragment extends BaseFragment implements IView {
             nearAdapter.notifyDataSetChanged();
             Near_Xrecy.loadMoreComplete();
             Near_Xrecy.refreshComplete();
+
         }
 
 

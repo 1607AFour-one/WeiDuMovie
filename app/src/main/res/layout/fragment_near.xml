@@ -70,13 +70,27 @@
     </RadioGroup>
 
 
+
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:layout_below="@+id/Near_Rg"
+        android:id="@+id/Recommend_Xrecy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+    </com.jcodecraeer.xrecyclerview.XRecyclerView>
     <com.jcodecraeer.xrecyclerview.XRecyclerView
         android:layout_below="@+id/Near_Rg"
         android:id="@+id/Near_Xrecy"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone"
+
+        >
 
     </com.jcodecraeer.xrecyclerview.XRecyclerView>
+
+
 
 
 
