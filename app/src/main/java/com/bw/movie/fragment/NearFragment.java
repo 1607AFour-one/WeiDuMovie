@@ -67,12 +67,7 @@ public class NearFragment extends BaseFragment implements IView {
         Near_Xrecy=view.findViewById(R.id.Near_Xrecy);
         Near_Rg= view.findViewById(R.id.Near_Rg);
         Near_Xrecy.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-
-
     }
-
-
 
     @Override
     public void fetchData() {
@@ -80,7 +75,6 @@ public class NearFragment extends BaseFragment implements IView {
 
         recommendAdapter = new RecommendAdapter(rList,getActivity());
         Near_Xrecy.setAdapter(recommendAdapter);
-
         userId = SpUtils.getInt("userId");
         sessionId = SpUtils.getString("sessionId");
         //Toast.makeText(getActivity(),sessionId+"",Toast.LENGTH_SHORT).show();
@@ -91,7 +85,6 @@ public class NearFragment extends BaseFragment implements IView {
         map = new HashMap<>();
         map.put("page",index+"");
         map.put("count",count+"");
-
         presenter.requestGEt(Contacts.RECOMMEND_URL, map, headmap,RecommendData.class);
 
         Near_Xrecy.setLoadingListener(new XRecyclerView.LoadingListener() {
@@ -100,6 +93,8 @@ public class NearFragment extends BaseFragment implements IView {
                 rList.clear();
                 map.clear();
                 index=1;
+                HashMap<String,Object>downMap=new HashMap<>();
+
                 map.put("page",index+"");
                 //map.put("count",count+"");
                 headmap.put("userId", userId);
@@ -120,7 +115,6 @@ public class NearFragment extends BaseFragment implements IView {
 
             }
         });
-
 
 
         Near_Rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

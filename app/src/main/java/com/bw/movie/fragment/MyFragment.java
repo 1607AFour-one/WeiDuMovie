@@ -14,7 +14,7 @@ import com.bw.movie.base.BaseFragment;
  * A simple {@link Fragment} subclass.
  */
 public class MyFragment extends BaseFragment {
-    
+
     @Override
     protected int setLayoutId() {
 
