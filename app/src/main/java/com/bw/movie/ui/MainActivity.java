@@ -175,6 +175,7 @@ public class MainActivity extends BaseActivity implements IView {
         }
         if(loginData.getStatus().equals("0000")){
             openActivity(HomeActivity.class);
+            finish();
         }
 
     }

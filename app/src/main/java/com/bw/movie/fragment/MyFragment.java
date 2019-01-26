@@ -8,23 +8,28 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bw.movie.R;
+import com.bw.movie.base.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MyFragment extends Fragment {
+public class MyFragment extends BaseFragment {
+    
+    @Override
+    protected int setLayoutId() {
 
-
-    public MyFragment() {
-        // Required empty public constructor
+        return R.layout.fragment_my;
     }
-
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my, container, false);
+    protected void init(View view, Bundle savedInstanceState) {
+
+
+
     }
 
+    @Override
+    public void fetchData() {
+
+    }
 }

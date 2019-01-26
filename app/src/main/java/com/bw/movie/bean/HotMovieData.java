@@ -1,5 +1,6 @@
 package com.bw.movie.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -42,7 +43,7 @@ public class HotMovieData {
         this.result = result;
     }
 
-    public static class ResultBean {
+    public static class ResultBean implements Serializable {
         /**
          * followMovie : false
          * id : 1
