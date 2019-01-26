@@ -1,6 +1,7 @@
 package com.bw.movie.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +14,9 @@ import android.widget.TextView;
 import com.bw.movie.R;
 import com.bw.movie.bean.ComingSoonData;
 import com.bw.movie.bean.HotMovieData;
+import com.bw.movie.bean.IntentMovieData;
 import com.bw.movie.bean.ReleaseMovieData;
+import com.bw.movie.ui.MovieListActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,6 +89,14 @@ public class HomeGroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
             ((ViewHolder2) viewHolder).recy.setLayoutManager(linearLayoutManager);
             ((ViewHolder2) viewHolder).recy.setAdapter(new HomeChildHotAdapter(mContext,mHotList));
+            ((ViewHolder2) viewHolder).more.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(mContext,MovieListActivity.class);
+                    intent.putExtra("movieList",new IntentMovieData(mHotList,mReleaseList,mComingList));
+                    mContext.startActivity(intent);
+                }
+            });
         }
         if(viewHolder instanceof ViewHolder3){
             // ((ViewHolder2) viewHolder).name.setText(mHotList.get(i).g);
@@ -93,6 +104,14 @@ public class HomeGroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
             ((ViewHolder3) viewHolder).recy.setLayoutManager(linearLayoutManager);
             ((ViewHolder3) viewHolder).recy.setAdapter(new HomeChildReleaseAdapter(mContext,mReleaseList));
+            ((ViewHolder3) viewHolder).more.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(mContext,MovieListActivity.class);
+                    intent.putExtra("movieList",new IntentMovieData(mHotList,mReleaseList,mComingList));
+                    mContext.startActivity(intent);
+                }
+            });
         }
         if(viewHolder instanceof ViewHolder4){
             // ((ViewHolder2) viewHolder).name.setText(mHotList.get(i).g);
@@ -100,6 +119,14 @@ public class HomeGroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
             ((ViewHolder4) viewHolder).recy.setLayoutManager(linearLayoutManager);
             ((ViewHolder4) viewHolder).recy.setAdapter(new HomeChildComAdapter(mContext,mComingList));
+            ((ViewHolder4) viewHolder).more.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(mContext,MovieListActivity.class);
+                    intent.putExtra("movieList",new IntentMovieData(mHotList,mReleaseList,mComingList));
+                    mContext.startActivity(intent);
+                }
+            });
         }
 
     }

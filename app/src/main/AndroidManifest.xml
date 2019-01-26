@@ -31,7 +31,8 @@
         </activity>
         <activity android:name=".ui.WelcomeActivity" />
         <activity android:name=".ui.RegisteredActivity" />
-        <activity android:name=".ui.HomeActivity"></activity>
+        <activity android:name=".ui.HomeActivity" />
+        <activity android:name=".ui.MovieListActivity"></activity>
     </application>
 
 </manifest>

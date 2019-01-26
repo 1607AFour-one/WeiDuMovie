@@ -158,7 +158,7 @@
         android:layout_height="40dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/long_btn_shape"
+        android:background="@drawable/shape_button_login"
         android:text="注册"/>
 
 </RelativeLayout>

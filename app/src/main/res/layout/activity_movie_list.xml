@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MovieListActivity">
+    <RelativeLayout
+        android:id="@+id/movie_relay"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/movie_list_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/com_icon_loc_white_default" />
+        <TextView
+            android:id="@+id/movie_list_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/movie_list_image"
+            android:text="北京"
+            android:textSize="16sp"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <RadioGroup
+        android:layout_below="@+id/movie_relay"
+        android:id="@+id/movie_list_rg"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/search_rb_hot"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:checked="true"
+            android:button="@null"
+            android:background="@drawable/movie_btn_sel"
+            android:gravity="center"
+            android:textColor="@color/bg_screen1"
+            android:text="热门电影" />
+
+        <RadioButton
+            android:textSize="14sp"
+            android:id="@+id/search_rb_release"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:background="@drawable/movie_btn_sel"
+            android:text="正在热映" />
+        <RadioButton
+            android:textSize="14sp"
+            android:id="@+id/search_rb_coming"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:background="@drawable/movie_btn_sel"
+            android:text="即将上映" />
+    </RadioGroup>
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/movie_list_rg"
+        android:layout_marginTop="10dp"
+        android:id="@+id/movie_list_recy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+
+
+
+
+</RelativeLayout>

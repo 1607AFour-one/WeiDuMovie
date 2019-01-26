@@ -74,7 +74,7 @@
             android:text="记住密码"
             android:textColor="#ffffff"
             android:theme="@style/MyCheckBox"
-            android:textSize="10sp"
+            android:textSize="12sp"
             />
 
         <CheckBox
@@ -85,7 +85,7 @@
             android:text="自动登录"
             android:textColor="#ffffff"
             android:theme="@style/MyCheckBox"
-            android:textSize="10sp"
+            android:textSize="12sp"
             />
 
         <TextView
@@ -98,10 +98,7 @@
             android:layout_centerVertical="true"
             android:text="快速注册"
             android:textColor="#fff"
-            android:textSize="10sp"
-            />
-
-
+            android:textSize="12sp" />
     </RelativeLayout>
 
     <Button
@@ -112,7 +109,7 @@
         android:layout_height="40dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/long_btn_shape"
+        android:background="@drawable/shape_button_login"
         android:text="登录"/>
     <LinearLayout
         android:id="@+id/login_lin"
