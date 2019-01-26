@@ -1,14 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.NearFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
+        android:id="@+id/near_relay"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/home_group_dingwei_image"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="15dp"
+            android:src="@mipmap/com_icon_loc_white_default"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#fff"
+            android:layout_toRightOf="@id/home_group_dingwei_image"
+            android:layout_centerVertical="true"
+            android:text="北京"/>
+        <com.bw.movie.weight.TopView
+            android:id="@+id/Top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            ></com.bw.movie.weight.TopView>
+    </RelativeLayout>
 
-</FrameLayout>
+    <RadioGroup
+        android:id="@+id/Near_Rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_below="@+id/near_relay"
+        >
+
+
+
+
+        <RadioButton
+            android:id="@+id/Near_Rb1"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:text="推荐影院"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="80dp"
+            android:background="@drawable/recommend_shape"
+            android:checked="true"
+             />
+        <RadioButton
+            android:id="@+id/Near_Rb2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:text="附近影院"
+            android:background="@drawable/recommend_shape"
+            android:gravity="center_horizontal"
+            android:layout_marginRight="80dp"
+            android:layout_marginLeft="20dp"
+             />
+    </RadioGroup>
+
+
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:layout_below="@+id/Near_Rg"
+        android:id="@+id/Near_Xrecy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.jcodecraeer.xrecyclerview.XRecyclerView>
+
+
+
+</RelativeLayout>

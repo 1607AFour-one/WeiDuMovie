@@ -14,6 +14,7 @@ import com.bw.movie.R;
 import com.bw.movie.bean.ComingSoonData;
 import com.bw.movie.bean.HotMovieData;
 import com.bw.movie.bean.ReleaseMovieData;
+import com.bw.movie.weight.TopView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,7 @@ public class HomeGroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     List<ComingSoonData.ResultBean> mComingList;
     private Context mContext;
 
+    //top = view.findViewById(R.id.Top);
     public HomeGroupAdapter(List<HotMovieData.ResultBean> mHotList, List<ReleaseMovieData.ResultBean> mReleaseList, List<ComingSoonData.ResultBean> mComingList, Context mContext) {
         this.mHotList = mHotList;
         this.mReleaseList = mReleaseList;
@@ -128,9 +130,11 @@ public class HomeGroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         RecyclerCoverFlow recyflow;
+         TopView top;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             recyflow=itemView.findViewById(R.id.home_group_recyflow);
+            top=itemView.findViewById(R.id.Top);
         }
     }
     public class ViewHolder2 extends RecyclerView.ViewHolder{

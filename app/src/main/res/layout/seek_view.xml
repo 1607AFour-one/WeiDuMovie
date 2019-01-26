@@ -4,9 +4,9 @@
     android:layout_height="wrap_content">
     <RelativeLayout
         android:id="@+id/Ll"
-        android:layout_width="400dp"
-        android:layout_height="50dp"
-        android:layout_marginRight="-350dp"
+        android:layout_width="240dp"
+        android:layout_height="24dp"
+        android:layout_marginRight="-210dp"
         android:background="@drawable/layout_border"
         android:layout_alignParentRight="true"
 
@@ -14,10 +14,10 @@
 
         <ImageView
             android:id="@+id/Edit_Image"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
             android:src="@mipmap/com_icon_search_default"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:layout_centerVertical="true"
             />
 
@@ -25,7 +25,7 @@
         <EditText
             android:id="@+id/search_edittext"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="24dp"
             android:layout_marginLeft="10dp"
             android:hint="@string/search"
             android:gravity="center_vertical"
@@ -45,7 +45,7 @@
             android:text="搜索"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="45dp"
             android:textSize="12sp"
             android:textColor="#ffffff"
             />

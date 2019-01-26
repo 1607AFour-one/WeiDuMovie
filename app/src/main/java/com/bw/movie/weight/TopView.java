@@ -41,9 +41,9 @@ public class TopView extends RelativeLayout {
         Edit_Image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "你hh", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getContext(), "你hh", Toast.LENGTH_SHORT).show();
                 float translationX = Ll.getTranslationY();
-                ObjectAnimator translation = ObjectAnimator.ofFloat(Ll, "translationX", 0, -420f);
+                ObjectAnimator translation = ObjectAnimator.ofFloat(Ll, "translationX", 0, -350f);
                 AnimatorSet animatorSet = new AnimatorSet();
                 animatorSet.play(translation);
                 animatorSet.setDuration(1000);
@@ -56,12 +56,12 @@ public class TopView extends RelativeLayout {
             @Override
             public void onClick(View v) {
                 float translationX = Ll.getTranslationY();
-                ObjectAnimator translation = ObjectAnimator.ofFloat(Ll, "translationX",-420, 0);
+                ObjectAnimator translation = ObjectAnimator.ofFloat(Ll, "translationX",-350, 0);
                 AnimatorSet animatorSet = new AnimatorSet();
                 animatorSet.play(translation);
                 animatorSet.setDuration(1000);
                 animatorSet.start();
-                Toast.makeText(context1,search_edittext.getText().toString() , Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context1,search_edittext.getText().toString() , Toast.LENGTH_SHORT).show();
                 if(topViewListener!=null){
                     topViewListener.getEdStr(search_edittext.getText().toString());
                 }

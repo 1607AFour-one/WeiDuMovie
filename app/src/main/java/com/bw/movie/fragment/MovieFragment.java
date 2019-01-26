@@ -21,6 +21,8 @@ import com.bw.movie.presenter.PresenterImpl;
 import com.bw.movie.utils.Contacts;
 import com.bw.movie.utils.SpUtils;
 import com.bw.movie.view.IView;
+import com.bw.movie.weight.TopView;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,6 +40,7 @@ public class MovieFragment extends BaseFragment implements IView {
     private HomeGroupAdapter mHomeGroupAdapter;
 
 
+
     @Override
     protected int setLayoutId() {
         return R.layout.fragment_movie;
@@ -47,6 +50,7 @@ public class MovieFragment extends BaseFragment implements IView {
     protected void init(View view, Bundle savedInstanceState) {
         groupRecy = view.findViewById(R.id.home_group_recy);
         groupRecy.setLayoutManager(new LinearLayoutManager(getActivity()));
+
     }
     @Override
     public void fetchData() {

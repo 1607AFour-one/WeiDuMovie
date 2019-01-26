@@ -2,11 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
     <RelativeLayout
         android:id="@+id/home_group_relay2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@mipmap/dianyingbeijing2">
+
+
         <RelativeLayout
             android:id="@+id/home_group_relay"
             android:layout_width="match_parent"
@@ -25,7 +28,12 @@
                 android:layout_toRightOf="@id/home_group_dingwei_image"
                 android:layout_centerVertical="true"
                 android:text="北京"/>
-
+            <com.bw.movie.weight.TopView
+                android:id="@+id/Top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                ></com.bw.movie.weight.TopView>
         </RelativeLayout>
         <recycler.coverflow.RecyclerCoverFlow
             android:layout_below="@+id/home_group_relay"
