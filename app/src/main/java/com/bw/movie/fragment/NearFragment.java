@@ -34,6 +34,7 @@ import java.util.List;
  */
 public class NearFragment extends BaseFragment implements IView {
 
+    //你好啊
 
     private TopView Top;
     private ImageView home_group_dingwei_image;
