@@ -93,7 +93,6 @@ public class HomeGroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             ((ViewHolder2) viewHolder).more.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     Intent intent=new Intent(mContext,MovieListActivity.class);
                     intent.putExtra("movieList",new IntentMovieData(mHotList,mReleaseList,mComingList));
                     mContext.startActivity(intent);

@@ -33,9 +33,6 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class NearFragment extends BaseFragment implements IView {
-
-    //你好啊
-
     private TopView Top;
     private ImageView home_group_dingwei_image;
     private RelativeLayout near_relay;

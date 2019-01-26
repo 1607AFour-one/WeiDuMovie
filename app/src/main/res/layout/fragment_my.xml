@@ -3,29 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.MyFragment">
+    tools:context=".fragment.MyFragment"
+    android:background="@color/white">
     <RelativeLayout
         android:id="@+id/my_fr_relay"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="230dp"
         android:background="@mipmap/wodebeijing">
-
         <TextView
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_margin="30dp"
             android:background="@mipmap/my_icon_remind_default"
-            android:id="@+id/my_advice_logo"
-            />
+            android:id="@+id/my_advice_logo" />
 
         <ImageView
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
+            android:layout_centerVertical="true"
             android:background="@mipmap/touxiang"
-            android:id="@+id/my_header_image"
-            />
+            android:id="@+id/my_header_image" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -43,19 +41,21 @@
         android:layout_below="@+id/my_fr_relay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="22dp"
         android:orientation="vertical"
         android:background="#ffffff">
         <LinearLayout
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="86dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@drawable/item_shape">
             <LinearLayout
+                android:id="@+id/my_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="28dp"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:orientation="vertical">
@@ -68,21 +68,19 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="我的信息"/>
-
             </LinearLayout>
-
-
-
         </LinearLayout>
         <LinearLayout
+            android:background="@drawable/item_shape"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="86dp"
         android:orientation="horizontal">
         <LinearLayout
+            android:id="@+id/my_zhuanzhu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="28dp"
             android:gravity="center"
             android:layout_gravity="center"
             android:orientation="vertical">
@@ -97,9 +95,10 @@
                 android:text="我的关注"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/my_record"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="28dp"
             android:gravity="center"
             android:layout_gravity="center"
             android:orientation="vertical">
@@ -119,14 +118,16 @@
     </LinearLayout>
 
         <LinearLayout
+            android:background="@drawable/item_shape"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="86dp"
             android:orientation="horizontal">
             <LinearLayout
+                android:id="@+id/my_opinion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="28dp"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:orientation="vertical">
@@ -142,9 +143,10 @@
 
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/my_version"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="28dp"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:orientation="vertical">
@@ -161,9 +163,13 @@
             </LinearLayout>
 
 
-
-
         </LinearLayout>
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:padding="8dp"
+            android:layout_height="wrap_content"
+            android:text="北京八维移动学院毕业作品"/>
 
 
     </LinearLayout>
