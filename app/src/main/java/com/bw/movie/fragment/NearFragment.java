@@ -60,7 +60,6 @@ public class NearFragment extends BaseFragment implements IView {
 
     @Override
     protected void init(View view, Bundle savedInstanceState) {
-
         Top= view.findViewById(R.id.Top);
         Near_Rb1=view.findViewById(R.id.Near_Rb1);
         Near_Rb2=view.findViewById(R.id.Near_Rb2);
