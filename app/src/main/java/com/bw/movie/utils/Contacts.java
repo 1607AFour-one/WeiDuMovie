@@ -18,4 +18,13 @@ public class Contacts {
     public static final String RECOMMEND_URL="cinema/v1/findRecommendCinemas";
 
     public static final String NEARMOVIE_URL="cinema/v1/findNearbyCinemas";
+
+    public static final String FINDMOVIEBYID_URL="movie/v1/findMoviesById";
+    //关注
+    public static final String CLICKMOVIE_URL="cinema/v1/verify/followCinema";
+    //取消关注
+    public static final String CLEARMOVIE_URL="cinema/v1/verify/cancelFollowCinema";
+
+
+
 }
