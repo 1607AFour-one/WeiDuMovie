@@ -25,7 +25,7 @@ import java.util.List;
 import recycler.coverflow.RecyclerCoverFlow;
 
 public class DetailsActivity extends BaseActivity implements IView {
-
+    //你好
     private ImageView home_group_dingwei_image;
     private TextView Text_Name,Text_Address;
     private ImageView Ding;
@@ -73,7 +73,6 @@ public class DetailsActivity extends BaseActivity implements IView {
         int userId = SpUtils.getInt("userId");
         String sessionId=SpUtils.getString("sessionId");
         HashMap<String,Object> headmap=new HashMap<>();
-        
 
         headmap.put("userId",userId);
         headmap.put("sessionId",sessionId);
