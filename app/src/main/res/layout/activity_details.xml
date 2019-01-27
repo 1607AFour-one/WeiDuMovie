@@ -56,7 +56,6 @@
             android:src="@mipmap/com_icon_navigation_default"
 
             />
-
         <recycler.coverflow.RecyclerCoverFlow
             android:id="@+id/home_group_recyflow"
             android:layout_width="match_parent"
