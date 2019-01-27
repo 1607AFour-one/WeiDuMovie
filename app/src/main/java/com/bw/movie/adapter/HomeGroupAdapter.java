@@ -55,7 +55,6 @@ public class HomeGroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 view=LayoutInflater.from(mContext).inflate(R.layout.home_group_item,viewGroup,false);
                 holder=new ViewHolder(view);
                 return holder;
-
             case TWO_ITEM:
                 view=LayoutInflater.from(mContext).inflate(R.layout.home_group_tem2,viewGroup,false);
                 holder=new ViewHolder2(view);
@@ -66,13 +65,10 @@ public class HomeGroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 holder=new ViewHolder3(view);
                 return holder;
 
-
             case FORE_ITEM:
                 view=LayoutInflater.from(mContext).inflate(R.layout.home_group_tem2,viewGroup,false);
                 holder=new ViewHolder4(view);
                 return holder;
-
-
         }
         return null;
     }
@@ -100,7 +96,6 @@ public class HomeGroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             });
         }
         if(viewHolder instanceof ViewHolder3){
-            // ((ViewHolder2) viewHolder).name.setText(mHotList.get(i).g);
             LinearLayoutManager linearLayoutManager=new LinearLayoutManager(mContext);
             linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
             ((ViewHolder3) viewHolder).recy.setLayoutManager(linearLayoutManager);

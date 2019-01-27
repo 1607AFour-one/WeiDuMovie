@@ -21,11 +21,8 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         init();
-
     }
-
     /*
      * 解决沉浸式头部顶住头
      * */

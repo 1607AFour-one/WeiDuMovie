@@ -24,7 +24,6 @@
             android:layout_centerVertical="true"
             android:background="@mipmap/touxiang"
             android:id="@+id/my_header_image" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
