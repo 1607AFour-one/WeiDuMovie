@@ -39,6 +39,7 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
     private RadioButton comments;
     TranslateAnimation animation;
     private View view;
+    private MovieDetailData movieDetailData;
 
     @Override
     protected int initLayout() {
@@ -47,6 +48,7 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
 
     @Override
     protected void initView() {
+        view = View.inflate(MovieDeailsActivity.this,R.layout.detial_dialog,null);
         detailImage = findViewById(R.id.detail_image);
         movieName = findViewById(R.id.detail_name);
         radioGroup = findViewById(R.id.detail_rg);
@@ -55,6 +57,7 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
         still = findViewById(R.id.still_rb);
         comments = findViewById(R.id.comments_rb);
         detail.setOnClickListener(this);
+
 
     }
 
@@ -82,45 +85,42 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
         map.put("movieId",movieId);
         showShort(movieId+"");
         presenter.requestGEt(Contacts.MOVIE_DETAIL_URL,map,headmap,MovieDetailData.class);
-
     }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.detail_rb:
-                view = View.inflate(MovieDeailsActivity.this,R.layout.detial_dialog,null);
+
                 final PopupWindow popupWindow = new PopupWindow(view, WindowManager.LayoutParams.MATCH_PARENT,
                         WindowManager.LayoutParams.WRAP_CONTENT);
                 popupWindow.setBackgroundDrawable(new ColorDrawable());
                 popupWindow.setFocusable(true);
                 // 设置点击popupwindow外屏幕其它地方消失
                 popupWindow.setOutsideTouchable(true);
-
-                popupWindow.setAnimationStyle(R.style.popwin_anim_style);
-//                // 平移动画相对于手机屏幕的底部开始，X轴不变，Y轴从1变0
-//                animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT, 0, Animation.RELATIVE_TO_PARENT, 0,
-//                        Animation.RELATIVE_TO_PARENT, 1,Animation.RELATIVE_TO_PARENT  , 0);
-//                animation.setInterpolator(new AccelerateInterpolator());
-//                animation.setDuration(500);
-//                view.startAnimation(animation);
-                popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                //查找控件
+               ImageView detailImage= view.findViewById(R.id.details_img);
+               TextView detailType=view.findViewById(R.id.detail_type);
+               TextView detailTime=view.findViewById(R.id.details_time);
+               TextView detailDirector=view.findViewById(R.id.detail_director);
+               TextView detailAdrress=view.findViewById(R.id.details_address);
+                TextView detailContent=view.findViewById(R.id.detail_content);
+                ImageView deailDismiss=view.findViewById(R.id.deail_dismiss);
+                TextView deailActorName=view.findViewById(R.id.detail_actor_name);
+               Glide.with(MovieDeailsActivity.this).load(movieDetailData.getResult().getImageUrl()).into(detailImage);
+                detailType.setText(movieDetailData.getResult().getMovieTypes());
+                detailTime.setText(movieDetailData.getResult().getDuration());
+                detailDirector.setText(movieDetailData.getResult().getDirector());
+                detailAdrress.setText(movieDetailData.getResult().getPlaceOrigin());
+                detailContent.setText(movieDetailData.getResult().getSummary());
+                deailActorName.setText(movieDetailData.getResult().getStarring());
+                deailDismiss.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDismiss() {
-                        if(popupWindow.isShowing()){
-//                            animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT, Animation.RELATIVE_TO_PARENT,0 , Animation.RELATIVE_TO_PARENT,
-//                                    Animation.RELATIVE_TO_PARENT, Animation.RELATIVE_TO_PARENT, 1 , Animation.RELATIVE_TO_PARENT);
-//                            animation.setInterpolator(new AccelerateInterpolator());
-//                            animation.setDuration(500);
-//                            view.startAnimation(animation);
-                            popupWindow.dismiss();
-                        }
-                        showShort(" eefsddsf");
-
-
+                    public void onClick(View v) {
+                        popupWindow.dismiss();
                     }
                 });
 
+                popupWindow.setAnimationStyle(R.style.popwin_anim_style);
                 popupWindow.showAtLocation(MovieDeailsActivity.this.findViewById(R.id.deails_rela), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
                 break;
 
@@ -132,7 +132,7 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
 
     @Override
     public void successData(Object data) {
-        MovieDetailData movieDetailData= (MovieDetailData) data;
+        movieDetailData = (MovieDetailData) data;
         showShort(movieDetailData.getMessage());
         Glide.with(MovieDeailsActivity.this).load(movieDetailData.getResult().getImageUrl()).into(detailImage);
         movieName.setText(movieDetailData.getResult().getName());

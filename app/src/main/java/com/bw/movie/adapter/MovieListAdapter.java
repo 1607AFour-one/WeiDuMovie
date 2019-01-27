@@ -67,7 +67,6 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.View
 
 
     }
-
     @Override
     public int getItemCount() {
         if(type==0){

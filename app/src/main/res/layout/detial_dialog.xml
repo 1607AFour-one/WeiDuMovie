@@ -87,7 +87,7 @@
                         android:layout_marginTop="7dp"
                         android:text="时长：106分钟"
                         android:textSize="11sp"
-                        android:id="@+id/details_long"/>
+                        android:id="@+id/details_time"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -111,6 +111,12 @@
                 </LinearLayout>
 
             </LinearLayout>
+            <ImageView
+                android:id="@+id/deail_dismiss"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/com_icon_down_default"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -134,13 +140,12 @@
                 android:layout_height="4dp"
                 android:layout_below="@id/synopsis"
                 android:layout_marginTop="6dp" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/alpha_style"
                 android:layout_marginTop="10dp"
-                android:id="@+id/detail_count"
+                android:id="@+id/detail_content"
                 android:text="一位男孩(雅各布特仑布莱 饰) 偶然间打开了尘封的箱子，触发了特殊机关，唤醒了宇宙最强猎手--铁血战士。"
                 android:maxLines="4"
                 android:ellipsize="end"
@@ -167,7 +172,8 @@
                 android:layout_width="40dp"
                 android:layout_height="4dp"
                 android:layout_below="@id/cast"
-                android:layout_marginTop="6dp" />
+                android:layout_marginTop="6dp"
+                android:background="@drawable/tv_bottom_shape"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -179,89 +185,35 @@
             android:layout_marginTop="10dp">
 
             <TextView
+                android:id="@+id/details_btn_actor_name"
                 android:layout_width="75dp"
                 android:layout_height="32dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="0dp"
                 android:gravity="center"
                 android:text="演员名字"
-                android:id="@+id/details_btn1"
+                android:background="@drawable/goupiao_shape"
                 android:textColor="#fff"
                 android:textSize="12sp" />
 
-            <TextView
-                android:layout_width="75dp"
-                android:layout_height="32dp"
-                android:layout_marginLeft="150dp"
-                android:layout_toRightOf="@id/details_btn1"
-                android:gravity="center"
-                android:text="饰演角色"
-                android:id="@+id/details_btn2"
-                android:textColor="#fff"
-                android:textSize="12sp" />
         </RelativeLayout>
 
         <LinearLayout
-            android:id="@+id/film_detail_rels7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/film_detail_rels6"
             android:layout_marginLeft="24dp"
             android:layout_marginTop="12dp"
             android:orientation="vertical">
-
             <TextView
-                android:id="@+id/detail_name1"
+                android:id="@+id/detail_actor_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="柏一德·霍伯卢克"
+                android:padding="10dp"
                 android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/detail_line1"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="10dp" />
 
-            <TextView
-                android:id="@+id/detail_name2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="伊冯娜·霍伯卢克"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/detail_line2"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="10dp" />
-
-            <TextView
-                android:id="@+id/detail_name3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="奥利维亚·霍伯卢克"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/detail_line3"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="10dp" />
-
-            <TextView
-                android:id="@+id/detail_name4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="雅各布·霍伯卢克"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/detail_line4"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="10dp" />
         </LinearLayout>
     </RelativeLayout>
     <ImageView
