@@ -52,7 +52,6 @@ public class BaseFullBottomSheetFragment extends BottomSheetDialogFragment {
     public void onStart() {
         super.onStart();
         Dialog dialog = getDialog();
-
         if (dialog != null) {
             View bottomSheet = dialog.findViewById(R.id.design_bottom_sheet);
             bottomSheet.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;

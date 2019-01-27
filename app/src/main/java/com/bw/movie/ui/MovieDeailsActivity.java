@@ -99,7 +99,7 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
 
                 // 平移动画相对于手机屏幕的底部开始，X轴不变，Y轴从1变0
                 animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT, 0, Animation.RELATIVE_TO_PARENT, 0,
-                        Animation.RELATIVE_TO_PARENT, 1, Animation.RELATIVE_TO_SELF , 0);
+                        Animation.RELATIVE_TO_PARENT, 1,Animation.RELATIVE_TO_PARENT  , 0);
                 animation.setInterpolator(new AccelerateInterpolator());
                 animation.setDuration(500);
                 view.startAnimation(animation);
