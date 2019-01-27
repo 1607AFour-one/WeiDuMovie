@@ -35,14 +35,33 @@ public class NearAdapter extends XRecyclerView.Adapter<NearAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int i) {
         holder.recommend_name.setText(nList.get(i).getName());
         holder.Recommend_Address.setText(nList.get(i).getAddress());
-        holder.Recommend_Km.setText(nList.get(i).getFollowCinema()+"km");
+        holder.Recommend_Km.setText(nList.get(i).getDistance()+"km");
         Glide.with(mContext).load(nList.get(i).getLogo()).into(holder.recommend_image);
 
+        holder.Recommend_Zan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                itemClicke.setItem(i);
+            }
+        });
 
     }
+
+
+    //点赞接口回调
+    ItemClicke itemClicke;
+
+    public interface  ItemClicke{
+        void setItem(int i);
+    }
+    public void getItem(ItemClicke itemClicke){
+        this.itemClicke=itemClicke;
+    }
+
 
     @Override
     public int getItemCount() {

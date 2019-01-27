@@ -16,8 +16,6 @@ public class Contacts {
     public static final String COMINGSOON_URL_="movie/v1/findComingSoonMovieList";
 
     public static final String RECOMMEND_URL="cinema/v1/findRecommendCinemas";
+
     public static final String NEARMOVIE_URL="cinema/v1/findNearbyCinemas";
-    public static final String FINDMOVIEBYID_URL="movie/v1/findMoviesById";
-
-
 }

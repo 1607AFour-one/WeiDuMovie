@@ -15,7 +15,8 @@ import com.bw.movie.R;
 import com.bw.movie.adapter.NearAdapter;
 import com.bw.movie.adapter.RecommendAdapter;
 import com.bw.movie.base.BaseFragment;
-import com.bw.movie.bean.HotMovieData;
+import com.bw.movie.bean.ClearMovieData;
+import com.bw.movie.bean.ClickMovieData;
 import com.bw.movie.bean.NearMovieData;
 import com.bw.movie.bean.RecommendData;
 import com.bw.movie.presenter.PresenterImpl;
@@ -84,7 +85,6 @@ public class NearFragment extends BaseFragment implements IView {
         sessionId = SpUtils.getString("sessionId");
 
         recoMap = new HashMap<>();
-
         headmap = new HashMap<>();
         headmap.put("userId", userId);
         headmap.put("sessionId", sessionId);
@@ -117,6 +117,37 @@ public class NearFragment extends BaseFragment implements IView {
 
             }
         });
+
+        //推荐点赞
+        recommendAdapter.getItemPostion(new RecommendAdapter.ItemListener() {
+
+
+            @Override
+            public void onitemPosition(int i) {
+
+                 HashMap<String, Object> clickMap = new HashMap<>();
+                clickMap.put("cinemaId",rList.get(i).getId());
+
+                if (rList.get(i).getFollowCinema() == 2) {
+
+                    presenter.requestGEt(Contacts.CLICKMOVIE_URL, clickMap, headmap, ClickMovieData.class);
+                    recommendAdapter.notifyDataSetChanged();
+                    rList.get(i).setFollowCinema(1);
+
+                  }else{
+
+                    presenter.requestGEt(Contacts.CLEARMOVIE_URL, clickMap, headmap, ClearMovieData.class);
+                    recommendAdapter.notifyDataSetChanged();
+                    rList.get(i).setFollowCinema(2);
+                }
+
+            }
+        });
+
+
+
+
+
 
         nearAdapter = new NearAdapter(nList,getActivity());
         Near_Xrecy.setAdapter(nearAdapter);
@@ -153,7 +184,6 @@ public class NearFragment extends BaseFragment implements IView {
                 //rList.clear();
                // Rmap.clear();
                 mNer++;
-
                 nearMap.put("page",mNer+"");
                 nearMap.put("count",mCount+"");
                 headmap.put("userId", userId);
@@ -183,6 +213,36 @@ public class NearFragment extends BaseFragment implements IView {
 
                         Near_Xrecy.setVisibility(View.VISIBLE);
                         Recommend_Xrecy.setVisibility(View.GONE);
+
+
+                        //f附近点赞
+
+                        nearAdapter.getItem(new NearAdapter.ItemClicke() {
+                            @Override
+                            public void setItem(int i) {
+
+
+                                HashMap<String,Object>clearMap=new HashMap<>();
+                                clearMap.put("cinemaId",nList.get(i).getId());
+
+                                if (nList.get(i).getFollowCinema() == 2) {
+
+                                    presenter.requestGEt(Contacts.CLICKMOVIE_URL, clearMap, headmap, ClickMovieData.class);
+                                    nearAdapter.notifyDataSetChanged();
+                                    nList.get(i).setFollowCinema(1);
+
+                                }else{
+
+                                    presenter.requestGEt(Contacts.CLEARMOVIE_URL, clearMap, headmap, ClearMovieData.class);
+                                    nearAdapter.notifyDataSetChanged();
+                                    nList.get(i).setFollowCinema(2);
+                                }
+
+
+                            }
+                        });
+
+
                         break;
 
                 }
@@ -202,6 +262,18 @@ public class NearFragment extends BaseFragment implements IView {
            // Toast.makeText(getActivity(),recommendData.getMessage(),Toast.LENGTH_SHORT).show();
             Recommend_Xrecy.loadMoreComplete();
             Recommend_Xrecy.refreshComplete();
+
+        }
+
+        if(data instanceof ClickMovieData){
+            ClickMovieData clickMovieData= (ClickMovieData) data;
+            Toast.makeText(getActivity(),clickMovieData.getMessage(),Toast.LENGTH_SHORT).show();
+
+        }
+
+        if(data instanceof ClearMovieData){
+            ClearMovieData clearMovieData= (ClearMovieData) data;
+            Toast.makeText(getActivity(),clearMovieData.getMessage(),Toast.LENGTH_SHORT).show();
 
         }
 
