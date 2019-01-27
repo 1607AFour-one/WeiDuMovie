@@ -24,6 +24,8 @@ public class Contacts {
     public static final String CLICKMOVIE_URL="cinema/v1/verify/followCinema";
     //取消关注
     public static final String CLEARMOVIE_URL="cinema/v1/verify/cancelFollowCinema";
+    //电影详情
+    public static final String MOVIE_DETAIL_URL="movie/v1/findMoviesDetail";
 
 
 
