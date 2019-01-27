@@ -148,9 +148,8 @@ public class DetailsActivity extends BaseActivity implements IView {
             Toast.makeText(DetailsActivity.this, timeMovieData.getResult().size()+"", Toast.LENGTH_SHORT).show();
             mList.addAll(timeMovieData.getResult());
             timeMovieAdapter.notifyDataSetChanged();
-
         }
-        
+
     }
 
     @Override
