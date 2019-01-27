@@ -80,6 +80,7 @@
         android:background="#666666" />
 
     <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/Time_Xrecy"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/View">

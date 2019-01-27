@@ -38,10 +38,22 @@ public class MyrecyFlowAdapter extends RecyclerView.Adapter<MyrecyFlowAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         GlideUtils.load(mContext,viewHolder.image,mComingList.get(i).getImageUrl(),R.mipmap.ic_launcher,8);
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(myrecyFlowAdapterListener!=null){
+                    myrecyFlowAdapterListener.setMovieId(mComingList.get(i).getId());
+                }
+
+            }
+        });
 
     }
+
+
+
 
     @Override
     public int getItemCount() {
@@ -55,4 +67,13 @@ public class MyrecyFlowAdapter extends RecyclerView.Adapter<MyrecyFlowAdapter.Vi
             image=itemView.findViewById(R.id.recyflow_image);
         }
     }
+    MyrecyFlowAdapterListener myrecyFlowAdapterListener;
+    public interface MyrecyFlowAdapterListener{
+        void setMovieId(int id);
+    }
+    public void getMyrecyFlowMovieId(MyrecyFlowAdapterListener myrecyFlowAdapterListener){
+        this.myrecyFlowAdapterListener=myrecyFlowAdapterListener;
+    }
+
+
 }

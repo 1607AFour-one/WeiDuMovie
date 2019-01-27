@@ -27,5 +27,6 @@ public class Contacts {
     //电影详情
     public static final String MOVIE_DETAIL_URL="movie/v1/findMoviesDetail";
     public static final String SKIPMOIVE_URL="cinema/v1/findCinemaInfo";
+
     public static final String TIMEMOVIE_URL="movie/v1/findMovieScheduleList";
 }
