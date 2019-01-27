@@ -3,7 +3,9 @@ package com.bw.movie.weight;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -20,7 +22,7 @@ public class TopView extends RelativeLayout {
     private TextView Edit_Text;
     private RelativeLayout Ll;
     private Context context1;
-
+    private boolean isShow = true;
     public TopView(Context context) {
         super(context);
     }
@@ -35,16 +37,33 @@ public class TopView extends RelativeLayout {
         Ll = (RelativeLayout) findViewById(R.id.Ll);
         Edit_Text = (TextView) findViewById(R.id.Edit_Text);
 
+        Resources resources = this.getResources();
+        DisplayMetrics dm = resources.getDisplayMetrics();
+        float density = dm.density;
+        final int width = dm.widthPixels;
+        int height = dm.heightPixels;
+
+
         Edit_Image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // Toast.makeText(getContext(), "你hh", Toast.LENGTH_SHORT).show();
-                float translationX = Ll.getTranslationY();
-                ObjectAnimator translation = ObjectAnimator.ofFloat(Ll, "translationX", 0, -450f);
-                AnimatorSet animatorSet = new AnimatorSet();
-                animatorSet.play(translation);
-                animatorSet.setDuration(1000);
-                animatorSet.start();
+                if(isShow){
+                    float translationX = Ll.getTranslationY();
+                    ObjectAnimator translation = ObjectAnimator.ofFloat(Ll, "translationX", 0, -width*3/4,-width*2/4);
+                    AnimatorSet animatorSet = new AnimatorSet();
+                    animatorSet.play(translation);
+                    animatorSet.setDuration(1000);
+                    animatorSet.start();
+                    isShow = false;
+                }else {
+                    ObjectAnimator translation = ObjectAnimator.ofFloat(Ll, "translationX",-width*2/4 , 0,0);
+                    AnimatorSet animatorSet = new AnimatorSet();
+                    animatorSet.play(translation);
+                    animatorSet.setDuration(1000);
+                    animatorSet.start();
+                    isShow=true;
+                }
+
             }
         });
 
@@ -53,7 +72,7 @@ public class TopView extends RelativeLayout {
             @Override
             public void onClick(View v) {
                 float translationX = Ll.getTranslationY();
-                ObjectAnimator translation = ObjectAnimator.ofFloat(Ll, "translationX",-450, 0);
+                ObjectAnimator translation = ObjectAnimator.ofFloat(Ll, "translationX",-width*2/4 , 0,0);
                 AnimatorSet animatorSet = new AnimatorSet();
                 animatorSet.play(translation);
                 animatorSet.setDuration(1000);
@@ -62,6 +81,7 @@ public class TopView extends RelativeLayout {
                 if(topViewListener!=null){
                     topViewListener.getEdStr(search_edittext.getText().toString());
                 }
+                isShow=true;
             }
 
         });

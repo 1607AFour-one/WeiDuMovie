@@ -2,14 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
     <RelativeLayout
         android:id="@+id/Ll"
-        android:layout_width="200dp"
+        android:layout_width="400dp"
+        android:layout_marginRight="-370dp"
         android:layout_height="24dp"
-        android:layout_marginRight="-170dp"
         android:background="@drawable/layout_border"
         android:layout_alignParentRight="true"
-
         >
 
         <ImageView
@@ -20,11 +20,10 @@
             android:layout_marginLeft="5dp"
             android:layout_centerVertical="true"
             />
-
         <!-- 搜索框信息 -->
         <EditText
             android:id="@+id/search_edittext"
-            android:layout_width="match_parent"
+            android:layout_width="110dp"
             android:layout_height="24dp"
             android:layout_marginLeft="10dp"
             android:hint="@string/search"
@@ -33,19 +32,20 @@
             android:inputType="text"
             android:maxLines="1"
             android:textSize="12sp"
-            android:background="#f66b1c"
+            android:background="@null"
             android:layout_toRightOf="@+id/Edit_Image"
             android:textColor="#f2f2f2"
             />
 
         <TextView
+            android:background="@null"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/search_edittext"
             android:id="@+id/Edit_Text"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="搜索"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="20dp"
             android:textSize="12sp"
             android:textColor="#ffffff"
             />

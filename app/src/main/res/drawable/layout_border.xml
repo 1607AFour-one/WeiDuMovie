@@ -4,11 +4,13 @@
     android:layout_width="wrap_content"
     >
 
-    <solid android:color="#f66b1c" />
 
-    <stroke
-        android:width="0.01dp"
-        android:color="#BFBFBF"/>
+
+
+    <gradient android:startColor="#d2f66b1c"
+              android:centerColor="#dafda41f"
+        android:endColor="#e5e4d61b" android:type="linear" />
+
 
     <!-- 这个可以不加，padding用不上 -->
     <!--<padding-->
@@ -21,9 +23,7 @@
 
 
     <corners android:topLeftRadius="25dp"
-        android:topRightRadius="25dp"
         android:bottomLeftRadius="25dp"
-        android:bottomRightRadius="25dp"
         ></corners>
 
 

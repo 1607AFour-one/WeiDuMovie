@@ -2,6 +2,7 @@ package com.bw.movie.ui;
 
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -13,6 +14,7 @@ import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bw.movie.R;
@@ -36,6 +38,7 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
     private RadioButton still;
     private RadioButton comments;
     TranslateAnimation animation;
+    private View view;
 
     @Override
     protected int initLayout() {
@@ -86,25 +89,41 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.detail_rb:
-
-                View view=View.inflate(MovieDeailsActivity.this,R.layout.detial_dialog,null);
-
-                PopupWindow popupWindow = new PopupWindow(view, WindowManager.LayoutParams.MATCH_PARENT,
+                view = View.inflate(MovieDeailsActivity.this,R.layout.detial_dialog,null);
+                final PopupWindow popupWindow = new PopupWindow(view, WindowManager.LayoutParams.MATCH_PARENT,
                         WindowManager.LayoutParams.WRAP_CONTENT);
-
-                popupWindow.setBackgroundDrawable(new BitmapDrawable());
+                popupWindow.setBackgroundDrawable(new ColorDrawable());
                 popupWindow.setFocusable(true);
                 // 设置点击popupwindow外屏幕其它地方消失
                 popupWindow.setOutsideTouchable(true);
 
-                // 平移动画相对于手机屏幕的底部开始，X轴不变，Y轴从1变0
-                animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT, 0, Animation.RELATIVE_TO_PARENT, 0,
-                        Animation.RELATIVE_TO_PARENT, 1,Animation.RELATIVE_TO_PARENT  , 0);
-                animation.setInterpolator(new AccelerateInterpolator());
-                animation.setDuration(500);
-                view.startAnimation(animation);
+                popupWindow.setAnimationStyle(R.style.popwin_anim_style);
+//                // 平移动画相对于手机屏幕的底部开始，X轴不变，Y轴从1变0
+//                animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT, 0, Animation.RELATIVE_TO_PARENT, 0,
+//                        Animation.RELATIVE_TO_PARENT, 1,Animation.RELATIVE_TO_PARENT  , 0);
+//                animation.setInterpolator(new AccelerateInterpolator());
+//                animation.setDuration(500);
+//                view.startAnimation(animation);
+                popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                    @Override
+                    public void onDismiss() {
+                        if(popupWindow.isShowing()){
+//                            animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT, Animation.RELATIVE_TO_PARENT,0 , Animation.RELATIVE_TO_PARENT,
+//                                    Animation.RELATIVE_TO_PARENT, Animation.RELATIVE_TO_PARENT, 1 , Animation.RELATIVE_TO_PARENT);
+//                            animation.setInterpolator(new AccelerateInterpolator());
+//                            animation.setDuration(500);
+//                            view.startAnimation(animation);
+                            popupWindow.dismiss();
+                        }
+                        showShort(" eefsddsf");
+
+
+                    }
+                });
+
                 popupWindow.showAtLocation(MovieDeailsActivity.this.findViewById(R.id.deails_rela), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
                 break;
+
         }
 
 
