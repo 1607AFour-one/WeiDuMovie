@@ -33,7 +33,8 @@
         <activity android:name=".ui.RegisteredActivity" />
         <activity android:name=".ui.HomeActivity" />
         <activity android:name=".ui.MovieListActivity" />
-        <activity android:name=".ui.MovieDeailsActivity"></activity>
+        <activity android:name=".ui.MovieDeailsActivity" />
+        <activity android:name=".ui.DetailsActivity"></activity>
     </application>
 
 </manifest>

@@ -83,12 +83,10 @@ public class NearFragment extends BaseFragment implements IView {
         Recommend_Xrecy.setAdapter(recommendAdapter);
         userId = SpUtils.getInt("userId");
         sessionId = SpUtils.getString("sessionId");
-
         recoMap = new HashMap<>();
         headmap = new HashMap<>();
         headmap.put("userId", userId);
         headmap.put("sessionId", sessionId);
-
         recoMap.put("page",index+"");
         recoMap.put("count",count+"");
         presenter.requestGEt(Contacts.RECOMMEND_URL, recoMap, headmap,RecommendData.class);
@@ -125,7 +123,9 @@ public class NearFragment extends BaseFragment implements IView {
             @Override
             public void onitemPosition(int i) {
 
-                 HashMap<String, Object> clickMap = new HashMap<>();
+               //Toast.makeText(getContext(),rList.get(i).getId(),Toast.LENGTH_SHORT).show();
+
+                HashMap<String, Object> clickMap = new HashMap<>();
                 clickMap.put("cinemaId",rList.get(i).getId());
 
                 if (rList.get(i).getFollowCinema() == 2) {
@@ -262,6 +262,8 @@ public class NearFragment extends BaseFragment implements IView {
            // Toast.makeText(getActivity(),recommendData.getMessage(),Toast.LENGTH_SHORT).show();
             Recommend_Xrecy.loadMoreComplete();
             Recommend_Xrecy.refreshComplete();
+
+
 
         }
 

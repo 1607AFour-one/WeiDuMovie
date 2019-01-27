@@ -1,6 +1,7 @@
 package com.bw.movie.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bw.movie.R;
 import com.bw.movie.bean.NearMovieData;
+import com.bw.movie.ui.DetailsActivity;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.List;
@@ -48,6 +50,17 @@ public class NearAdapter extends XRecyclerView.Adapter<NearAdapter.ViewHolder> {
                 itemClicke.setItem(i);
             }
         });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mContext,DetailsActivity.class);
+                intent.putExtra("cinemaId",nList.get(i).getId());
+                mContext.startActivity(intent);
+
+            }
+        });
+
 
     }
 

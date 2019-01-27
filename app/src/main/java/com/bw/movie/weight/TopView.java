@@ -43,7 +43,7 @@ public class TopView extends RelativeLayout {
             public void onClick(View v) {
                // Toast.makeText(getContext(), "你hh", Toast.LENGTH_SHORT).show();
                 float translationX = Ll.getTranslationY();
-                ObjectAnimator translation = ObjectAnimator.ofFloat(Ll, "translationX", 0, -350f);
+                ObjectAnimator translation = ObjectAnimator.ofFloat(Ll, "translationX", 0, -310f);
                 AnimatorSet animatorSet = new AnimatorSet();
                 animatorSet.play(translation);
                 animatorSet.setDuration(1000);
@@ -56,7 +56,7 @@ public class TopView extends RelativeLayout {
             @Override
             public void onClick(View v) {
                 float translationX = Ll.getTranslationY();
-                ObjectAnimator translation = ObjectAnimator.ofFloat(Ll, "translationX",-350, 0);
+                ObjectAnimator translation = ObjectAnimator.ofFloat(Ll, "translationX",-310, 0);
                 AnimatorSet animatorSet = new AnimatorSet();
                 animatorSet.play(translation);
                 animatorSet.setDuration(1000);

@@ -4,9 +4,9 @@
     android:layout_height="wrap_content">
     <RelativeLayout
         android:id="@+id/Ll"
-        android:layout_width="240dp"
+        android:layout_width="200dp"
         android:layout_height="24dp"
-        android:layout_marginRight="-210dp"
+        android:layout_marginRight="-170dp"
         android:background="@drawable/layout_border"
         android:layout_alignParentRight="true"
 
@@ -45,7 +45,7 @@
             android:text="搜索"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="45dp"
+            android:layout_marginRight="20dp"
             android:textSize="12sp"
             android:textColor="#ffffff"
             />

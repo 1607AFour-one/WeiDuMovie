@@ -1,6 +1,7 @@
 package com.bw.movie.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bw.movie.R;
 import com.bw.movie.bean.RecommendData;
+import com.bw.movie.ui.DetailsActivity;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.List;
@@ -47,6 +49,16 @@ public class RecommendAdapter extends XRecyclerView.Adapter<RecommendAdapter.Vie
                 itemListener.onitemPosition(i);
             }
         });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mContext,DetailsActivity.class);
+                intent.putExtra("cinemaId",rList.get(i).getId());
+                mContext.startActivity(intent);
+            }
+        });
+
     }
 
    //点赞接口回调
