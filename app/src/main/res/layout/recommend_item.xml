@@ -9,7 +9,7 @@
         android:layout_marginRight="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="15dp"
-        android:background="@drawable/recommend_shape"
+        android:background="@drawable/item_shape"
         >
 
         <ImageView
@@ -38,6 +38,8 @@
             android:text="海淀区岳雪莲"
             android:textSize="12sp"
             android:textColor="#333333"
+            android:ellipsize="end"
+            android:maxLines="2"
             android:layout_toRightOf="@+id/Recommend_Image"
             android:layout_below="@+id/Recommend_Name"
             android:layout_marginLeft="20dp"

@@ -24,10 +24,7 @@ public class Contacts {
     public static final String CLICKMOVIE_URL="cinema/v1/verify/followCinema";
     //取消关注
     public static final String CLEARMOVIE_URL="cinema/v1/verify/cancelFollowCinema";
-    //影院跳转
-    public static final String SKIPMOIVE_URL="cinema/v1/findCinemaInfo";
-    //根据电影Id和影院ID查询电影排期
-    public static final String TIMEMOVIE_URL="movie/v1/findMovieScheduleList";
+
 
 
 }

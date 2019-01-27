@@ -6,7 +6,7 @@ import java.util.List;
  * author:author${车文飞}
  * data:2019/1/26
  */
-public class DetailData {
+public class MovieDetailData {
 
 
     /**
@@ -62,7 +62,7 @@ public class DetailData {
 
         private String director;
         private String duration;
-        private boolean followMovie;
+        private int followMovie;
         private int id;
         private String imageUrl;
         private String movieTypes;
@@ -90,11 +90,11 @@ public class DetailData {
             this.duration = duration;
         }
 
-        public boolean isFollowMovie() {
+        public int isFollowMovie() {
             return followMovie;
         }
 
-        public void setFollowMovie(boolean followMovie) {
+        public void setFollowMovie(int followMovie) {
             this.followMovie = followMovie;
         }
 
