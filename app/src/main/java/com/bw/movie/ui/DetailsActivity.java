@@ -3,6 +3,7 @@ package com.bw.movie.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -44,7 +45,7 @@ public class DetailsActivity extends BaseActivity implements IView {
     private int id;
     private PresenterImpl presenter;
     private List<TimeMovieData.ResultBean>mList=new ArrayList<>();
-    private XRecyclerView time_xrecy;
+    private RecyclerView time_xrecy;
     private TimeMovieAdapter timeMovieAdapter;
     @Override
     protected int initLayout() {

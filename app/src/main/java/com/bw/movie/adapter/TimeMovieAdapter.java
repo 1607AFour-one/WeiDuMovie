@@ -17,7 +17,7 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TimeMovieAdapter extends XRecyclerView.Adapter<TimeMovieAdapter.ViewHolder> {
+public class TimeMovieAdapter extends RecyclerView.Adapter<TimeMovieAdapter.ViewHolder> {
 
     private List<TimeMovieData.ResultBean>mList;
     private Context mContext;
