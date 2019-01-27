@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bw.movie.R;
-import com.bw.movie.bean.HotMovieData;
 import com.bw.movie.bean.RecommendData;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -35,13 +34,30 @@ public class RecommendAdapter extends XRecyclerView.Adapter<RecommendAdapter.Vie
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int i) {
 
         holder.recommend_name.setText(rList.get(i).getName());
         holder.Recommend_Address.setText(rList.get(i).getAddress());
-        holder.Recommend_Km.setText(rList.get(i).getFollowCinema()+"km");
+        holder.Recommend_Km.setText(rList.get(i).getDistance()+"km");
         Glide.with(mContext).load(rList.get(i).getLogo()).into(holder.recommend_image);
+
+        holder.Recommend_Zan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemListener.onitemPosition(i);
+            }
+        });
     }
+
+   //点赞接口回调
+    ItemListener itemListener;
+    public interface  ItemListener{
+        void onitemPosition(int i);
+    }
+    public void getItemPostion(ItemListener itemListener){
+        this.itemListener=itemListener;
+    }
+
 
     @Override
     public int getItemCount() {
