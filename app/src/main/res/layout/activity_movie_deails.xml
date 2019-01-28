@@ -105,6 +105,7 @@
         </LinearLayout>
     </RelativeLayout>
     <ImageView
+        android:id="@+id/detail_back"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginLeft="25dp"
@@ -112,6 +113,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="15dp"/>
     <TextView
+        android:id="@+id/detail_by_card"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginBottom="15dp"

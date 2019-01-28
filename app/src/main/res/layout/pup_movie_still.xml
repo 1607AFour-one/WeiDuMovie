@@ -4,18 +4,32 @@
     android:layout_height="wrap_content"
     android:background="@color/white">
     <RelativeLayout
-        android:id="@+id/trailer_relay"
+        android:id="@+id/still_relay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp">
-        <TextView
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="电影预告"/>
+            android:layout_centerVertical="true">
+            <TextView
+                android:id="@+id/still_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="剧照"/>
+            <TextView
+                android:layout_below="@+id/still_tv"
+                android:layout_marginTop="3dp"
+                android:layout_width="28dp"
+                android:layout_height="3dp"
+                android:background="@drawable/tv_bottom_shape"/>
+
+        </RelativeLayout>
+
         <ImageView
-            android:id="@+id/deail_dismiss"
+            android:id="@+id/still_dismiss"
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,10 +38,10 @@
 
     </RelativeLayout>
     <android.support.v7.widget.RecyclerView
-        android:layout_below="@+id/trailer_relay"
-        android:id="@+id/trailer_Recy"
+        android:layout_below="@+id/still_relay"
+        android:id="@+id/still_recy"
         android:layout_width="match_parent"
-        android:layout_height="400dp">
+        android:layout_height="350dp">
 
     </android.support.v7.widget.RecyclerView>
 

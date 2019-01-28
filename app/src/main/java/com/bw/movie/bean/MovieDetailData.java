@@ -14,7 +14,6 @@ public class MovieDetailData {
      * message : 查询成功
      * status : 0000
      */
-
     private ResultBean result;
     private String message;
     private String status;

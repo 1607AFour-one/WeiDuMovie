@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+    <RelativeLayout
+        android:id="@+id/comments_relay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+            <TextView
+                android:id="@+id/still_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="影评"/>
+            <TextView
+                android:layout_below="@+id/still_tv"
+                android:layout_marginTop="3dp"
+                android:layout_width="28dp"
+                android:layout_height="3dp"
+                android:background="@drawable/tv_bottom_shape"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/comments_dismiss"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/com_icon_down_default"/>
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/comments_relay"
+        android:id="@+id/comments_recy"
+        android:layout_width="match_parent"
+        android:layout_height="350dp">
+
+    </android.support.v7.widget.RecyclerView>
+    <RelativeLayout
+        android:id="@+id/comment_Relative"
+        android:layout_alignBottom="@id/comments_recy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:visibility="gone"
+        android:layout_marginRight="20dp">
+        <Button
+            android:id="@+id/comments_btn_send"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发送"/>
+        <EditText
+            android:layout_toLeftOf="@+id/comments_btn_send"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:hint="写评论" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/comments_btn_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@mipmap/com_icon_publish_default"
+        android:layout_alignBottom="@+id/comments_recy"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="20dp"/>
+
+</RelativeLayout>
