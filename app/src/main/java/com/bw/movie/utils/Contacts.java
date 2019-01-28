@@ -26,7 +26,9 @@ public class Contacts {
     public static final String CLEARMOVIE_URL="cinema/v1/verify/cancelFollowCinema";
     //电影详情
     public static final String MOVIE_DETAIL_URL="movie/v1/findMoviesDetail";
+    //影院详情
     public static final String SKIPMOIVE_URL="cinema/v1/findCinemaInfo";
-
+    //影院评论
+    public static final String PINGLUNMOIVE_URL="cinema/v1/findAllCinemaComment";
     public static final String TIMEMOVIE_URL="movie/v1/findMovieScheduleList";
 }

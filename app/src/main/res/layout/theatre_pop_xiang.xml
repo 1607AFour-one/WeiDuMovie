@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="22dp"
+        >
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/cinema_detail_icon_location_default"
+            />
+
+        <TextView
+            android:id="@+id/xaing_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="海淀区"
+            android:layout_marginLeft="15dp"
+            android:layout_gravity="center_vertical"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="22dp"
+        >
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/cinema_detail_icon_phone_default"
+            />
+
+        <TextView
+            android:id="@+id/xiang_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="电话"
+            android:layout_marginLeft="15dp"
+            android:layout_gravity="center_vertical"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="22dp"
+        >
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/cinema_detail_icon_route_default"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="乘车路线"
+            android:layout_marginLeft="15dp"
+            android:layout_gravity="center_vertical"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="22dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="地铁："
+            android:textSize="12sp"
+            />
+
+        <TextView
+            android:id="@+id/xiang_di"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="102地忒"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_vertical"
+            android:textSize="12sp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="22dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="公交："
+            android:textSize="12sp"
+            />
+
+        <TextView
+            android:id="@+id/xiang_gong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="102地忒"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_vertical"
+            android:textSize="12sp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="22dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="自驾："
+            android:textSize="12sp"
+            />
+
+        <TextView
+            android:id="@+id/xiang_zi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="102地忒"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_vertical"
+            android:textSize="12sp"
+            />
+    </LinearLayout>
+</LinearLayout>
