@@ -3,6 +3,7 @@ package com.bw.movie.adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -12,6 +13,8 @@ import com.bumptech.glide.Glide;
 import com.bw.movie.R;
 import com.bw.movie.bean.DiscussMovieData;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class DiscussMovieAdapter extends RecyclerView.Adapter<DiscussMovieAdapter.ViewHolder> {
@@ -26,7 +29,8 @@ public class DiscussMovieAdapter extends RecyclerView.Adapter<DiscussMovieAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view=View.inflate(mContext, R.layout.pinglun_item,null);
+        View view=LayoutInflater.from(mContext).inflate(R.layout.pinglun_item,viewGroup,false);
+        /*View view=View.inflate(mContext, R.layout.pinglun_item,null);*/
         ViewHolder holder=new ViewHolder(view);
 
         return holder;
@@ -34,11 +38,14 @@ public class DiscussMovieAdapter extends RecyclerView.Adapter<DiscussMovieAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int i) {
-
+        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        Date  date=new Date(pList.get(i).getCommentTime());
         holder.ping_name.setText(pList.get(i).getCommentUserName());
         holder.ping_text.setText(pList.get(i).getCommentContent());
-        holder.ping_data.setText(pList.get(i).getCommentTime()+"");
+        holder.ping_data.setText(format.format(date));
         Glide.with(mContext).load(pList.get(i).getCommentHeadPic()).into(holder.ping_image);
+
+
     }
 
     @Override
