@@ -158,7 +158,6 @@ public class DetailsActivity extends BaseActivity implements IView {
         map = new HashMap<>();
         hashMap = new HashMap<>();
         map.put("cinemaId", id + "");
-        // Toast.makeText(getApplication(),id+"",Toast.LENGTH_SHORT).show();
         int userId = SpUtils.getInt("userId");
         String sessionId = SpUtils.getString("sessionId");
         headmap = new HashMap<>();
@@ -194,7 +193,6 @@ public class DetailsActivity extends BaseActivity implements IView {
                 HashMap<String, Object> mMap = new HashMap<>();
                 mMap.put("cinemasId", id + "");
                 mMap.put("movieId", movieId + "");
-                //Toast.makeText(getApplicationContext(),movieId+"",Toast.LENGTH_SHORT).show();
                 timeMovieAdapter = new TimeMovieAdapter(mList, getApplicationContext());
                 time_xrecy.setAdapter(timeMovieAdapter);
                 //根据电影Id和影院ID查询电影排期
@@ -207,7 +205,6 @@ public class DetailsActivity extends BaseActivity implements IView {
             public void setItem(int i) {
 
                  HashMap<String,Object>pMap=new HashMap<>();
-                // showShort(pList.get(i).getCommentId()+"");
                  pMap.put("commentId",pList.get(i).getCommentId()+"");
 
                 presenter.requestFormPost(Contacts.CINEMA_COMMENT_GREAT,pMap,headmap,DiscussZanData.class);
@@ -222,7 +219,6 @@ public class DetailsActivity extends BaseActivity implements IView {
 
             case R.id.home_group_dingwei_image:
                 //影院详情
-                showShort("吐司详情");
                 final PopupWindow popupWindow = new PopupWindow(view, WindowManager.LayoutParams.MATCH_PARENT,
                         WindowManager.LayoutParams.WRAP_CONTENT);
                 popupWindow.setBackgroundDrawable(new ColorDrawable());
@@ -271,7 +267,6 @@ public class DetailsActivity extends BaseActivity implements IView {
     @Override
     public void successData(Object data) {
 
-
         if (data instanceof DetailsData) {
 
             DetailsData detailsData = (DetailsData) data;
@@ -280,7 +275,6 @@ public class DetailsActivity extends BaseActivity implements IView {
             Text_Name.setText(result.getName());
             Text_Address.setText(result.getAddress());
             Glide.with(this).load(result.getLogo()).into(home_group_dingwei_image);
-            //TextView xaing_address,xiang_phone,xiang_di,xiang_gong,xiang_zi;
             xaing_address.setText(result.getAddress());
             xiang_phone.setText(result.getPhone());
             xiang_di.setText(result.getVehicleRoute());
@@ -295,7 +289,6 @@ public class DetailsActivity extends BaseActivity implements IView {
         if (data instanceof TimeMovieData) {
 
             TimeMovieData timeMovieData = (TimeMovieData) data;
-            //Toast.makeText(DetailsActivity.this, timeMovieData.getResult().size()+"", Toast.LENGTH_SHORT).show();
             mList.addAll(timeMovieData.getResult());
             timeMovieAdapter.notifyDataSetChanged();
         }
