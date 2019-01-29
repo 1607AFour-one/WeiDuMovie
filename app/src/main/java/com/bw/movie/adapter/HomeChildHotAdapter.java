@@ -42,8 +42,8 @@ public class HomeChildHotAdapter extends RecyclerView.Adapter<HomeChildHotAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
-        //GlideUtils.load(mContext,viewHolder.image,mHotList.get(i).getImageUrl(),R.mipmap.error,10);
-        Glide.with(mContext).load(mHotList.get(i).getImageUrl()).into(viewHolder.image);
+        GlideUtils.load(mContext,viewHolder.image,mHotList.get(i).getImageUrl(),R.mipmap.muguang,10);
+       // Glide.with(mContext).load(mHotList.get(i).getImageUrl()).into(viewHolder.image);
         viewHolder.tv.setText(mHotList.get(i).getName());
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

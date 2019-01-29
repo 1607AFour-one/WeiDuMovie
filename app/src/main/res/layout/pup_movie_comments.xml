@@ -36,16 +36,16 @@
             android:layout_centerVertical="true"
             android:src="@mipmap/com_icon_down_default"/>
     </RelativeLayout>
-    <android.support.v7.widget.RecyclerView
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
         android:layout_below="@+id/comments_relay"
-        android:id="@+id/comments_recy"
+        android:id="@+id/comments_xrecy"
         android:layout_width="match_parent"
         android:layout_height="350dp">
 
-    </android.support.v7.widget.RecyclerView>
+    </com.jcodecraeer.xrecyclerview.XRecyclerView>
     <RelativeLayout
         android:id="@+id/comment_Relative"
-        android:layout_alignBottom="@id/comments_recy"
+        android:layout_alignBottom="@id/comments_xrecy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -69,7 +69,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:src="@mipmap/com_icon_publish_default"
-        android:layout_alignBottom="@+id/comments_recy"
+        android:layout_alignBottom="@+id/comments_xrecy"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="20dp"/>
 

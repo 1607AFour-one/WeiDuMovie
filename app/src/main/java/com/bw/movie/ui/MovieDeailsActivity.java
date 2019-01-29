@@ -24,8 +24,10 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bw.movie.R;
 import com.bw.movie.adapter.JZVideoAdapter;
+import com.bw.movie.adapter.MovieCommentsAdapter;
 import com.bw.movie.adapter.MovieStillAdapter;
 import com.bw.movie.base.BaseActivity;
+import com.bw.movie.bean.FindMovieCommentData;
 import com.bw.movie.bean.MovieDetailData;
 import com.bw.movie.bean.MovieMessage;
 import com.bw.movie.bean.SpacesItemDecoration;
@@ -33,6 +35,7 @@ import com.bw.movie.presenter.PresenterImpl;
 import com.bw.movie.utils.Contacts;
 import com.bw.movie.utils.SpUtils;
 import com.bw.movie.view.IView;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.HashMap;
 import java.util.List;
@@ -53,6 +56,8 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
     private PresenterImpl presenter;
     private PopupWindow popupWindow;
     private HashMap<String, Object> headmap;
+    private FindMovieCommentData findMovieCommentData;
+    private XRecyclerView commentXrecy;
 
 
     @Override
@@ -107,6 +112,7 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
         findCoomentsMap.put("movieId",movieId);
         findCoomentsMap.put("page","1");
         findCoomentsMap.put("count","5");
+        presenter.requestGEt(Contacts.FINDMOVIE_COMMENT_URL,findCoomentsMap,headmap,FindMovieCommentData.class);
 
     }
     @Override
@@ -181,7 +187,6 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
                         if(popupWindow!=null&&popupWindow.isShowing()){
                             popupWindow.dismiss();
                         }
-
                     }
                 });
                 break;
@@ -192,6 +197,10 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
                 final RelativeLayout commentRelative=commentsView.findViewById(R.id.comment_Relative);
                 final ImageView image=commentsView.findViewById(R.id.comments_btn_image);
                 Button send=commentsView.findViewById(R.id.comments_btn_send);
+                XRecyclerView commentXrecy= commentsView.findViewById(R.id.comments_xrecy);
+                commentXrecy.setLayoutManager(new LinearLayoutManager(MovieDeailsActivity.this));
+                commentXrecy.setAdapter(new MovieCommentsAdapter(MovieDeailsActivity.this,findMovieCommentData.getResult()));
+
                 image.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -231,9 +240,14 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
 
     @Override
     public void successData(Object data) {
-        movieDetailData = (MovieDetailData) data;
-        Glide.with(MovieDeailsActivity.this).load(movieDetailData.getResult().getImageUrl()).into(detailImage);
-        movieName.setText(movieDetailData.getResult().getName());
+       if(data instanceof MovieDetailData){
+           movieDetailData = (MovieDetailData) data;
+           Glide.with(MovieDeailsActivity.this).load(movieDetailData.getResult().getImageUrl()).into(detailImage);
+           movieName.setText(movieDetailData.getResult().getName());
+       }
+       if(data instanceof FindMovieCommentData){
+           findMovieCommentData = (FindMovieCommentData) data;
+       }
     }
 
     @Override

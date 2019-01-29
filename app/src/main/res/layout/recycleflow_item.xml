@@ -1,10 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="223dp">
     <ImageView
         android:id="@+id/recyflow_image"
         android:layout_width="158dp"
         android:layout_height="223dp"
+        android:scaleType="fitXY"
         android:src="@mipmap/ic_launcher"/>
-</LinearLayout>
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="158dp"
+        android:layout_height="36dp"
+        android:layout_marginBottom="3dp"
+        android:background="@drawable/film_viewpager_movie_bg">
+        <TextView
+            android:id="@+id/movie_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:textSize="12sp"
+            android:text="电影名称"
+            android:layout_centerVertical="true"/>
+        <TextView
+            android:id="@+id/movie_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:textSize="12sp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="电影时场"/>
+
+    </RelativeLayout>
+</RelativeLayout>

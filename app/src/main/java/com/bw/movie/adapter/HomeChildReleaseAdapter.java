@@ -41,7 +41,8 @@ public class HomeChildReleaseAdapter extends RecyclerView.Adapter<HomeChildRelea
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
-        Glide.with(mContext).load(mReleaseList.get(i).getImageUrl()).into(viewHolder.image);
+        GlideUtils.load(mContext,viewHolder.image,mReleaseList.get(i).getImageUrl(),R.mipmap.muguang,10);
+        //Glide.with(mContext).load(mReleaseList.get(i).getImageUrl()).into(viewHolder.image);
         viewHolder.tv.setText(mReleaseList.get(i).getName());
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

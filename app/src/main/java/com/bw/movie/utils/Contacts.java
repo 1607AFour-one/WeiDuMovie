@@ -14,7 +14,6 @@ public class Contacts {
     public static final String HOT_URL="movie/v1/findHotMovieList";
     public static final String RELEASE_URL="movie/v1/findReleaseMovieList";
     public static final String COMINGSOON_URL_="movie/v1/findComingSoonMovieList";
-
     public static final String RECOMMEND_URL="cinema/v1/findRecommendCinemas";
 
     public static final String NEARMOVIE_URL="cinema/v1/findNearbyCinemas";
@@ -31,4 +30,19 @@ public class Contacts {
     //影院评论
     public static final String PINGLUNMOIVE_URL="cinema/v1/findAllCinemaComment";
     public static final String TIMEMOVIE_URL="movie/v1/findMovieScheduleList";
+    //查看影片评论
+    public static final String FINDMOVIE_COMMENT_URL="movie/v1/findAllMovieComment";
+    //发表影片评论
+    public static final String SEN_MOVIECOMMENT_URL="movie/v1/verify/movieComment";
+    //关注电影
+    public static final String FOLLMOVIE_URL="movie/v1/verify/followMovie";
+    //取消关注电影
+    public static final String CANCEL_FOLLOWMOVIE="movie/v1/verify/cancelFollowMovie";
+    //影院评论点赞
+    public static final String CINEMA_COMMENT_GREAT="cinema/v1/verify/cinemaCommentGreat";
+    //影院评论
+    public static final String CINEMA_COMMENT="cinema/v1/verify/cinemaComment";
+
+
+
 }

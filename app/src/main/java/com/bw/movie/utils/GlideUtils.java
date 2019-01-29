@@ -1,6 +1,7 @@
 package com.bw.movie.utils;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,6 +14,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.bw.movie.R;
 
 public class GlideUtils {
@@ -28,7 +30,6 @@ public class GlideUtils {
     public static void setDefaultImage(Context mContext, String mImageUrl, View mImageView) {
 
         Glide.with (mContext)
-
                 .load (mImageUrl)
                 .apply (RequestOptions.errorOf (R.mipmap.error))        //加载失败 默认的加载图片
                 .apply (RequestOptions.placeholderOf (R.mipmap.zhong)) //加载中 默认的加载图片
@@ -123,5 +124,7 @@ public class GlideUtils {
 
                 .into ((ImageView) mImageView);
     }
+
+
 
 }

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bw.movie.R;
@@ -40,6 +41,8 @@ public class MyrecyFlowAdapter extends RecyclerView.Adapter<MyrecyFlowAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         GlideUtils.load(mContext,viewHolder.image,mComingList.get(i).getImageUrl(),R.mipmap.ic_launcher,8);
+        viewHolder.movieName.setText(mComingList.get(i).getName());
+        viewHolder.movieTime.setText(mComingList.get(i).getReleaseTimeShow());
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,9 +65,12 @@ public class MyrecyFlowAdapter extends RecyclerView.Adapter<MyrecyFlowAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView image;
+        TextView movieName,movieTime;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             image=itemView.findViewById(R.id.recyflow_image);
+            movieName=itemView.findViewById(R.id.movie_name);
+            movieTime=itemView.findViewById(R.id.movie_time);
         }
     }
     MyrecyFlowAdapterListener myrecyFlowAdapterListener;

@@ -41,7 +41,8 @@ public class HomeChildComAdapter extends RecyclerView.Adapter<HomeChildComAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
-        Glide.with(mContext).load(mComingList.get(i).getImageUrl()).into(viewHolder.image);
+        GlideUtils.load(mContext,viewHolder.image,mComingList.get(i).getImageUrl(),R.mipmap.muguang,10);
+        //Glide.with(mContext).load(mComingList.get(i).getImageUrl()).into(viewHolder.image);
         viewHolder.tv.setText(mComingList.get(i).getName());
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
