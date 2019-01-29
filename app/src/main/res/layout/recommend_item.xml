@@ -19,6 +19,8 @@
             android:src="@mipmap/ic_launcher"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
+
+
             />
         <TextView
             android:id="@+id/Recommend_Name"
@@ -58,16 +60,16 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             />
-        <ImageView
+        <CheckBox
             android:id="@+id/Recommend_Zan"
             android:layout_width="16dp"
             android:layout_height="16dp"
-            android:src="@mipmap/com_icon_collection_default"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="12dp"
-            android:background="#ccc"
+            android:button="@null"
+            android:background="@drawable/select_details"
             />
     </RelativeLayout>
 

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.AttentionActivity">
+
+
+    <RadioGroup
+        android:id="@+id/Attention_Rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp"
+        >
+
+
+        <RadioButton
+            android:id="@+id/Attention_Rb1"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:text="电影"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="80dp"
+            android:background="@drawable/movie_btn_sel"
+            android:checked="true"
+            />
+        <RadioButton
+            android:id="@+id/Attention_Rb2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:text="影院"
+            android:background="@drawable/movie_btn_sel"
+            android:gravity="center_horizontal"
+            android:layout_marginRight="80dp"
+            android:layout_marginLeft="20dp"
+            />
+    </RadioGroup>
+
+    <com.bw.movie.custom.MyViewPager
+
+        android:id="@+id/Attention_Vp"
+        android:layout_below="@+id/Attention_Rg"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.bw.movie.custom.MyViewPager>
+
+
+
+</RelativeLayout>

@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -27,6 +28,7 @@ import com.bw.movie.base.BaseActivity;
 import com.bw.movie.bean.ComingSoonData;
 import com.bw.movie.bean.DetailsData;
 import com.bw.movie.bean.DiscussMovieData;
+import com.bw.movie.bean.DiscussZanData;
 import com.bw.movie.bean.TimeMovieData;
 import com.bw.movie.presenter.PresenterImpl;
 import com.bw.movie.utils.Contacts;
@@ -39,15 +41,7 @@ import java.util.List;
 
 import recycler.coverflow.CoverFlowLayoutManger;
 import recycler.coverflow.RecyclerCoverFlow;
-//
-//<android.support.v7.widget.RecyclerView
-//        android:layout_below="@+id/theatre_layout"
-//        android:layout_marginTop="10dp"
-//        android:id="@+id/Theatre_Recy"
-//        android:layout_width="match_parent"
-//        android:visibility="visible"
-//        android:layout_height="300dp"></android.support.v7.widget.RecyclerView>
-//
+
 
 public class DetailsActivity extends BaseActivity implements IView {
     //你好
@@ -71,11 +65,16 @@ public class DetailsActivity extends BaseActivity implements IView {
     private TextView theatre_rb1;
     private TextView theatre_text1,theatre_text2;
     private TextView theatre_rb2;
+    private ImageView FanHui;
     private RelativeLayout theatre_layout;
-    private LinearLayout Theatre_Recy;
+    private ScrollView Theatre_Recy;
     private RecyclerView Theatre_Recy_Ping;
     private HashMap<String, Object> map;
     TextView xaing_address,xiang_phone,xiang_di,xiang_gong,xiang_zi;
+    private HashMap<String, Object> headmap;
+    private DiscussMovieAdapter discussMovieAdapter;
+    private MyrecyFlowAdapter myrecyFlowAdapter;
+
     @Override
     protected int initLayout() {
         return R.layout.activity_details;
@@ -91,12 +90,14 @@ public class DetailsActivity extends BaseActivity implements IView {
         home_group_recyflow = findViewById(R.id.home_group_recyflow);
         time_xrecy = findViewById(R.id.Time_Xrecy);
         Ding = findViewById(R.id.Ding);
-        //View= findViewById(R.id.View);
-        MyrecyFlowAdapter myrecyFlowAdapter = new MyrecyFlowAdapter(getApplicationContext(), mComingList);
+        FanHui= findViewById(R.id.FanHui);
+        //轮播
+        myrecyFlowAdapter = new MyrecyFlowAdapter(getApplicationContext(), mComingList);
         home_group_recyflow.setAdapter(myrecyFlowAdapter);
         home_group_recyflow.setGreyItem(true);
-        time_xrecy.setLayoutManager(new LinearLayoutManager(this));
 
+        time_xrecy.setLayoutManager(new LinearLayoutManager(this));
+        FanHui.setOnClickListener(this);
 
         //影院详情
         view = View.inflate(DetailsActivity.this, R.layout.movie_theatre_pop, null);
@@ -160,7 +161,7 @@ public class DetailsActivity extends BaseActivity implements IView {
         // Toast.makeText(getApplication(),id+"",Toast.LENGTH_SHORT).show();
         int userId = SpUtils.getInt("userId");
         String sessionId = SpUtils.getString("sessionId");
-        HashMap<String, Object> headmap = new HashMap<>();
+        headmap = new HashMap<>();
 
         headmap.put("userId", userId);
         headmap.put("sessionId", sessionId);
@@ -179,11 +180,11 @@ public class DetailsActivity extends BaseActivity implements IView {
         //请求网络给轮播赋值
         presenter.requestGEt(Contacts.COMINGSOON_URL_, zMap, headmap, ComingSoonData.class);
         //评论
-        DiscussMovieAdapter discussMovieAdapter=new DiscussMovieAdapter(pList,getApplicationContext());
+        discussMovieAdapter = new DiscussMovieAdapter(pList,getApplicationContext());
         Theatre_Recy_Ping.setAdapter(discussMovieAdapter);
-        presenter.requestGEt(Contacts.PINGLUNMOIVE_URL,pMap,headmap,DiscussMovieData.class);
+        presenter.requestGEt(Contacts.PINGLUNMOIVE_URL,pMap, headmap,DiscussMovieData.class);
         //根据电影ID和影院ID查询电影排期列表
-        MyrecyFlowAdapter myrecyFlowAdapter = new MyrecyFlowAdapter(getApplicationContext(), mComingList);
+
         home_group_recyflow.setOnItemSelectedListener(new CoverFlowLayoutManger.OnSelected() {
             @Override
 
@@ -201,6 +202,17 @@ public class DetailsActivity extends BaseActivity implements IView {
             }
         });
 
+        discussMovieAdapter.getItem(new DiscussMovieAdapter.ItemClicke() {
+            @Override
+            public void setItem(int i) {
+
+                 HashMap<String,Object>pMap=new HashMap<>();
+                // showShort(pList.get(i).getCommentId()+"");
+                 pMap.put("commentId",pList.get(i).getCommentId()+"");
+
+                presenter.requestFormPost(Contacts.CINEMA_COMMENT_GREAT,pMap,headmap,DiscussZanData.class);
+            }
+        });
 
     }
 
@@ -247,6 +259,9 @@ public class DetailsActivity extends BaseActivity implements IView {
                 theatre_text1.setVisibility(View.GONE);
                 theatre_text2.setVisibility(View.VISIBLE);
                 break;
+            case R.id.FanHui:
+                finish();
+                break;
 
         }
 
@@ -274,6 +289,7 @@ public class DetailsActivity extends BaseActivity implements IView {
         if (data instanceof ComingSoonData) {
             ComingSoonData comingSoonData = (ComingSoonData) data;
             mComingList.addAll(comingSoonData.getResult());
+            myrecyFlowAdapter.notifyDataSetChanged();
         }
 
         if (data instanceof TimeMovieData) {
@@ -290,6 +306,12 @@ public class DetailsActivity extends BaseActivity implements IView {
 
 
         }
+
+        if(data instanceof DiscussZanData){
+            DiscussZanData discussZanData= (DiscussZanData) data;
+            showShort(discussZanData.getMessage()+"");
+        }
+
     }
 
     @Override

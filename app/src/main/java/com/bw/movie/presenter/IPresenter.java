@@ -10,6 +10,7 @@ import okhttp3.RequestBody;
  */
 public interface IPresenter {
     void requestPost(String url, HashMap<String,Object> map, HashMap<String, Object> headmap, Class clazz);
+    void requestPostFrom(String url, int id, HashMap<String, Object> headmap, Class clazz);
     void requestGEt(String url, HashMap<String,Object> map,HashMap<String, Object> headmap,Class clazz);
     void requestDelete(String url, HashMap<String,Object> map,HashMap<String, Object> headmap,Class clazz);
     void requestPut(String url, HashMap<String,Object> map,HashMap<String, Object> headmap,Class clazz);

@@ -135,12 +135,14 @@ public class NearFragment extends BaseFragment implements IView {
                     recommendAdapter.notifyDataSetChanged();
                     rList.get(i).setFollowCinema(1);
 
+
                 } else {
 
                     presenter.requestGEt(Contacts.CLEARMOVIE_URL, clickMap, headmap, ClearMovieData.class);
                     recommendAdapter.notifyDataSetChanged();
                     rList.get(i).setFollowCinema(2);
                 }
+
 
             }
         });

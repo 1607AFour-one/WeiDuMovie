@@ -37,16 +37,33 @@ public class DiscussMovieAdapter extends RecyclerView.Adapter<DiscussMovieAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int i) {
         SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         Date  date=new Date(pList.get(i).getCommentTime());
         holder.ping_name.setText(pList.get(i).getCommentUserName());
         holder.ping_text.setText(pList.get(i).getCommentContent());
         holder.ping_data.setText(format.format(date));
         Glide.with(mContext).load(pList.get(i).getCommentHeadPic()).into(holder.ping_image);
-
+        holder.ping_zan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemClicke.setItem(i);
+            }
+        });
 
     }
+
+
+    //点赞接口回调
+    ItemClicke itemClicke;
+
+    public interface  ItemClicke{
+        void setItem(int i);
+    }
+    public void getItem(ItemClicke itemClicke){
+        this.itemClicke=itemClicke;
+    }
+
 
     @Override
     public int getItemCount() {

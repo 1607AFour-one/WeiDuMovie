@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -42,7 +43,11 @@ public class NearAdapter extends XRecyclerView.Adapter<NearAdapter.ViewHolder> {
         holder.Recommend_Address.setText(nList.get(i).getAddress());
         holder.Recommend_Km.setText(nList.get(i).getDistance()+"km");
         Glide.with(mContext).load(nList.get(i).getLogo()).into(holder.recommend_image);
-
+        if(nList.get(i).getFollowCinema()==1){
+            holder.Recommend_Zan.setChecked(true);
+        }else{
+            holder.Recommend_Zan.setChecked(false);
+        }
         holder.Recommend_Zan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +87,9 @@ public class NearAdapter extends XRecyclerView.Adapter<NearAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView recommend_image,Recommend_Zan;
+        ImageView recommend_image;
+        CheckBox Recommend_Zan;
+
         TextView recommend_name,Recommend_Address,Recommend_Km;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

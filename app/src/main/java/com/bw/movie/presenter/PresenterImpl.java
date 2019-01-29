@@ -39,6 +39,21 @@ public class PresenterImpl implements IPresenter {
     }
 
     @Override
+    public void requestPostFrom(String url, int id, HashMap<String, Object> headmap, Class clazz) {
+        modle.getPostFrom(url, id,headmap ,clazz, new MyCallBack() {
+            @Override
+            public void setData(Object data) {
+                iView.successData(data);
+            }
+            @Override
+            public void setError(Object error) {
+                iView.errorMsg(error);
+
+            }
+        });
+    }
+
+    @Override
     public void requestGEt(String url, HashMap<String, Object> map, HashMap<String, Object> headmap, Class clazz) {
         modle.getGetData(url, map,headmap, clazz, new MyCallBack() {
             @Override

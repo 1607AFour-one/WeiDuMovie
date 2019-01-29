@@ -12,6 +12,7 @@ import okhttp3.RequestBody;
  */
 public interface IModle {
     void getPostData(String url, HashMap<String,Object> map, HashMap<String, Object> headmap, Class clazz, MyCallBack callBack);
+    void getPostFrom(String url, int id, HashMap<String, Object> headmap, Class clazz, MyCallBack callBack);
     void getGetData(String url, HashMap<String,Object>map,HashMap<String, Object> headmap, Class clazz, MyCallBack callBack);
     void getDeleteData(String url, HashMap<String,Object>map,HashMap<String, Object> headmap, Class clazz, MyCallBack callBack);
     void getPutData(String url, HashMap<String,Object>map,HashMap<String, Object> headmap, Class clazz, MyCallBack callBack);

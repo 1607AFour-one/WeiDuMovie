@@ -36,6 +36,28 @@ public class ModleImpl implements IModle {
     }
 
     @Override
+    public void getPostFrom(String url, int id, HashMap<String, Object> headmap, final Class clazz, final MyCallBack callBack) {
+        RetroUtils.getInstence().postFrom(url, id, headmap, new RetroUtils.HttpListener() {
+            @Override
+            public void onSuccess(String jsonStr) {
+                Gson gson=new Gson();
+                Object o = gson.fromJson(jsonStr, clazz);
+                if(callBack!=null){
+                    callBack.setData(o);
+                }
+            }
+
+            @Override
+            public void onError(String error) {
+                if(callBack!=null){
+                    callBack.setError(error);
+                }
+
+            }
+        });
+    }
+
+    @Override
     public void getGetData(String url, HashMap<String, Object> map, HashMap<String, Object> headmap, final Class clazz, final MyCallBack callBack) {
         RetroUtils.getInstence().get(url, map, headmap, new RetroUtils.HttpListener() {
             @Override

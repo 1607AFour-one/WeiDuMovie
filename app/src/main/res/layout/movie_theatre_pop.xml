@@ -64,11 +64,19 @@
             />
     </RelativeLayout>
 
-
-    <LinearLayout
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
         android:layout_below="@+id/theatre_layout"
         android:layout_marginTop="10dp"
         android:id="@+id/Theatre_Recy"
+        android:visibility="visible"
+        android:orientation="vertical"
+        >
+    <LinearLayout
+        android:layout_below="@+id/theatre_layout"
+        android:layout_marginTop="10dp"
+
         android:layout_width="match_parent"
         android:visibility="visible"
         android:layout_height="wrap_content"
@@ -151,6 +159,7 @@
             android:orientation="vertical"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="22dp"
+            android:layout_marginBottom="20dp"
             >
 
             <TextView
@@ -170,59 +179,10 @@
                 android:textSize="12sp"
                 />
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="22dp"
-            >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="公交："
-                android:textSize="12sp"
-                />
-
-            <TextView
-                android:id="@+id/xiang_gong"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="102地忒"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center_vertical"
-                android:textSize="12sp"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="22dp"
-            >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="自驾："
-                android:textSize="12sp"
-                />
-
-            <TextView
-                android:id="@+id/xiang_zi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="102地忒"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center_vertical"
-                android:textSize="12sp"
-                />
-        </LinearLayout>
 
     </LinearLayout>
-
+    </ScrollView>
 
     <android.support.v7.widget.RecyclerView
         android:layout_below="@+id/theatre_layout"
