@@ -72,7 +72,6 @@ public class HomeGroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
         return null;
     }
-
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         if(viewHolder instanceof ViewHolder){
@@ -90,7 +89,6 @@ public class HomeGroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 @Override
                 public void onClick(View v) {
                     Intent intent=new Intent(mContext,MovieListActivity.class);
-                    intent.putExtra("movieList",new IntentMovieData(mHotList,mReleaseList,mComingList));
                     mContext.startActivity(intent);
                 }
             });
@@ -103,15 +101,12 @@ public class HomeGroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             ((ViewHolder3) viewHolder).more.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     Intent intent=new Intent(mContext,MovieListActivity.class);
-                    intent.putExtra("movieList",new IntentMovieData(mHotList,mReleaseList,mComingList));
                     mContext.startActivity(intent);
                 }
             });
         }
         if(viewHolder instanceof ViewHolder4){
-            // ((ViewHolder2) viewHolder).name.setText(mHotList.get(i).g);
             LinearLayoutManager linearLayoutManager=new LinearLayoutManager(mContext);
             linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
             ((ViewHolder4) viewHolder).recy.setLayoutManager(linearLayoutManager);
@@ -119,18 +114,13 @@ public class HomeGroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             ((ViewHolder4) viewHolder).more.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     Intent intent=new Intent(mContext,MovieListActivity.class);
-                    intent.putExtra("movieList",new IntentMovieData(mHotList,mReleaseList,mComingList));
                     mContext.startActivity(intent);
                 }
             });
         }
 
     }
-
-
-
     @Override
     public int getItemCount() {
         return 4;

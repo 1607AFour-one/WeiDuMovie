@@ -183,7 +183,6 @@ public class DetailsActivity extends BaseActivity implements IView {
         Theatre_Recy_Ping.setAdapter(discussMovieAdapter);
         presenter.requestGEt(Contacts.PINGLUNMOIVE_URL,pMap, headmap,DiscussMovieData.class);
         //根据电影ID和影院ID查询电影排期列表
-
         home_group_recyflow.setOnItemSelectedListener(new CoverFlowLayoutManger.OnSelected() {
             @Override
 

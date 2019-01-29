@@ -45,7 +45,6 @@
             android:gravity="center"
             android:textColor="@color/bg_screen1"
             android:text="热门电影" />
-
         <RadioButton
             android:textSize="14sp"
             android:id="@+id/search_rb_release"
@@ -69,14 +68,14 @@
             android:background="@drawable/movie_btn_sel"
             android:text="即将上映" />
     </RadioGroup>
-    <android.support.v7.widget.RecyclerView
+    <FrameLayout
         android:layout_below="@+id/movie_list_rg"
         android:layout_marginTop="10dp"
-        android:id="@+id/movie_list_recy"
+        android:id="@+id/movie_list_fr"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </android.support.v7.widget.RecyclerView>
+    </FrameLayout>
 
 
 

@@ -52,7 +52,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_alignParentRight="true"
-                    android:background="@mipmap/com_icon_collection_default"/>
+                    android:background="@drawable/select_collection"/>
             </RelativeLayout>
 
             <TextView

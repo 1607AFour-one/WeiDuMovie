@@ -15,19 +15,31 @@ import com.bw.movie.base.BaseActivity;
 import com.bw.movie.bean.ComingSoonData;
 import com.bw.movie.bean.HotMovieData;
 import com.bw.movie.bean.IntentMovieData;
+import com.bw.movie.bean.MessageData;
 import com.bw.movie.bean.ReleaseMovieData;
+import com.bw.movie.fragment.ComSoonFragment;
+import com.bw.movie.fragment.HotMovieFragment;
+import com.bw.movie.fragment.MovieFragment;
+import com.bw.movie.fragment.ReleaseFragment;
+import com.bw.movie.presenter.PresenterImpl;
+import com.bw.movie.utils.Contacts;
+import com.bw.movie.utils.SpUtils;
+import com.bw.movie.view.IView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-public class MovieListActivity extends BaseActivity {
+public class MovieListActivity extends BaseActivity implements IView {
     List<HotMovieData.ResultBean> mHotList=new ArrayList<>();
     List<ReleaseMovieData.ResultBean> mReleaseList=new ArrayList<>();
     List<ComingSoonData.ResultBean> mComingList=new ArrayList<>();
     private TextView mCity;
     private RadioGroup mRag;
     private RecyclerView mRecy;
-
+    private HashMap map;
+    private HashMap<String, Object> headMap;
+    private PresenterImpl presenter;
 
     @Override
     protected int initLayout() {
@@ -36,17 +48,14 @@ public class MovieListActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+
         mRag = findViewById(R.id.movie_list_rg);
         mCity = findViewById(R.id.movie_list_city);
-        mRecy = findViewById(R.id.movie_list_recy);
-        //findViewById(R.id.search_rb_hot);
-        mRecy.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
     @Override
     protected void setClicks() {
-
     }
 
     @Override
@@ -56,24 +65,23 @@ public class MovieListActivity extends BaseActivity {
 
     @Override
     protected void setProgress() {
-        Intent intent=getIntent();
-        IntentMovieData intentMovieData= (IntentMovieData) intent.getSerializableExtra("movieList");
-        mHotList=intentMovieData.getmHotList();
-        mReleaseList=intentMovieData.getmReleaseList();
-        mComingList=intentMovieData.getmComingList();
-        mRecy.setAdapter(new MovieListAdapter(MovieListActivity.this,0,mHotList,mReleaseList,mComingList));
+        getSupportFragmentManager().beginTransaction().replace(R.id.movie_list_fr,new HotMovieFragment()).commit();
+
+
         mRag.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId){
                     case R.id.search_rb_hot:
-                        mRecy.setAdapter(new MovieListAdapter(MovieListActivity.this,0,mHotList,mReleaseList,mComingList));
+                        getSupportFragmentManager().beginTransaction().replace(R.id.movie_list_fr,new HotMovieFragment()).commit();
                         break;
                     case R.id.search_rb_release:
-                        mRecy.setAdapter(new MovieListAdapter(MovieListActivity.this,1,mHotList,mReleaseList,mComingList));
+                        getSupportFragmentManager().beginTransaction().replace(R.id.movie_list_fr,new ReleaseFragment()).commit();
+
                         break;
                     case R.id.search_rb_coming:
-                        mRecy.setAdapter(new MovieListAdapter(MovieListActivity.this,2,mHotList,mReleaseList,mComingList));
+                        getSupportFragmentManager().beginTransaction().replace(R.id.movie_list_fr,new ComSoonFragment()).commit();
+
                         break;
                 }
             }
@@ -84,6 +92,20 @@ public class MovieListActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
+
+    }
+
+    @Override
+    public void successData(Object data) {
+        if(data instanceof MessageData){
+            MessageData messageData= (MessageData) data;
+            showShort(messageData.getMessage());
+        }
+
+    }
+
+    @Override
+    public void errorMsg(Object error) {
 
     }
 }

@@ -13,6 +13,8 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RadioButton;
@@ -28,6 +30,7 @@ import com.bw.movie.adapter.MovieCommentsAdapter;
 import com.bw.movie.adapter.MovieStillAdapter;
 import com.bw.movie.base.BaseActivity;
 import com.bw.movie.bean.FindMovieCommentData;
+import com.bw.movie.bean.MessageData;
 import com.bw.movie.bean.MovieDetailData;
 import com.bw.movie.bean.MovieMessage;
 import com.bw.movie.bean.SpacesItemDecoration;
@@ -58,7 +61,8 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
     private HashMap<String, Object> headmap;
     private FindMovieCommentData findMovieCommentData;
     private XRecyclerView commentXrecy;
-
+    private CheckBox followCb;
+    private HashMap<String, Object> map;
 
     @Override
     protected int initLayout() {
@@ -76,13 +80,18 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
         still = findViewById(R.id.still_rb);
         comments = findViewById(R.id.comments_rb);
         back = findViewById(R.id.detail_back);
+        followCb = findViewById(R.id.movie_follow_cb);
+        //---------------------------
         detail.setOnClickListener(this);
         trailer.setOnClickListener(this);
         back.setOnClickListener(this);
         still.setOnClickListener(this);
         comments.setOnClickListener(this);
-    }
+        followCb.setOnClickListener(this);
 
+
+
+    }
     @Override
     protected void setClicks() {
 
@@ -103,9 +112,10 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
         headmap.put("userId",userId);
         headmap.put("sessionId",sessionId);
         presenter = new PresenterImpl(this);
-        HashMap<String,Object> map=new HashMap<>();
+        map = new HashMap<>();
         map.put("movieId",movieId);
-        presenter.requestGEt(Contacts.MOVIE_DETAIL_URL,map, headmap,MovieDetailData.class);
+        presenter.requestGEt(Contacts.MOVIE_DETAIL_URL, map, headmap,MovieDetailData.class);
+
         //----------------------------------------------------------------------------
         //请求查看影片评论
         HashMap<String,Object> findCoomentsMap=new HashMap<>();
@@ -113,6 +123,7 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
         findCoomentsMap.put("page","1");
         findCoomentsMap.put("count","5");
         presenter.requestGEt(Contacts.FINDMOVIE_COMMENT_URL,findCoomentsMap,headmap,FindMovieCommentData.class);
+
 
     }
     @Override
@@ -220,6 +231,14 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
                 setPopupWindow(commentsView);
 
                 break;
+            case R.id.movie_follow_cb:
+                if(followCb.isChecked()){
+                    presenter.requestGEt(Contacts.FOLLMOVIE_URL,map,headmap,MessageData.class);
+                }else{
+                    presenter.requestGEt(Contacts.CANCEL_FOLLOWMOVIE,map,headmap,MessageData.class);
+
+                }
+                break;
 
         }
 
@@ -244,9 +263,19 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
            movieDetailData = (MovieDetailData) data;
            Glide.with(MovieDeailsActivity.this).load(movieDetailData.getResult().getImageUrl()).into(detailImage);
            movieName.setText(movieDetailData.getResult().getName());
+           if(movieDetailData.getResult().isFollowMovie()==1){
+               followCb.setChecked(true);
+           }else{
+               followCb.setChecked(false);
+           }
        }
        if(data instanceof FindMovieCommentData){
            findMovieCommentData = (FindMovieCommentData) data;
+       }
+       if(data instanceof MessageData){
+           MessageData messageData= (MessageData) data;
+           showShort(messageData.getMessage());
+
        }
     }
 

@@ -18,6 +18,7 @@
             android:layout_height="25dp"
             android:src="@mipmap/com_icon_movie_default"/>
         <CheckBox
+            android:id="@+id/movie_follow_cb"
             android:layout_alignParentRight="true"
             android:layout_width="25dp"
             android:layout_height="23dp"
