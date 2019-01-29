@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -38,18 +39,26 @@ import java.util.List;
 
 import recycler.coverflow.CoverFlowLayoutManger;
 import recycler.coverflow.RecyclerCoverFlow;
+//
+//<android.support.v7.widget.RecyclerView
+//        android:layout_below="@+id/theatre_layout"
+//        android:layout_marginTop="10dp"
+//        android:id="@+id/Theatre_Recy"
+//        android:layout_width="match_parent"
+//        android:visibility="visible"
+//        android:layout_height="300dp"></android.support.v7.widget.RecyclerView>
+//
 
 public class DetailsActivity extends BaseActivity implements IView {
     //你好
     private ImageView home_group_dingwei_image;
     private TextView Text_Name, Text_Address;
-    private ImageView Ding;
+    private ImageView Ding,theatre_return;
     private RelativeLayout home_group_relay;
     private RecyclerCoverFlow home_group_recyflow;
     private RelativeLayout home_group_relay2;
     // private View View;
     private View view;
-    private View viewXing;
     private List<ComingSoonData.ResultBean> mComingList = new ArrayList<>();
     private HashMap<String, Object> hashMap;
     private int id;
@@ -63,7 +72,8 @@ public class DetailsActivity extends BaseActivity implements IView {
     private TextView theatre_text1,theatre_text2;
     private TextView theatre_rb2;
     private RelativeLayout theatre_layout;
-    private RecyclerView Theatre_Recy,Theatre_Recy_Ping;
+    private LinearLayout Theatre_Recy;
+    private RecyclerView Theatre_Recy_Ping;
     private HashMap<String, Object> map;
     TextView xaing_address,xiang_phone,xiang_di,xiang_gong,xiang_zi;
     @Override
@@ -100,12 +110,13 @@ public class DetailsActivity extends BaseActivity implements IView {
         Theatre_Recy_Ping.setLayoutManager(new LinearLayoutManager(this));
         theatre_rb1.setOnClickListener(this);
         theatre_rb2.setOnClickListener(this);
-//        viewXing = View.inflate(DetailsActivity.this, R.layout.theatre_pop_xiang, null);
-//        xaing_address = viewXing.findViewById(R.id.xaing_address);
-//        xiang_phone = viewXing.findViewById(R.id.xiang_phone);
-//        xiang_di = viewXing.findViewById(R.id.xiang_di);
-//        xiang_gong = viewXing.findViewById(R.id.xiang_gong);
-//        xiang_zi = viewXing.findViewById(R.id.xiang_zi);
+
+        xaing_address = view.findViewById(R.id.xaing_address);
+        xiang_phone = view.findViewById(R.id.xiang_phone);
+        xiang_di = view.findViewById(R.id.xiang_di);
+        xiang_gong =view. findViewById(R.id.xiang_gong);
+        xiang_zi =view.findViewById(R.id.xiang_zi);
+        theatre_return= view.findViewById(R.id.theatre_return);
     }
 
     /**
@@ -208,7 +219,7 @@ public class DetailsActivity extends BaseActivity implements IView {
                 popupWindow.setOutsideTouchable(true);
 
 
-                Ding.setOnClickListener(new View.OnClickListener() {
+                theatre_return.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         popupWindow.dismiss();
@@ -221,19 +232,20 @@ public class DetailsActivity extends BaseActivity implements IView {
                 break;
             case R.id.theatre_rb1:
                 showShort("详情");
-                TheatrePopXiangAdapter theatrePopXiangAdapter=new TheatrePopXiangAdapter(dList,getApplicationContext());
-                Theatre_Recy.setAdapter(theatrePopXiangAdapter);
-                theatrePopXiangAdapter.notifyDataSetChanged();
-                Theatre_Recy.setLayoutManager(new LinearLayoutManager(this));
-                presenter.requestGEt(Contacts.SKIPMOIVE_URL, map, hashMap, DetailsData.class);
                 Theatre_Recy.setVisibility(View.VISIBLE);
                 Theatre_Recy_Ping.setVisibility(View.GONE);
+
+                theatre_text1.setVisibility(View.VISIBLE);
+                theatre_text2.setVisibility(View.GONE);
                 break;
 
             case R.id.theatre_rb2:
                 showShort("评论");
                 Theatre_Recy.setVisibility(View.GONE);
                 Theatre_Recy_Ping.setVisibility(View.VISIBLE);
+
+                theatre_text1.setVisibility(View.GONE);
+                theatre_text2.setVisibility(View.VISIBLE);
                 break;
 
         }
@@ -254,15 +266,14 @@ public class DetailsActivity extends BaseActivity implements IView {
             Text_Address.setText(result.getAddress());
             Glide.with(this).load(result.getLogo()).into(home_group_dingwei_image);
             //TextView xaing_address,xiang_phone,xiang_di,xiang_gong,xiang_zi;
-//            xaing_address.setText(result.getAddress());
-//            xiang_phone.setText(result.getPhone());
-//            xiang_di.setText(result.getVehicleRoute());
+            xaing_address.setText(result.getAddress());
+            xiang_phone.setText(result.getPhone());
+            xiang_di.setText(result.getVehicleRoute());
         }
 
         if (data instanceof ComingSoonData) {
             ComingSoonData comingSoonData = (ComingSoonData) data;
             mComingList.addAll(comingSoonData.getResult());
-
         }
 
         if (data instanceof TimeMovieData) {
