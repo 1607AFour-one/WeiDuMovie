@@ -45,7 +45,6 @@ public class AttentionActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId){
-
                     case R.id.Attention_Rb1:
                         Attention_Vp.setCurrentItem(0);
                         break;
