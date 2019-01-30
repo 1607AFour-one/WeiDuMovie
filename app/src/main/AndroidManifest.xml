@@ -36,7 +36,8 @@
         <activity android:name=".ui.MovieDeailsActivity" />
         <activity android:name=".ui.DetailsActivity" />
         <activity android:name=".ui.TicketRecordActivity" />
-        <activity android:name=".ui.AttentionActivity"></activity>
+        <activity android:name=".ui.AttentionActivity" />
+        <activity android:name=".ui.MyInfoActivity"></activity>
     </application>
 
 </manifest>
