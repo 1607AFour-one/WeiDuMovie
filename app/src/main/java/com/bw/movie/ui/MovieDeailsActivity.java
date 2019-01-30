@@ -201,6 +201,7 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
                     }
                 });
                 break;
+                //评论
             case R.id.comments_rb:
 
                 boolean isComments=true;

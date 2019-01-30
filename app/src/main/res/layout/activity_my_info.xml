@@ -16,11 +16,11 @@
         android:textSize="14sp" />
 
     <RelativeLayout
-        android:layout_width="340dp"
-        android:layout_height="188dp"
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
         android:layout_below="@+id/xinxi"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="26dp"
         android:background="@drawable/my_shape">
 
         <RelativeLayout
@@ -43,9 +43,9 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/ic_launcher_background"
-                android:layout_alignParentRight="true" />
+                android:src="@drawable/ic_launcher_background" />
         </RelativeLayout>
 
         <View
@@ -75,8 +75,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:text="你的益达"
-                android:layout_alignParentRight="true" />
+                android:layout_alignParentRight="true"
+                android:text="你的益达" />
 
             <View
                 android:layout_width="match_parent"
@@ -103,8 +103,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:text="男"
-                android:layout_alignParentRight="true" />
+                android:layout_alignParentRight="true"
+                android:text="男" />
 
             <View
                 android:layout_width="match_parent"
@@ -131,8 +131,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:text="1980-02-25"
-                android:layout_alignParentRight="true" />
+                android:layout_alignParentRight="true"
+                android:text="1980-02-25" />
 
         </RelativeLayout>
 
@@ -140,11 +140,11 @@
 
 
     <RelativeLayout
-        android:layout_width="340dp"
+        android:layout_width="wrap_content"
         android:layout_height="100dp"
-        android:layout_marginLeft="20dp"
+
         android:layout_marginTop="280dp"
-        android:layout_marginRight="20dp"
+
         android:background="@drawable/my_shape">
 
         <RelativeLayout
@@ -199,20 +199,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="0dp"
-                android:text="957641694@qq.com" />
+                android:text="957641694@qq.com"
+                android:layout_alignParentRight="true" />
         </RelativeLayout>
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="340dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
+
         android:layout_marginTop="395dp"
-        android:layout_marginRight="20dp"
+
         android:background="@drawable/my_shape"
         android:gravity="center">
 
