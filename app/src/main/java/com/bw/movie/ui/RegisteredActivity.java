@@ -96,17 +96,19 @@ public class RegisteredActivity extends BaseActivity implements IView {
         String phone = ZhuPhone.getText().toString().trim();
         String mail = ZhuMail.getText().toString().trim();
         String pass = ZhuPass.getText().toString().trim();
-
-        if(!RegexUtils.checkEmail(mail)){
+        if(sex.equals("")||date.equals("")){
+            showShort("性别不能为空");
+        }
+        else if(!RegexUtils.checkEmail(mail)||mail.equals("")){
             showShort("邮箱格式不正确");
             return;
-        }else if(!RegexUtils.checkMobile(phone)){
+        }else if(!RegexUtils.checkMobile(phone)||phone.equals("")){
             showShort("手机格式不正确");
             return;
-        }else if(!RegexUtils.checkChinese(name)){
+        }else if(!RegexUtils.checkChinese(name)||name.equals("")){
             showShort("昵称只能为中文");
             return;
-        }else if(!RegexUtils.checkDigit(pass)){
+        }else if(!RegexUtils.checkDigit(pass)||pass.equals("")){
             showShort("密码格式不正确");
             return;
         }else{
