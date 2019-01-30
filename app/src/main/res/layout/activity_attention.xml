@@ -13,9 +13,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
-        android:layout_marginTop="50dp"
-        >
-
+        android:layout_marginTop="50dp">
 
         <RadioButton
             android:id="@+id/Attention_Rb1"
@@ -24,7 +22,7 @@
             android:layout_height="wrap_content"
             android:button="@null"
             android:text="电影"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:layout_marginLeft="80dp"
             android:background="@drawable/movie_btn_sel"
             android:checked="true"

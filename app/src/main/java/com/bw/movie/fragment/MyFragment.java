@@ -38,7 +38,6 @@ public class MyFragment extends BaseFragment implements IView ,View.OnClickListe
         myInfo = view.findViewById(R.id.my_info);
         myGanzhu.setOnClickListener(this);
         myInfo.setOnClickListener(this);
-
     }
 
     @Override
@@ -60,11 +59,7 @@ public class MyFragment extends BaseFragment implements IView ,View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.The_ticket_record:
-
-                startActivity(new Intent(getContext(),TicketRecordActivity.class));
-                break;
-            case R.id.attention:
+            case R.id.my_guanzhu:
                 startActivity(new Intent(getContext(),AttentionActivity.class));
                 break;
             case R.id.my_info:
