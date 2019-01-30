@@ -42,7 +42,18 @@ public class Contacts {
     public static final String CINEMA_COMMENT_GREAT="cinema/v1/verify/cinemaCommentGreat";
     //影院评论
     public static final String CINEMA_COMMENT="cinema/v1/verify/cinemaComment";
-
-
-
+    //查询用户关注的影院信息
+    public static final String QUERY_CINEMA="cinema/v1/verify/findCinemaPageList";
+    //查询用户关注的影片列表
+    public static final String CINEMA_CINEMA="movie/v1/verify/findMoviePageList";
+    //根据电影ID查询电影信息
+    public static final String USERINFO_URL="user/v1/verify/getUserInfoByUserId";
+    //上传用户头像
+    public static final String UPLOAD_HEAD_URL="user/v1/verify/uploadHeadPic";
+    //修改用户信息
+    public static final String UPDATE_INFO_URL="user/v1/verify/modifyUserInfo";
+   /* //查询会员首页信息
+    public static final String CINEMA_CINEMA="user/v1/verify/findUserHomeInfo";
+    //修改密码*/
+    public static final String UPDATE_PWD_URL="user/v1/verify/modifyUserPwd";
 }
