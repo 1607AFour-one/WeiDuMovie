@@ -40,8 +40,11 @@ import com.bw.movie.utils.SpUtils;
 import com.bw.movie.view.IView;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import cn.jzvd.JZVideoPlayerStandard;
 
 public class MovieDeailsActivity extends BaseActivity implements IView {
 
@@ -63,6 +66,10 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
     private XRecyclerView commentXrecy;
     private CheckBox followCb;
     private HashMap<String, Object> map;
+    private HashMap<String, Object> greatMap;
+    private HashMap<String, Object> findCoomentsMap;
+    List<FindMovieCommentData.ResultBean> result=new ArrayList<>();
+    private MovieCommentsAdapter movieCommentsAdapter;
 
     @Override
     protected int initLayout() {
@@ -108,21 +115,26 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
         String movieId = intent.getStringExtra("movieId");
         int userId = SpUtils.getInt("userId");
         String sessionId=SpUtils.getString("sessionId");
+        //电影评论点赞的map;
+        greatMap = new HashMap<>();
+        //请求头map;
         headmap = new HashMap<>();
         headmap.put("userId",userId);
         headmap.put("sessionId",sessionId);
         presenter = new PresenterImpl(this);
+        //查询详情的map
         map = new HashMap<>();
         map.put("movieId",movieId);
         presenter.requestGEt(Contacts.MOVIE_DETAIL_URL, map, headmap,MovieDetailData.class);
 
         //----------------------------------------------------------------------------
         //请求查看影片评论
-        HashMap<String,Object> findCoomentsMap=new HashMap<>();
+        findCoomentsMap = new HashMap<>();
         findCoomentsMap.put("movieId",movieId);
         findCoomentsMap.put("page","1");
         findCoomentsMap.put("count","5");
-        presenter.requestGEt(Contacts.FINDMOVIE_COMMENT_URL,findCoomentsMap,headmap,FindMovieCommentData.class);
+        //点击弹出poppupWindow再请求网络
+        /*presenter.requestGEt(Contacts.FINDMOVIE_COMMENT_URL, findCoomentsMap,headmap,FindMovieCommentData.class);*/
 
 
     }
@@ -179,7 +191,8 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
                 popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
                     @Override
                     public void onDismiss() {
-                        popupWindow =null;
+
+                        JZVideoPlayerStandard.releaseAllVideos();
                     }
                 });
                 break;
@@ -209,9 +222,12 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
                 final RelativeLayout commentRelative=commentsView.findViewById(R.id.comment_Relative);
                 final ImageView image=commentsView.findViewById(R.id.comments_btn_image);
                 Button send=commentsView.findViewById(R.id.comments_btn_send);
+                //评论的recycleView
                 XRecyclerView commentXrecy= commentsView.findViewById(R.id.comments_xrecy);
                 commentXrecy.setLayoutManager(new LinearLayoutManager(MovieDeailsActivity.this));
-                commentXrecy.setAdapter(new MovieCommentsAdapter(MovieDeailsActivity.this,findMovieCommentData.getResult()));
+                movieCommentsAdapter = new MovieCommentsAdapter(MovieDeailsActivity.this,result);
+                commentXrecy.setAdapter(movieCommentsAdapter);
+                presenter.requestGEt(Contacts.FINDMOVIE_COMMENT_URL, findCoomentsMap,headmap,FindMovieCommentData.class);
 
                 image.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -229,9 +245,22 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
                         image.setVisibility(View.VISIBLE);
                     }
                 });
+                //评论的适配器
+                movieCommentsAdapter.setMovieCommentListener(new MovieCommentsAdapter.MovieCommentListener() {
+                    @Override
+                    public void getCommentPosition(int position) {
+                        if(result.get(position).getIsGreat()==1){
+                            greatMap.clear();
+                            greatMap.put("commentId",result.get(position).getCommentId());
+                            presenter.requestFormPost(Contacts.CINEMA_COMMENT_GREAT,greatMap,headmap,MessageData.class);
+                        }
+                    }
+                });
+
                 setPopupWindow(commentsView);
 
                 break;
+                //点击关注电影
             case R.id.movie_follow_cb:
                 if(followCb.isChecked()){
                     presenter.requestGEt(Contacts.FOLLMOVIE_URL,map,headmap,MessageData.class);
@@ -270,12 +299,17 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
                followCb.setChecked(false);
            }
        }
+       //查询对影片的评论
        if(data instanceof FindMovieCommentData){
            findMovieCommentData = (FindMovieCommentData) data;
+           result.addAll(findMovieCommentData.getResult());
+           movieCommentsAdapter.notifyDataSetChanged();
+
        }
        if(data instanceof MessageData){
            MessageData messageData= (MessageData) data;
            showShort(messageData.getMessage());
+           //movieCommentsAdapter.notifyDataSetChanged();
 
        }
     }

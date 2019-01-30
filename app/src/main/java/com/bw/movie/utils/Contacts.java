@@ -38,6 +38,8 @@ public class Contacts {
     public static final String FOLLMOVIE_URL="movie/v1/verify/followMovie";
     //取消关注电影
     public static final String CANCEL_FOLLOWMOVIE="movie/v1/verify/cancelFollowMovie";
+    //电影评论点赞
+    public static final String MOVIE_COMMENt_GREENT="movie/v1/verify/movieCommentGreat";
     //影院评论点赞
     public static final String CINEMA_COMMENT_GREAT="cinema/v1/verify/cinemaCommentGreat";
     //影院评论

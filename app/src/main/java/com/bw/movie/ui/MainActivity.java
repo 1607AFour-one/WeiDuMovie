@@ -21,6 +21,7 @@ import com.bw.movie.bean.LoginData;
 import com.bw.movie.presenter.PresenterImpl;
 import com.bw.movie.utils.Contacts;
 import com.bw.movie.utils.EncryptUtil;
+import com.bw.movie.utils.RegexUtils;
 import com.bw.movie.utils.SpUtils;
 import com.bw.movie.view.IView;
 
@@ -115,6 +116,18 @@ public class MainActivity extends BaseActivity implements IView {
             PresenterImpl presenter=new PresenterImpl(this);
             presenter.requestFormPost(Contacts.LOGIN_URL,map,headmap,LoginData.class);
         }
+        loginEdPhone.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                  boolean isPhonePass=RegexUtils.checkMobile(loginEdPhone.getText().toString());
+                  if(!isPhonePass){
+                      showShort("请输入正确的手机号格式");
+                  }
+                }
+            }
+        });
+
     }
 
     @Override

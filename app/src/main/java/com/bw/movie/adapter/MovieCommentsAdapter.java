@@ -41,13 +41,30 @@ public class MovieCommentsAdapter extends XRecyclerView.Adapter<MovieCommentsAda
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         RequestOptions requestOptions = RequestOptions.circleCropTransform();
         Glide.with(mContext).load(list.get(i).getCommentHeadPic()).apply(requestOptions).into(viewHolder.image);
         viewHolder.userName.setText(list.get(i).getCommentUserName());
         viewHolder.content.setText(list.get(i).getMovieComment());
         viewHolder.greatNum.setText(list.get(i).getGreatNum()+"");
         viewHolder.wirteNum.setText(list.get(i).getReplyNum()+"");
+        if(list.get(i).getIsGreat()==0){
+            Glide.with(mContext).load(R.mipmap.com_icon_praise_default).into(viewHolder.praiseImage);
+        }else{
+            Glide.with(mContext).load(R.mipmap.com_icon_praise_selected).into(viewHolder.praiseImage);
+        }
+        viewHolder.praiseImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(list.get(i).getIsGreat()==0){
+                    list.get(i).setIsGreat(1);
+                    movieCommentListener.getCommentPosition(i);
+                    list.get(i).setGreatNum(list.get(i).getGreatNum()+1);
+                }
+                notifyDataSetChanged();
+
+            }
+        });
 
     }
 
@@ -58,10 +75,10 @@ public class MovieCommentsAdapter extends XRecyclerView.Adapter<MovieCommentsAda
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView wirteNum,greatNum,date,content,userName;
-        ImageView image;
+        ImageView image,praiseImage;
         public ViewHolder(@NonNull View itemView) {
-
             super(itemView);
+            praiseImage=itemView.findViewById(R.id.comments_praise_image);
             image=itemView.findViewById(R.id.comments_head_image);
             userName=itemView.findViewById(R.id.comments_userName);
             content=itemView.findViewById(R.id.comments_content);
@@ -69,5 +86,14 @@ public class MovieCommentsAdapter extends XRecyclerView.Adapter<MovieCommentsAda
             greatNum=itemView.findViewById(R.id.comment_greatNum_tv);
             wirteNum=itemView.findViewById(R.id.comment_wirteNum_tv);
         }
+    }
+    MovieCommentListener movieCommentListener;
+    public interface MovieCommentListener{
+        void getCommentPosition(int position);
+    }
+
+
+    public void setMovieCommentListener(MovieCommentListener movieCommentListener) {
+        this.movieCommentListener = movieCommentListener;
     }
 }
