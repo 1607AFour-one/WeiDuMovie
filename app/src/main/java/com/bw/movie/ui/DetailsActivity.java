@@ -192,7 +192,7 @@ public class DetailsActivity extends BaseActivity implements IView {
                 HashMap<String, Object> mMap = new HashMap<>();
                 mMap.put("cinemasId", id + "");
                 mMap.put("movieId", movieId + "");
-                timeMovieAdapter = new TimeMovieAdapter(mList, getApplicationContext());
+                timeMovieAdapter = new TimeMovieAdapter(mList, getApplicationContext(),DetailsActivity.this);
                 time_xrecy.setAdapter(timeMovieAdapter);
                 //根据电影Id和影院ID查询电影排期
                 presenter.requestGEt(Contacts.TIMEMOVIE_URL, mMap, hashMap, TimeMovieData.class);

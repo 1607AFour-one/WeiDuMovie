@@ -1,6 +1,8 @@
 package com.bw.movie.adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,9 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.bean.TimeMovieData;
+import com.bw.movie.ui.SeatActivity;
+import com.bw.movie.ui.StartActivity;
 import com.bw.movie.utils.Contacts;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -21,10 +26,12 @@ public class TimeMovieAdapter extends RecyclerView.Adapter<TimeMovieAdapter.View
 
     private List<TimeMovieData.ResultBean> mList;
     private Context mContext;
+    private Activity activity;
 
-    public TimeMovieAdapter(List<TimeMovieData.ResultBean> mList, Context mContext) {
+    public TimeMovieAdapter(List<TimeMovieData.ResultBean> mList, Context mContext, Activity activity) {
         this.mList = mList;
         this.mContext = mContext;
+        this.activity = activity;
     }
 
     @NonNull
@@ -36,12 +43,22 @@ public class TimeMovieAdapter extends RecyclerView.Adapter<TimeMovieAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int i) {
         holder.time_Name.setText(mList.get(i).getScreeningHall() + "");
         //holder.time_Language.setText(mList.get(i).getBeginTime() + "");
         holder.time.setText(mList.get(i).getBeginTime()+"");
         holder.time_over.setText("——" + mList.get(i).getEndTime()+ "");
         holder.time_price.setText("￥" + 0.01 + "");
+
+        holder.time_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(activity,SeatActivity.class);
+                activity.startActivity(intent);
+
+        }
+        });
+
     }
 
     @Override

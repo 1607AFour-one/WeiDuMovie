@@ -73,6 +73,12 @@ public class NearFragment extends BaseFragment implements IView {
         Near_Rg = view.findViewById(R.id.Near_Rg);
         Near_Xrecy.setLayoutManager(new LinearLayoutManager(getActivity()));
         Recommend_Xrecy.setLayoutManager(new LinearLayoutManager(getActivity()));
+        view.findViewById(R.id.Edit_Text).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"搜索",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
