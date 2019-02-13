@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <EditText
+        android:id="@+id/ed_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="1888@qq.com"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btn_queding"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@drawable/movie_btn_selshape"
+            android:textColor="@color/white"
+            android:layout_margin="10dp"
+            android:text="确定"/>
+        <Button
+            android:id="@+id/btn_cancle"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@drawable/movie_btn_selshape"
+            android:layout_margin="10dp"
+            android:textColor="@color/white"
+            android:text="取消"/>
+
+    </LinearLayout>
+
+</LinearLayout>
