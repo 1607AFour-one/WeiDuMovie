@@ -3,6 +3,7 @@ package com.bw.movie.utils;
 import java.util.HashMap;
 import java.util.Map;
 
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.http.DELETE;
@@ -37,7 +38,7 @@ public interface MyApiService {
     Observable<ResponseBody> put(@Url String url, @QueryMap HashMap<String,Object> map, @HeaderMap HashMap<String,Object> headmap);
     @Multipart
     @POST
-    Observable<ResponseBody> upload(@Url String url, @QueryMap HashMap<String,Object> map, @HeaderMap HashMap<String,Object> headMap, @PartMap HashMap<String, RequestBody>  partMap);
+    Observable<ResponseBody> upload(@Url String url, @QueryMap HashMap<String,Object> map, @HeaderMap HashMap<String,Object> headMap, @Part MultipartBody.Part part);
     @FormUrlEncoded
     @POST
     Observable<ResponseBody> formPost(@Url String url, @FieldMap HashMap<String,Object> map,@HeaderMap HashMap<String,Object> headMap);

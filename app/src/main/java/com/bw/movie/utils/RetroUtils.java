@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -197,7 +198,7 @@ public class RetroUtils {
                 .subscribe(observer);
 
     }
-    public void upLoad(String url, HashMap<String,Object> map, HashMap<String,Object> headmap,HashMap<String, RequestBody> part, final HttpListener httpListener){
+    public void upLoad(String url, HashMap<String,Object> map, HashMap<String,Object> headmap, MultipartBody.Part part, final HttpListener httpListener){
         Observer<ResponseBody> observer=new Observer<ResponseBody>() {
             @Override
             public void onCompleted() {

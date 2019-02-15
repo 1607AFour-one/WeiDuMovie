@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 
 import java.util.HashMap;
 
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
 /**
@@ -128,7 +129,7 @@ public class ModleImpl implements IModle {
     }
 
     @Override
-    public void getUpLoadData(String url, HashMap<String, Object> map, HashMap<String, Object> headmap, HashMap<String, RequestBody> part, final Class clas, final MyCallBack callBack) {
+    public void getUpLoadData(String url, HashMap<String, Object> map, HashMap<String, Object> headmap, MultipartBody.Part part, final Class clas, final MyCallBack callBack) {
         RetroUtils.getInstence().upLoad(url, map, headmap,part, new RetroUtils.HttpListener() {
             @Override
             public void onSuccess(String jsonStr) {

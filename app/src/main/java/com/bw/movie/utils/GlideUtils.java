@@ -115,7 +115,6 @@ public class GlideUtils {
     }
 
     public static void setGifImage(Context mContext, Uri mImageUrl, View mImageView) {
-
         Glide.with (mContext)
                 .asGif () //强制加载动态图片
                 .load (mImageUrl)

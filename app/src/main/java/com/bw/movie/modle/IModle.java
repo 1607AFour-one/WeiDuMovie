@@ -4,6 +4,7 @@ import com.bw.movie.callback.MyCallBack;
 
 import java.util.HashMap;
 
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
 /**
@@ -16,6 +17,6 @@ public interface IModle {
     void getGetData(String url, HashMap<String,Object>map,HashMap<String, Object> headmap, Class clazz, MyCallBack callBack);
     void getDeleteData(String url, HashMap<String,Object>map,HashMap<String, Object> headmap, Class clazz, MyCallBack callBack);
     void getPutData(String url, HashMap<String,Object>map,HashMap<String, Object> headmap, Class clazz, MyCallBack callBack);
-    void getUpLoadData(String url, HashMap<String,Object> map,HashMap<String,Object>headmap, HashMap<String, RequestBody> part, Class clas, MyCallBack callBack);
+    void getUpLoadData(String url, HashMap<String,Object> map, HashMap<String,Object>headmap, MultipartBody.Part part, Class clas, MyCallBack callBack);
     void getformPostData(String url, HashMap<String,Object> formap, HashMap<String, Object> headmap, Class clazz, MyCallBack callBack);
 }

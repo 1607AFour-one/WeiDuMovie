@@ -6,6 +6,7 @@ import com.bw.movie.view.IView;
 
 import java.util.HashMap;
 
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
 /**
@@ -105,7 +106,7 @@ public class PresenterImpl implements IPresenter {
     }
 
     @Override
-    public void requestUpload(String url, HashMap<String, Object> map, HashMap<String, Object> headmap, HashMap<String, RequestBody> part, Class clas) {
+    public void requestUpload(String url, HashMap<String, Object> map, HashMap<String, Object> headmap, MultipartBody.Part part, Class clas) {
         modle.getUpLoadData(url, map, headmap,part, clas, new MyCallBack() {
             @Override
             public void setData(Object data) {

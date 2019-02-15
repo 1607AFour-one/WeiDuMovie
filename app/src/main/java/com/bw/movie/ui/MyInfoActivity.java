@@ -1,10 +1,27 @@
 package com.bw.movie.ui;
 
+import android.Manifest;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -16,16 +33,28 @@ import com.bumptech.glide.request.RequestOptions;
 import com.bw.movie.R;
 import com.bw.movie.base.BaseActivity;
 import com.bw.movie.bean.MyInfoData;
+import com.bw.movie.bean.UpLoadHeadData;
 import com.bw.movie.bean.UpdataInfoData;
 import com.bw.movie.presenter.PresenterImpl;
 import com.bw.movie.utils.Contacts;
 import com.bw.movie.utils.RegexUtils;
 import com.bw.movie.utils.SpUtils;
+import com.bw.movie.utils.TakePictureManager;
 import com.bw.movie.view.IView;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 
 public class MyInfoActivity extends BaseActivity implements IView {
 
@@ -47,6 +76,12 @@ public class MyInfoActivity extends BaseActivity implements IView {
     private EditText edName;
     private EditText ed_email;
     private HashMap<String, Object> headmap;
+    private RelativeLayout updata_head_image;
+    private PopupWindow popupWindow;
+    private Uri mUri;
+    private Uri uri;
+    private TakePictureManager takePictureManager;
+    private HashMap<String, Object> map;
 
     @Override
     protected int initLayout() {
@@ -70,6 +105,7 @@ public class MyInfoActivity extends BaseActivity implements IView {
         updata_phone=findViewById(R.id.updata_phone);
         updta_email=findViewById(R.id.updta_email);
         updta_pwd=findViewById(R.id.updta_pwd);
+        updata_head_image = findViewById(R.id.updata_head_image);
 
         updata_name.setOnClickListener(this);
         updata_sex.setOnClickListener(this);
@@ -77,6 +113,7 @@ public class MyInfoActivity extends BaseActivity implements IView {
         updata_phone.setOnClickListener(this);
         updta_email.setOnClickListener(this);
         updta_pwd.setOnClickListener(this);
+        updata_head_image.setOnClickListener(this);
 
 
     }
@@ -188,6 +225,102 @@ public class MyInfoActivity extends BaseActivity implements IView {
                 });
                 emailDialog.show();
                 break;
+            case R.id.updata_head_image:
+
+                View headview=View.inflate(MyInfoActivity.this,R.layout.my_head_pop,null);
+                map = new HashMap<>();
+                takePictureManager = new TakePictureManager(MyInfoActivity.this);
+                takePictureManager.setTailor(1, 3, 350, 350);
+                headview.findViewById(R.id.pop_camera_btn).setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        popupWindow.dismiss();
+                        //Toast.makeText(MyInfoActivity.this, "nimeide", Toast.LENGTH_SHORT).show();
+
+                        //拍照方式
+                        takePictureManager.startTakeWayByCarema();
+                        //回调
+                        takePictureManager.setTakePictureCallBackListener(new TakePictureManager.takePictureCallBackListener() {
+                            //成功拿到图片,isTailor 是否裁剪？ ,outFile 拿到的文件 ,filePath拿到的URl
+                            @Override
+                            public void successful(boolean isTailor, File outFile, Uri filePath) {
+                                //tvShow.setText(filePath.getPath());
+                                if(isTailor) {
+
+                                    if (outFile.exists()) {
+                                        RequestBody requestFile = RequestBody.create(MediaType.parse("image/jpg"), outFile);
+                                        MultipartBody.Part body = MultipartBody.Part.createFormData("image", outFile.getName(), requestFile);
+                                        presenter.requestUpload(Contacts.UPLOAD_HEAD_URL, map,headmap,body,UpLoadHeadData.class);
+                                        Glide.with(MyInfoActivity.this).load(outFile).into(headImage);
+
+                                    }else{
+                                        Toast.makeText(MyInfoActivity.this, "文件不存在", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                                //------------------------------
+
+                            }
+
+                            //失败回调
+                            @Override
+                            public void failed(int errorCode, List<String> deniedPermissions) {
+                                Log.e("==w",deniedPermissions.toString());
+                            }
+                        });
+                    }
+                });
+                //点击相册
+                headview.findViewById(R.id.pop_xce_btn).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        popupWindow.dismiss();
+                        //相册
+                        takePictureManager.startTakeWayByAlbum();
+                        takePictureManager.setTakePictureCallBackListener(new TakePictureManager.takePictureCallBackListener() {
+                            @Override
+                            public void successful(boolean isTailor, File outFile, Uri filePath) {
+                                if(isTailor) {
+
+                                    if (outFile.exists()) {
+                                        RequestBody requestFile = RequestBody.create(MediaType.parse("image/jpg"), outFile);
+                                        MultipartBody.Part body = MultipartBody.Part.createFormData("image", outFile.getName(), requestFile);
+                                        presenter.requestUpload(Contacts.UPLOAD_HEAD_URL, map,headmap,body,UpLoadHeadData.class);
+                                        Glide.with(MyInfoActivity.this).load(outFile).into(headImage);
+
+                                    }else{
+                                        Toast.makeText(MyInfoActivity.this, "文件不存在", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void failed(int errorCode, List<String> deniedPermissions) {
+
+                            }
+
+                        });
+                    }
+                });
+                headview.findViewById(R.id.pop_dismiss).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        popupWindow.dismiss();
+                    }
+                });
+
+
+
+                popupWindow = new PopupWindow(headview, WindowManager.LayoutParams.MATCH_PARENT,
+                        WindowManager.LayoutParams.WRAP_CONTENT);
+                popupWindow.setBackgroundDrawable(new ColorDrawable());
+                popupWindow.setFocusable(true);
+                // 设置点击popupwindow外屏幕其它地方消失
+                popupWindow.setOutsideTouchable(true);
+                popupWindow.setAnimationStyle(R.style.popwin_anim_style);
+                popupWindow.showAtLocation(MyInfoActivity.this.findViewById(R.id.relay), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+
+                break;
         }
 
     }
@@ -223,13 +356,40 @@ public class MyInfoActivity extends BaseActivity implements IView {
         }
         if(data instanceof UpdataInfoData){
             UpdataInfoData updataInfoData= (UpdataInfoData) data;
-            Toast.makeText(MyInfoActivity.this, updataInfoData.getMessage(), Toast.LENGTH_SHORT).show();
+
+            //Toast.makeText(MyInfoActivity.this, updataInfoData.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+        if(data instanceof UpLoadHeadData){
+            UpLoadHeadData upLoadHeadData= (UpLoadHeadData) data;
+            SpUtils.putString("headPic",upLoadHeadData.getHeadPath());
+            Toast.makeText(MyInfoActivity.this, upLoadHeadData.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
     public void errorMsg(Object error) {
 
+    }
+    //----------------
+
+    //把本地的onActivityResult()方法回调绑定到对象
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        takePictureManager.attachToActivityForResult(requestCode, resultCode, data);
+    }
+
+    //onRequestPermissionsResult()方法权限回调绑定到对象
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        takePictureManager.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SpUtils.putString("nickName",name.getText().toString().trim());
     }
 
     @Override
@@ -246,6 +406,7 @@ public class MyInfoActivity extends BaseActivity implements IView {
         presenter.onDetach();
         super.onDestroy();
     }
+    //----
 
 
 }
