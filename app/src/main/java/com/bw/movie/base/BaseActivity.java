@@ -1,13 +1,17 @@
 package com.bw.movie.base;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +20,33 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.bw.movie.utils.SpUtils;
+import com.bw.movie.weight.ErrorView;
 
-public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
+public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener,NetBroadcastReceiver.NetStatusMonitor {
+
+    @SuppressLint("HandlerLeak")
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if (msg.what == 100) {
+                errorView.setVisibility(View.VISIBLE);
+            } else {
+                errorView.setVisibility(View.GONE);
+            }
+        }
+    };
+    private boolean netStatus;
+    private NetBroadcastReceiver netBroadcastReceiver;
+    private ErrorView errorView;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         init();
+        errorView = new ErrorView(this);
+
+        ((ViewGroup) getWindow().getDecorView()).addView(errorView);
     }
     /*
      * 解决沉浸式头部顶住头
@@ -103,6 +127,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
             initListener();
             setClicks();
             setProgress();
+        } else {
+            throw new IllegalArgumentException("please load the activity layout");
         }
 
     };
@@ -125,7 +151,53 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //注册网络状态监听的广播
+        registerBroadcastReceiver();
 
+    }
+
+    private void registerBroadcastReceiver() {
+        //注册广播
+        if (netBroadcastReceiver == null) {
+            netBroadcastReceiver = new NetBroadcastReceiver();
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+            registerReceiver(netBroadcastReceiver, filter);
+            //设置监听
+            netBroadcastReceiver.setStatusMonitor(this);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (netBroadcastReceiver != null) {
+            //注销广播
+            unregisterReceiver(netBroadcastReceiver);
+        }
+
+    }
+
+    @Override
+    public void onNetChange(boolean netStatus) {
+        this.netStatus = netStatus;
+        isNetConnect();
+    }
+
+    private void isNetConnect() {
+        Message message = new Message();
+        if (netStatus) {
+            message.what = 99;
+            handler.sendMessage(message);
+        } else {
+            message.what = 100;
+            handler.sendMessage(message);
+        }
+    }
 
 
 }
