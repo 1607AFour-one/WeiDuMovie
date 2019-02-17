@@ -23,7 +23,9 @@ import com.bw.movie.utils.Contacts;
 import com.bw.movie.utils.EncryptUtil;
 import com.bw.movie.utils.RegexUtils;
 import com.bw.movie.utils.SpUtils;
+import com.bw.movie.utils.WXUtils;
 import com.bw.movie.view.IView;
+import com.tencent.mm.opensdk.modelmsg.SendAuth;
 
 import java.util.HashMap;
 
@@ -76,6 +78,7 @@ public class MainActivity extends BaseActivity implements IView {
         registTv.setOnClickListener(this);
         loginCbRember.setOnClickListener(this);
         loginCbAuto.setOnClickListener(this);
+
 
 
 
@@ -161,6 +164,13 @@ public class MainActivity extends BaseActivity implements IView {
                 presenter.requestFormPost(Contacts.LOGIN_URL,map,headmap,LoginData.class);
                 break;
             case R.id.login_image_weixin:
+                if (WXUtils.success(this)) {
+                    SendAuth.Req req = new SendAuth.Req();
+                    req.scope = "snsapi_userinfo";
+                    req.state = "wx_login_duzun";
+                    WXUtils.reg(this).sendReq(req);
+                    finish();
+                }
                 break;
         }
 

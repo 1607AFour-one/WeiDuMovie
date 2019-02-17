@@ -15,8 +15,10 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.bw.movie.R;
+import com.bw.movie.app.MyApp;
 import com.bw.movie.base.BaseFragment;
 import com.bw.movie.ui.AttentionActivity;
+import com.bw.movie.ui.MainActivity;
 import com.bw.movie.ui.MyInfoActivity;
 import com.bw.movie.ui.TicketRecordActivity;
 import com.bw.movie.utils.SpUtils;
@@ -47,6 +49,7 @@ public class MyFragment extends BaseFragment implements IView ,View.OnClickListe
         nickName = view.findViewById(R.id.my_nickname_text);
         myGanzhu.setOnClickListener(this);
         myInfo.setOnClickListener(this);
+        head_image.setOnClickListener(this);
 
     }
 
@@ -85,6 +88,14 @@ public class MyFragment extends BaseFragment implements IView ,View.OnClickListe
             case R.id.my_info:
                 startActivity(new Intent(getActivity(),MyInfoActivity.class));
                 break;
+            case R.id.my_header_image:
+               // View view=View.inflate()
+
+                MyApp.getInstance().exitAllActivity();
+                startActivity(new Intent(getActivity(),MainActivity.class));
+                SpUtils.removeAll();
+                break;
+
         }
     }
 }

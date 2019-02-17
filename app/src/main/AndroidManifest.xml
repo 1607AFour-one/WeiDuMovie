@@ -4,9 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".app.MyApp"
@@ -41,7 +41,8 @@
         <activity android:name=".ui.TicketRecordActivity" />
         <activity android:name=".ui.AttentionActivity" />
         <activity android:name=".ui.MyInfoActivity" />
-        <activity android:name=".ui.SeatActivity"></activity>
+        <activity android:name=".ui.SeatActivity" />
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
@@ -49,9 +50,13 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_provider_paths"/>
+                android:resource="@xml/file_provider_paths" />
         </provider>
 
+        <activity android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            ></activity>
     </application>
 
 </manifest>

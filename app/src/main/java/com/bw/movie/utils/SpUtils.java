@@ -105,8 +105,12 @@ public class SpUtils {
      *
      * @return
      */
+
     public static void removeString(String key) {
         getPreferneces().edit().remove(key).commit();
+    }
+    public static void removeAll() {
+        getPreferneces().edit().clear().commit();
     }
 
 

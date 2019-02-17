@@ -19,6 +19,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.bw.movie.app.MyApp;
 import com.bw.movie.utils.SpUtils;
 import com.bw.movie.weight.ErrorView;
 
@@ -43,6 +44,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MyApp.getInstance().addActivity(this);
         init();
         errorView = new ErrorView(this);
 

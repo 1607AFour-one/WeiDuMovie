@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.adapter.MyHomeAdapter;
+import com.bw.movie.app.MyApp;
 import com.bw.movie.custom.MyViewPager;
 import com.bw.movie.fragment.MovieFragment;
 import com.bw.movie.fragment.MyFragment;
@@ -43,6 +44,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        MyApp.getInstance().addActivity(this);
         initView();
         initData();
         MyHomeAdapter myHomeAdapter = new MyHomeAdapter(getSupportFragmentManager(), fList, this);

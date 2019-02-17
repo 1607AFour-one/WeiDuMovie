@@ -60,4 +60,6 @@ public class Contacts {
     public static final String CINEMA_CINEMA="user/v1/verify/findUserHomeInfo";
     //修改密码*/
     public static final String UPDATE_PWD_URL="user/v1/verify/modifyUserPwd";
+    //微信登录
+    public static final String WECHAT_LOGIN="user/v1/weChatBindingLogin";
 }
