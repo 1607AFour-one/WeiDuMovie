@@ -45,7 +45,6 @@ public class SeatActivity extends BaseActivity implements IView {
     }
     @Override
     protected void initView() {
-
         alipy = findViewById(R.id.alipy);
         view = View.inflate(SeatActivity.this, R.layout.alipay_item, null);
 
