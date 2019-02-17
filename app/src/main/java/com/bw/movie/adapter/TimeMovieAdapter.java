@@ -54,6 +54,7 @@ public class TimeMovieAdapter extends RecyclerView.Adapter<TimeMovieAdapter.View
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(activity,SeatActivity.class);
+                intent.putExtra("id",mList.get(i).getId());
                 activity.startActivity(intent);
 
         }

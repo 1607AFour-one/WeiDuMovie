@@ -1,5 +1,7 @@
 package com.bw.movie.utils;
 
+import java.net.URL;
+
 /**
  * author:author${车文飞}
  * data:2019/1/23
@@ -60,4 +62,6 @@ public class Contacts {
     public static final String CINEMA_CINEMA="user/v1/verify/findUserHomeInfo";
     //修改密码*/
     public static final String UPDATE_PWD_URL="user/v1/verify/modifyUserPwd";
+    //下单
+    public static final String ORDER_URL="movie/v1/verify/buyMovieTicket";
 }
