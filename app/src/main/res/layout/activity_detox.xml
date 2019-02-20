@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.DetoxActivity">
+
+    <RelativeLayout
+        android:id="@+id/home_group_relay2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <RelativeLayout
+            android:id="@+id/home_group_relay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/Text_Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_toRightOf="@id/home_group_dingwei_image"
+                android:text="电影院"
+                android:textSize="14sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                />
+
+            <TextView
+                android:id="@+id/Text_Address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Text_Name"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/home_group_dingwei_image"
+                android:text="电影院详细地址"
+                android:textSize="12sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/Ding"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_margin="15dp"
+            android:src="@mipmap/com_icon_navigation_default"
+            />
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_below="@+id/home_group_relay2"
+        android:id="@+id/film_detail_rels0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        >
+
+
+            <RelativeLayout
+                android:id="@+id/film_detail_rels2"
+                android:background="@mipmap/dianyingbeijing4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/predator"
+                    android:layout_width="103dp"
+                    android:layout_height="130dp"
+                    android:layout_marginLeft="24dp"
+                    android:src="@mipmap/ic_launcher"
+                    android:layout_marginTop="8dp"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/film_detail_rels3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+
+                    android:layout_toRightOf="@id/predator"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/detail_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="片名"
+                        android:textSize="16sp"
+                        android:textColor="#fff"
+                        android:layout_marginTop="10dp"
+                        />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="类型："
+                            android:textSize="11sp"
+                            android:textColor="#fff"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="动作/科幻/冒险"
+                            android:id="@+id/detail_type"
+                            android:textSize="11sp"
+                            android:textColor="#fff"
+                            />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:text="导演："
+                            android:textSize="11sp"
+                            android:textColor="#fff"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:text="沙恩 布莱克"
+                            android:textSize="11sp"
+                            android:id="@+id/detail_director"
+                            android:textColor="#fff"
+                            />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:text="时长："
+                            android:textSize="11sp"
+                            android:textColor="#fff"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:text="时长：106分钟"
+                            android:textSize="11sp"
+                            android:id="@+id/details_time"
+                            android:textColor="#fff"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:text="产地："
+                            android:textSize="11sp"
+                            android:textColor="#fff"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:text="美国"
+                            android:id="@+id/details_address"
+                            android:textSize="11sp"
+                            android:textColor="#fff"
+                            />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <ImageView
+                    android:id="@+id/deail_dismiss"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/com_icon_down_default"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/Time_Xrecy"
+        android:layout_below="@+id/film_detail_rels0"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        ></android.support.v7.widget.RecyclerView>
+
+
+
+    <ImageView
+        android:id="@+id/FanHui"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:src="@mipmap/com_icon_my_fanhui" />
+
+
+
+</RelativeLayout>

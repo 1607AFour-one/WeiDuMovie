@@ -9,8 +9,8 @@
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:background="@drawable/item_shape"
         >
         <TextView
@@ -60,9 +60,10 @@
             android:text="52.5"
             android:textSize="30sp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="30dp"
             android:layout_centerVertical="true"
             android:textColor="#000"
+
             />
         <ImageView
             android:id="@+id/time_image"
@@ -71,6 +72,7 @@
             android:src="@mipmap/com_icon_next_default"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
             />
 
     </RelativeLayout>

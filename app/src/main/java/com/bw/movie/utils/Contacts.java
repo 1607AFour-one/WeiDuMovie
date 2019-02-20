@@ -62,5 +62,7 @@ public class Contacts {
     public static final String WECHAT_LOGIN="user/v1/weChatBindingLogin";
     //下单
     public static final String ORDER_URL="movie/v1/verify/buyMovieTicket";
+    //购票记录
+    public static final String RECORD_URL="user/v1/verify/findUserBuyTicketRecordList";
 
 }
