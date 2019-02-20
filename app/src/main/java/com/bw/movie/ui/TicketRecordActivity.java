@@ -50,7 +50,6 @@ public class TicketRecordActivity extends BaseActivity implements IView {
     protected void setClicks() {
 
     }
-
     @Override
     protected void initListener() {
 
