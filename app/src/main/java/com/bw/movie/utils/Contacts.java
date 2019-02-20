@@ -18,7 +18,6 @@ public class Contacts {
     public static final String RECOMMEND_URL="cinema/v1/findRecommendCinemas";
 
     public static final String NEARMOVIE_URL="cinema/v1/findNearbyCinemas";
-
     public static final String FINDMOVIEBYID_URL="movie/v1/findMoviesById";
     //关注
     public static final String CLICKMOVIE_URL="cinema/v1/verify/followCinema";
@@ -64,5 +63,7 @@ public class Contacts {
     public static final String ORDER_URL="movie/v1/verify/buyMovieTicket";
     //支付
     public static final String URL_GO_TO_PAY="movie/v1/verify/pay";
+    //购票记录
+    public static final String RECORD_URL="user/v1/verify/findUserBuyTicketRecordList";
 
 }

@@ -40,6 +40,7 @@ public class MyFragment extends BaseFragment implements IView ,View.OnClickListe
     private TextView nickName;
     private PopupWindow popupWindow;
     private RelativeLayout relay;
+    private LinearLayout my_record;
 
     @Override
     protected int setLayoutId() {
@@ -54,11 +55,12 @@ public class MyFragment extends BaseFragment implements IView ,View.OnClickListe
         myInfo = view.findViewById(R.id.my_info);
         head_image = view.findViewById(R.id.my_header_image);
         nickName = view.findViewById(R.id.my_nickname_text);
+        my_record = view.findViewById(R.id.my_record);
         relay = view.findViewById(R.id.relay);
         myGanzhu.setOnClickListener(this);
         myInfo.setOnClickListener(this);
         head_image.setOnClickListener(this);
-
+        my_record.setOnClickListener(this);
     }
 
     @Override
@@ -123,6 +125,10 @@ public class MyFragment extends BaseFragment implements IView ,View.OnClickListe
 
 
 
+                break;
+            case R.id.my_record:
+                Intent intent=new Intent(getContext(),TicketRecordActivity.class);
+                startActivity(intent);
                 break;
 
         }
