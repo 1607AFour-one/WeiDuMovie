@@ -53,12 +53,10 @@
                 android:resource="@xml/file_provider_paths" />
         </provider>
 
-        <activity
-            android:name=".wxapi.WXEntryActivity"
+        <activity android:name=".wxapi.WXEntryActivity"
             android:exported="true"
-            android:launchMode="singleTop" />
-        <activity android:name=".ui.BuyActivity" />
-        <activity android:name=".ui.DetoxActivity"></activity>
+            android:launchMode="singleTop"
+            ></activity>
     </application>
 
 </manifest>

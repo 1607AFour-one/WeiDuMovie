@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.MyFragment"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:id="@+id/relay">
     <RelativeLayout
         android:id="@+id/my_fr_relay"
         android:layout_width="match_parent"

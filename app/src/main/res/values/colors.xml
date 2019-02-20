@@ -12,6 +12,7 @@
     <color name="white">#fff</color>
     <color name="colorTouGray">#97808080</color>
     <color name="text_color_ccc">#ccc</color>
+    <color name="text_color_alpha">#20666666</color>
 
 
     <!-- dots inactive colors -->

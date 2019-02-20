@@ -118,6 +118,8 @@ public class MyInfoActivity extends BaseActivity implements IView {
 
     }
 
+
+
     @Override
     protected void setClicks() {
 

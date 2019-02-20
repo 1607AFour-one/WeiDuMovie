@@ -153,24 +153,34 @@ public class MainActivity extends BaseActivity implements IView {
             case R.id.login_lin1:
                 break;
             case R.id.login_btn_login:
-                String phone=loginEdPhone.getText().toString().trim();
-                String pwd=loginEdPwd.getText().toString().trim();
-                HashMap<String,Object> map=new HashMap<>();
-                HashMap<String,Object>headmap=new HashMap<>();
-                String encrypt = EncryptUtil.encrypt(pwd);
-                map.put("phone",phone);
-                map.put("pwd",encrypt);
-                PresenterImpl presenter=new PresenterImpl(this);
-                presenter.requestFormPost(Contacts.LOGIN_URL,map,headmap,LoginData.class);
+                if(getNetStatus()){
+                    String phone=loginEdPhone.getText().toString().trim();
+                    String pwd=loginEdPwd.getText().toString().trim();
+                    HashMap<String,Object> map=new HashMap<>();
+                    HashMap<String,Object>headmap=new HashMap<>();
+                    String encrypt = EncryptUtil.encrypt(pwd);
+                    map.put("phone",phone);
+                    map.put("pwd",encrypt);
+                    PresenterImpl presenter=new PresenterImpl(this);
+                    presenter.requestFormPost(Contacts.LOGIN_URL,map,headmap,LoginData.class);
+                }else{
+                    showShort("请检查网络");
+                }
+
                 break;
             case R.id.login_image_weixin:
-                if (WXUtils.success(this)) {
-                    SendAuth.Req req = new SendAuth.Req();
-                    req.scope = "snsapi_userinfo";
-                    req.state = "wx_login_duzun";
-                    WXUtils.reg(this).sendReq(req);
-                    finish();
+                if(getNetStatus()){
+                    if (WXUtils.success(this)) {
+                        SendAuth.Req req = new SendAuth.Req();
+                        req.scope = "snsapi_userinfo";
+                        req.state = "wx_login_duzun";
+                        WXUtils.reg(this).sendReq(req);
+                        finish();
+                    }
+                }else{
+                    showShort("请检查网络");
                 }
+
                 break;
         }
 
@@ -200,9 +210,9 @@ public class MainActivity extends BaseActivity implements IView {
             SpUtils.putString("sessionId",loginData.getResult().getSessionId());
             SpUtils.putString("nickName",loginData.getResult().getUserInfo().getNickName());
             SpUtils.putString("headPic",loginData.getResult().getUserInfo().getHeadPic());
+                openActivity(HomeActivity.class);
+                finish();
 
-            openActivity(HomeActivity.class);
-            finish();
         }
 
     }
