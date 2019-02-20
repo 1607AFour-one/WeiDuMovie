@@ -2,7 +2,9 @@ package com.bw.movie.base;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
@@ -12,6 +14,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,15 +43,46 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     private boolean netStatus;
     private NetBroadcastReceiver netBroadcastReceiver;
     private ErrorView errorView;
+    private void diaLog(Context context){
+        AlertDialog.Builder builder=new AlertDialog.Builder(context);
+        builder.setTitle("提示");
+        builder.setMessage("网络中断");
+        builder.setPositiveButton("设置", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent =  new Intent(Settings.ACTION_AIRPLANE_MODE_SETTINGS);
+                startActivity(intent);
+
+            }
+        });
+        builder.setNegativeButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+
+            }
+        });
+        AlertDialog dialog=builder.create();
+        dialog.show();
+
+    }
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(enableRightSliding()){
+
+            SlidingLayout slidingLayout = new SlidingLayout(this);
+            slidingLayout.replaceCurrentLayout(this);
+        }
         MyApp.getInstance().addActivity(this);
         init();
-        errorView = new ErrorView(this);
+        errorView = new ErrorView(this,null);
 
         ((ViewGroup) getWindow().getDecorView()).addView(errorView);
+    }
+    protected boolean enableRightSliding(){
+        return true;
     }
     /*
      * 解决沉浸式头部顶住头
@@ -188,6 +222,9 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     public void onNetChange(boolean netStatus) {
         this.netStatus = netStatus;
         isNetConnect();
+    }
+    public boolean getNetStatus(){
+        return netStatus;
     }
 
     private void isNetConnect() {

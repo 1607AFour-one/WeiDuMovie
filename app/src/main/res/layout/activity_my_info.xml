@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.MyInfoActivity"
-    android:id="@+id/relay">
+    android:id="@+id/relay"
+    android:background="@color/white">
     <TextView
         android:id="@+id/xinxi"
         android:layout_width="wrap_content"
@@ -21,8 +22,10 @@
         android:layout_height="192dp"
         android:layout_below="@+id/xinxi"
         android:layout_centerHorizontal="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:layout_marginTop="26dp"
-        android:background="@drawable/my_shape">
+        android:background="@drawable/item_shape">
 
         <RelativeLayout
             android:id="@+id/updata_head_image"
@@ -147,7 +150,9 @@
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:layout_marginTop="280dp"
-        android:background="@drawable/my_shape">
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/item_shape">
 
         <RelativeLayout
             android:id="@+id/updata_phone"
@@ -212,8 +217,10 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="395dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
 
-        android:background="@drawable/my_shape"
+        android:background="@drawable/item_shape"
         android:gravity="center">
 
         <TextView

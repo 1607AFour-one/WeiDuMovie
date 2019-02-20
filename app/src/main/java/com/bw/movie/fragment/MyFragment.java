@@ -2,13 +2,18 @@ package com.bw.movie.fragment;
 
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +38,8 @@ public class MyFragment extends BaseFragment implements IView ,View.OnClickListe
     private LinearLayout myGanzhu;
     private ImageView head_image;
     private TextView nickName;
+    private PopupWindow popupWindow;
+    private RelativeLayout relay;
 
     @Override
     protected int setLayoutId() {
@@ -47,6 +54,7 @@ public class MyFragment extends BaseFragment implements IView ,View.OnClickListe
         myInfo = view.findViewById(R.id.my_info);
         head_image = view.findViewById(R.id.my_header_image);
         nickName = view.findViewById(R.id.my_nickname_text);
+        relay = view.findViewById(R.id.relay);
         myGanzhu.setOnClickListener(this);
         myInfo.setOnClickListener(this);
         head_image.setOnClickListener(this);
@@ -89,11 +97,32 @@ public class MyFragment extends BaseFragment implements IView ,View.OnClickListe
                 startActivity(new Intent(getActivity(),MyInfoActivity.class));
                 break;
             case R.id.my_header_image:
-               // View view=View.inflate()
+                View exitView=View.inflate(getActivity(),R.layout.exit_login,null);
+                exitView.findViewById(R.id.exit_tv).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        MyApp.getInstance().exitAllActivity();
+                        startActivity(new Intent(getActivity(),MainActivity.class));
+                        SpUtils.removeAll();
+                    }
+                });
+                exitView.findViewById(R.id.cancle_tv).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        popupWindow.dismiss();
+                    }
+                });
+                popupWindow = new PopupWindow(exitView, WindowManager.LayoutParams.MATCH_PARENT,
+                        WindowManager.LayoutParams.WRAP_CONTENT);
+                popupWindow.setBackgroundDrawable(new ColorDrawable());
+                popupWindow.setFocusable(true);
+                // 设置点击popupwindow外屏幕其它地方消失
+                popupWindow.setOutsideTouchable(true);
+                popupWindow.setAnimationStyle(R.style.popwin_anim_style);
+                popupWindow.showAtLocation(relay, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
 
-                MyApp.getInstance().exitAllActivity();
-                startActivity(new Intent(getActivity(),MainActivity.class));
-                SpUtils.removeAll();
+
+
                 break;
 
         }
