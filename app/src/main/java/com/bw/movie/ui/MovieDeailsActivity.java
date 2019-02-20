@@ -70,6 +70,8 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
     private HashMap<String, Object> findCoomentsMap;
     List<FindMovieCommentData.ResultBean> result=new ArrayList<>();
     private MovieCommentsAdapter movieCommentsAdapter;
+    private TextView detail_by_card;
+    private String movieId;
 
     @Override
     protected int initLayout() {
@@ -88,7 +90,9 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
         comments = findViewById(R.id.comments_rb);
         back = findViewById(R.id.detail_back);
         followCb = findViewById(R.id.movie_follow_cb);
+        detail_by_card = findViewById(R.id.detail_by_card);
         //---------------------------
+        detail_by_card.setOnClickListener(this);
         detail.setOnClickListener(this);
         trailer.setOnClickListener(this);
         back.setOnClickListener(this);
@@ -112,7 +116,7 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
     @Override
     protected void setProgress() {
         Intent intent=getIntent();
-        String movieId = intent.getStringExtra("movieId");
+        movieId = intent.getStringExtra("movieId");
         int userId = SpUtils.getInt("userId");
         String sessionId=SpUtils.getString("sessionId");
         //电影评论点赞的map;
@@ -124,13 +128,13 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
         presenter = new PresenterImpl(this);
         //查询详情的map
         map = new HashMap<>();
-        map.put("movieId",movieId);
+        map.put("movieId", movieId);
         presenter.requestGEt(Contacts.MOVIE_DETAIL_URL, map, headmap,MovieDetailData.class);
 
         //----------------------------------------------------------------------------
         //请求查看影片评论
         findCoomentsMap = new HashMap<>();
-        findCoomentsMap.put("movieId",movieId);
+        findCoomentsMap.put("movieId", movieId);
         findCoomentsMap.put("page","1");
         findCoomentsMap.put("count","5");
         //点击弹出poppupWindow再请求网络
@@ -268,6 +272,14 @@ public class MovieDeailsActivity extends BaseActivity implements IView {
                     presenter.requestGEt(Contacts.CANCEL_FOLLOWMOVIE,map,headmap,MessageData.class);
 
                 }
+                break;
+
+            case R.id.detail_by_card:
+                Intent intent=new Intent(this,BuyActivity.class);
+               // Toast.makeText(this,movieDetailData.getResult().getName()+"",Toast.LENGTH_SHORT).show();
+                intent.putExtra("name",movieDetailData.getResult().getName()+"");
+                intent.putExtra("movieId",movieId);
+                startActivity(intent);
                 break;
 
         }

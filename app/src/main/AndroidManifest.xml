@@ -36,11 +36,11 @@
         <activity android:name=".ui.RegisteredActivity" />
         <activity android:name=".ui.HomeActivity" />
         <activity android:name=".ui.MovieListActivity" />
-        <activity android:name=".ui.MovieDeailsActivity" android:theme="@style/AppTheme.Slide"/>
+        <activity android:name=".ui.MovieDeailsActivity" />
         <activity android:name=".ui.DetailsActivity" />
         <activity android:name=".ui.TicketRecordActivity" />
         <activity android:name=".ui.AttentionActivity" />
-        <activity android:name=".ui.MyInfoActivity" android:theme="@style/AppTheme.Slide"/>
+        <activity android:name=".ui.MyInfoActivity" />
         <activity android:name=".ui.SeatActivity" />
 
         <provider
@@ -53,11 +53,10 @@
                 android:resource="@xml/file_provider_paths" />
         </provider>
 
-        <activity
-            android:name=".wxapi.WXEntryActivity"
+        <activity android:name=".wxapi.WXEntryActivity"
             android:exported="true"
-            android:launchMode="singleTop" />
-        <activity android:name=".wxapi.WXPayEntryActivity"></activity>
+            android:launchMode="singleTop"
+            ></activity>
     </application>
 
 </manifest>
