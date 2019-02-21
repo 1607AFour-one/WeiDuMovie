@@ -59,6 +59,11 @@ public class MainActivity extends BaseActivity implements IView {
         return R.layout.activity_main;
     }
 
+    @Override
+    protected boolean enableRightSliding() {
+        return false;
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void initView() {

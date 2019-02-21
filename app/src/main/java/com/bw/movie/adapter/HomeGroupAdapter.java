@@ -80,7 +80,7 @@ public class HomeGroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             ((ViewHolder) viewHolder).recyflow.setGreyItem(true);
         }
         if(viewHolder instanceof ViewHolder2){
-           // ((ViewHolder2) viewHolder).name.setText(mHotList.get(i).g);
+            ((ViewHolder2) viewHolder).name.setText("热门电影");
             LinearLayoutManager linearLayoutManager=new LinearLayoutManager(mContext);
             linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
             ((ViewHolder2) viewHolder).recy.setLayoutManager(linearLayoutManager);
@@ -94,6 +94,7 @@ public class HomeGroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             });
         }
         if(viewHolder instanceof ViewHolder3){
+            ((ViewHolder3) viewHolder).name.setText("正在热映");
             LinearLayoutManager linearLayoutManager=new LinearLayoutManager(mContext);
             linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
             ((ViewHolder3) viewHolder).recy.setLayoutManager(linearLayoutManager);
@@ -107,6 +108,7 @@ public class HomeGroupAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             });
         }
         if(viewHolder instanceof ViewHolder4){
+            ((ViewHolder4) viewHolder).name.setText("即将上映");
             LinearLayoutManager linearLayoutManager=new LinearLayoutManager(mContext);
             linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
             ((ViewHolder4) viewHolder).recy.setLayoutManager(linearLayoutManager);

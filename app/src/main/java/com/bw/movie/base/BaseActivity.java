@@ -43,7 +43,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     private boolean netStatus;
     private NetBroadcastReceiver netBroadcastReceiver;
     private ErrorView errorView;
-    private void diaLog(Context context){
+   /* private void diaLog(Context context){
         AlertDialog.Builder builder=new AlertDialog.Builder(context);
         builder.setTitle("提示");
         builder.setMessage("网络中断");
@@ -65,7 +65,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         AlertDialog dialog=builder.create();
         dialog.show();
 
-    }
+    }*/
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {

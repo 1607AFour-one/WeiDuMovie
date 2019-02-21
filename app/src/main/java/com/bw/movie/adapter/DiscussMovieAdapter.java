@@ -84,4 +84,5 @@ public class DiscussMovieAdapter extends RecyclerView.Adapter<DiscussMovieAdapte
             ping_zan = itemView.findViewById(R.id.ping_zan);
         }
     }
+
 }
