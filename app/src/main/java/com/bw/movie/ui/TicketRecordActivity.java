@@ -16,6 +16,7 @@ import com.bw.movie.presenter.PresenterImpl;
 import com.bw.movie.utils.Contacts;
 import com.bw.movie.utils.SpUtils;
 import com.bw.movie.view.IView;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,7 +25,7 @@ import java.util.List;
 public class TicketRecordActivity extends BaseActivity implements IView {
 
     private ImageView ticket_fanHui;
-    private RecyclerView ticket_Recy;
+    private XRecyclerView ticket_Recy;
     private List<RecordData.ResultBean>rList=new ArrayList<>();
     private int index=1;
     private int count=10;
@@ -59,18 +60,20 @@ public class TicketRecordActivity extends BaseActivity implements IView {
     protected void setProgress() {
 
         presenter = new PresenterImpl(this);
-        headmap = new HashMap<>();
-        map = new HashMap<>();
+
         int userId = SpUtils.getInt("userId");
         String sessionId=SpUtils.getString("sessionId");
+        headmap = new HashMap<>();
+        map = new HashMap<>();
         headmap.put("userId",userId);
         headmap.put("sessionId",sessionId);
-        map.put("page",index+"");
-        map.put("count",count+"");
+        map.put("page",index);
+        map.put("count",count);
         map.put("status",1+"");
-        recordAdapter = new RecordAdapter(rList,getApplicationContext());
+        recordAdapter = new RecordAdapter(rList,TicketRecordActivity.this);
         ticket_Recy.setAdapter(recordAdapter);
         presenter.requestGEt(Contacts.RECORD_URL, map, headmap,RecordData.class);
+
     }
 
     @Override
@@ -90,12 +93,13 @@ public class TicketRecordActivity extends BaseActivity implements IView {
             RecordData recordData= (RecordData) data;
             rList.addAll(recordData.getResult());
             recordAdapter.notifyDataSetChanged();
-//            Toast.makeText(this,rList.toString()+"",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,recordData.getMessage()+"",Toast.LENGTH_SHORT).show();
+
         }
     }
 
     @Override
     public void errorMsg(Object error) {
-
+        Toast.makeText(this,error+"",Toast.LENGTH_SHORT).show();
     }
 }

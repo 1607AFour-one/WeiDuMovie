@@ -120,16 +120,7 @@ public class DetailsActivity extends BaseActivity implements IView {
         theatre_return= view.findViewById(R.id.theatre_return);
     }
 
-    /**
-     * 让状态栏变透明
-     */
-    private void changeStatusBarColor() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        }
-    }
+
 
     @Override
     protected void setClicks() {
@@ -145,12 +136,6 @@ public class DetailsActivity extends BaseActivity implements IView {
     @Override
     protected void setProgress() {
 
-        //让状态栏透明
-        changeStatusBarColor();
-        //让状态栏透明
-        if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        }
 
         //获取影院id；
         Intent intent = getIntent();

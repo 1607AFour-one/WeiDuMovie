@@ -18,15 +18,15 @@
         android:textColor="#333333"
         />
 
-    <android.support.v7.widget.RecyclerView
+
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
         android:layout_below="@+id/Ticket_Text"
         android:layout_marginTop="10dp"
         android:id="@+id/Ticket_Recy"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        ></android.support.v7.widget.RecyclerView>
+        android:layout_marginRight="24dp"></com.jcodecraeer.xrecyclerview.XRecyclerView>
 
 
     <ImageView

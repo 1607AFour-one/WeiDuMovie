@@ -56,10 +56,10 @@ public class RecordData {
          */
 
         private int amount;
-        private int beginTime;
+        private String beginTime;
         private String cinemaName;
         private long createTime;
-        private int endTime;
+        private String endTime;
         private int id;
         private String movieName;
         private String orderId;
@@ -76,11 +76,11 @@ public class RecordData {
             this.amount = amount;
         }
 
-        public int getBeginTime() {
+        public String getBeginTime() {
             return beginTime;
         }
 
-        public void setBeginTime(int beginTime) {
+        public void setBeginTime(String beginTime) {
             this.beginTime = beginTime;
         }
 
@@ -100,11 +100,11 @@ public class RecordData {
             this.createTime = createTime;
         }
 
-        public int getEndTime() {
+        public String getEndTime() {
             return endTime;
         }
 
-        public void setEndTime(int endTime) {
+        public void setEndTime(String endTime) {
             this.endTime = endTime;
         }
 
