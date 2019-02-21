@@ -3,22 +3,23 @@ package com.bw.movie.adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bw.movie.R;
 import com.bw.movie.bean.RecordData;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.ViewHolder> {
+
+public class RecordAdapter extends XRecyclerView.Adapter<RecordAdapter.ViewHolder> {
+
     private List<RecordData.ResultBean>rList;
     private Context mContext;
-
 
     public RecordAdapter(List<RecordData.ResultBean> rList, Context mContext) {
         this.rList = rList;
@@ -28,27 +29,27 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.ViewHolder
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view=LayoutInflater.from(mContext).inflate(R.layout.record_item,viewGroup,false);
+        View view=View.inflate(mContext,R.layout.record_item,null);
         ViewHolder viewHolder=new ViewHolder(view);
         return viewHolder;
     }
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
 
         if(rList.get(i).getStatus()==1){
             viewHolder.Record_Name.setText(rList.get(i).getMovieName());
-            viewHolder.Record_Ting.setText(rList.get(i).getScreeningHall());
             viewHolder.Record_Dan.setText(rList.get(i).getOrderId()+"");
-            //double Record_Kuan=rList.get(i).getPrice()*rList.get(i).getAmount();
-            SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            viewHolder.Record_Qian.setText(rList.get(i).getPrice()+"");
+            SimpleDateFormat format=new SimpleDateFormat("MM-dd hh:mm");
             Date date=new Date(rList.get(i).getCreateTime());
-            viewHolder.Record_Ting.setText(format.format(date));
-            //viewHolder.Record_Kuan.setText(rList.get(i).getStatus());
+            viewHolder.Record_Time.setText(format.format(date));
+            //viewHolder.Record_Kuan.setText(rList.get(i).getStatus()+"");
             viewHolder.Record_Yuan.setText(rList.get(i).getCinemaName());
             viewHolder.Record_Shu.setText(rList.get(i).getAmount()+"张");
+            viewHolder.Record_Ting.setText(rList.get(i).getScreeningHall());
 
         }
-
 
     }
 
